@@ -1,0 +1,20 @@
+{
+  "name":    "cron-as-a-service",
+  "description": "Remote cron service",
+  "version": "0.0.1",
+  "author": "Francois Zaninotto",
+  "dependencies": {
+    "mongoose": "latest",
+    "request":  "latest",
+    "express":  "latest",
+    "config":   "latest",
+    "async":    "latest",
+    "cron":     "latest"
+  },
+  "keywords": ["cron", "service"],
+  "repository": "https://github.com/fzaninotto/cron-as-a-service",
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.6"
+  }
+}
