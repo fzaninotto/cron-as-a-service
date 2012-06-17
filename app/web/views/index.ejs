@@ -1,0 +1,32 @@
+<script src="<%= route %>/javascripts/jquery.form.js"></script>
+<div class="row">
+  <div class="span6">
+    <h2>List of Jobs</h2>
+    <dl class="dl-horizontal" id="job_list"></ul>
+  </div>
+  <div class="span6">
+    <h2>Add a Job</h2>
+    <form class="well form-inline" action="/api/jobs" id="new_job" method="post">
+      <input type="text" class="span2" name="expression" placeholder="Expression">
+      <input type="text" class="span3" name="url" placeholder="Url">
+      <button type="submit" class="btn">Save</button>
+    </form>
+  </div>
+</div>
+<script>
+$(document).ready(function() {
+  var refreshList = function() {
+    $.getJSON('/api/jobs', function(jobs) {
+      var lines = [];
+      $.each(jobs, function(key, job) {
+        lines.push('<dt>' + job.expression + '</dt><dd>' + job.url + '</dd>');
+      });
+      $('#job_list').html(lines.join(''));
+    });
+  };
+  $('#new_job').ajaxForm({
+    success: refreshList
+  });
+  refreshList();
+});
+</script>

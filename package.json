@@ -5,6 +5,7 @@
   "author": "Francois Zaninotto",
   "dependencies": {
     "mongoose": "latest",
+    "ejs":      "latest",
     "request":  "latest",
     "express":  "latest",
     "config":   "latest",
