@@ -32,14 +32,14 @@ Jobs CRUD
 
 A job is composed of an expression and an url. 
 
-    // to create a job, send a POST request to the /api/job route
-    curl -d 'expression=* * * * * *&url=http://localhost:8888' http://localhost:8082/api/job
-    // to list jobs, send a GET requst to the /api/job route
+    // to create a job, send a POST request to the /api/jobs route
+    curl -d 'expression=* * * * * *&url=http://localhost:8888' http://localhost:8082/api/jobs
+    // to list jobs, send a GET requst to the /api/jobs route
     curl http://localhost:8082/api/job
-    // to update a job, send a PUT request to the /api/job/:id route
-    curl -X PUT -d 'expression=* * * * * *&url=http://localhost:8888' http://localhost:8082/api/job/4fcd284b87cf3b5a07000004
-    // to remove a job, send a DELETE request to the /api/job/:id route
-    curl -X DELETE http://localhost:8082/api/job/4fcd284b87cf3b5a07000004
+    // to update a job, send a PUT request to the /api/jobs/:id route
+    curl -X PUT -d 'expression=* * * * * *&url=http://localhost:8888' http://localhost:8082/api/jobs/4fcd284b87cf3b5a07000004
+    // to remove a job, send a DELETE request to the /api/jobs/:id route
+    curl -X DELETE http://localhost:8082/api/jobs/4fcd284b87cf3b5a07000004
 
 The job expression follows the cron pattern syntax described [here](http://help.sap.com/saphelp_xmii120/helpdata/en/44/89a17188cc6fb5e10000000a155369/content.htm).
 

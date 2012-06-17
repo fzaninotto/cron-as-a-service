@@ -14,14 +14,14 @@ app.configure(function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
-app.get('/job', function(req, res, next) {
+app.get('/jobs', function(req, res, next) {
   Job.find(function(err, jobs) {
     if (err) return next(err);
     res.json(jobs);
   });
 });
 
-app.post('/job', function(req, res, next) {
+app.post('/jobs', function(req, res, next) {
   if (!req.body.expression || !req.body.url) return next(new Error('You must provide an expression and an url as POST parameters'), 403);
   var job = new Job();
   job.expression = req.body.expression;
@@ -29,21 +29,21 @@ app.post('/job', function(req, res, next) {
   job.save(function(err) {
     if (err) return next(err);
     if (CronTab.add(job)) {
-      res.redirect('/job/' + job._id);
+      res.redirect('/jobs/' + job._id);
     } else {
       return next(new Error('Error adding Job'));
     }
   });
 });
 
-app.get('/job/:id', function(req, res, next) {
+app.get('/jobs/:id', function(req, res, next) {
   Job.findOne({ _id: req.params.id }, function(err, job) {
     if (err) return next(err);
     res.json(job);
   });
 });
 
-app.put('/job/:id', function(req, res, next) {
+app.put('/jobs/:id', function(req, res, next) {
   Job.findOne({ _id: req.params.id }, function(err, job) {
     if (err) return next(err);
     if (!job) return next(new Error('Trying to update non-existing job'), 403);
@@ -52,7 +52,7 @@ app.put('/job/:id', function(req, res, next) {
     job.save(function(err2) {
       if (err2) return next(err2);
       if (CronTab.update(job)) {
-        res.redirect('/job/' + job._id);
+        res.redirect('/jobs/' + job._id);
       } else {
         return next(new Error('Error updating Job'));
       }
@@ -60,14 +60,14 @@ app.put('/job/:id', function(req, res, next) {
   });
 });
 
-app.delete('/job/:id', function(req, res, next) {
+app.delete('/jobs/:id', function(req, res, next) {
   Job.findOne({ _id: req.params.id }, function(err, job) {
     if (err) return next(err);
     if (!job) return next(new Error('Trying to remove non-existing job'), 403);
     job.remove(function(err2) {
       if (err2) return next(err2);
       if (CronTab.remove(job)) {
-        res.redirect('/job');
+        res.redirect('/jobs');
       } else {
         return next(new Error('Error removing job'));
       }
