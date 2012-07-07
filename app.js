@@ -66,7 +66,7 @@ app.use('/api', require('./app/api'));
 app.use('/web', require('./app/web'));
 
 // load plugins
-path.exists('./plugins/index.js', function(exists) {
+fs.exists('./plugins/index.js', function(exists) {
   if (exists) {
     require('./plugins').init(app, config, mongoose);
   };
