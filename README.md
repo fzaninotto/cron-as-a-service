@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/fzaninotto/cron-as-a-service.png)](http://travis-ci.org/fzaninotto/cron-as-a-service)
 cron-as-a-service
 =================
 
