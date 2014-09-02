@@ -21,7 +21,7 @@ Clone the repository from GitHub and install dependencies using npm:
 
 Start the application with:
 
-    > node app
+    > node server
 
 Head to the API root for a list of available resources:
 
@@ -46,6 +46,7 @@ The job expression follows the cron pattern syntax described [here](http://help.
 Customization
 -------------
 
+The app is pre-configured to run on OpenShift.
 
 LICENSE
 -------

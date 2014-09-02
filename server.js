@@ -19,7 +19,7 @@ var dbUrl;
 if (global.isProd) {
 	dbUrl = process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME;
 } else {
-	dbUrl = 'mongodb://localhost/mydb';
+	dbUrl = 'mongodb://localhost/cron';
 }
 
  mongoose.connect(dbUrl, function(err) {
