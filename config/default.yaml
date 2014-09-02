@@ -1,10 +1,1 @@
-mongodb:
-  server:   localhost
-  database: cron
-  user:     root 
-  password:
-
-server:
-  port:     8082
-
 verbose: true # only used in dev

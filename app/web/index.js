@@ -1,18 +1,18 @@
 /**
  * Module dependencies.
  */
-var express    = require('express');
-var app = module.exports = express.createServer();
+var express    = require('express'),
+	logger = require('morgan');
+
+var app = module.exports = express();
+
+app.use(logger('dev'));
 
 // middleware
 
-app.configure(function(){
-  app.use(app.router);
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-  app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.static(__dirname + '/public'));
-});
 
 app.get('/', function(req, res, next) {
   res.render('index', { route: app.route });

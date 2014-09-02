@@ -1,18 +1,33 @@
 /**
  * Module dependencies.
  */
-var express    = require('express');
-var app = module.exports = express.createServer();
+var express    = require('express'),
+	passport = require('passport'),
+	LocalStrategy = require('passport-localapikey').Strategy,
+	logger = require('morgan');
 
-var Job = require('../../models/job');
+var app = module.exports = express();
+
+var Job = require('../../models/job'),
+	User     = require('../../models/user');
 var CronTab = require('../../lib/cronTab');
+
+app.use(logger('dev'));
 
 // middleware
 
-app.configure(function(){
-  app.use(app.router);
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
+passport.use(new LocalStrategy(
+  function(apikey, done) {
+    User.findOne({ apikey: apikey }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      return done(null, user);
+    });
+  }
+));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/jobs', function(req, res, next) {
   Job.find(function(err, jobs) {
@@ -78,8 +93,10 @@ app.delete('/jobs/:id', function(req, res, next) {
 // route list
 app.get('/', function(req, res) {
   var routes = [];
-  app.routes.all().forEach(function(route) {
-    routes.push({ method: route.method.toUpperCase() , path: app.route + route.path });
+  app._router.stack.forEach(function(stackRoute) {
+	  if(stackRoute.route){
+		  routes.push({ method: stackRoute.route.methods , path: app.route + stackRoute.route.path });
+	  }
   });
   res.json(routes);
 });
