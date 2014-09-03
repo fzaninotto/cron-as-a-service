@@ -1,12 +1,16 @@
 /**
  * Module dependencies.
  */
-var express    = require('express'),
+var express = require('express'),
+	partials = require('express-partials')
 	logger = require('morgan');
 
 var app = module.exports = express();
 
 app.use(logger('dev'));
+
+// load the express-partials middleware
+app.use(partials());
 
 // middleware
 

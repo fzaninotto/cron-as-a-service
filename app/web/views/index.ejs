@@ -1,32 +1,51 @@
-<script src="<%= route %>/javascripts/jquery.form.js"></script>
-<div class="row">
-  <div class="span6">
-    <h2>List of Jobs</h2>
-    <dl class="dl-horizontal" id="job_list"></ul>
-  </div>
-  <div class="span6">
-    <h2>Add a Job</h2>
-    <form class="well form-inline" action="/api/jobs" id="new_job" method="post">
-      <input type="text" class="span2" name="expression" placeholder="Expression">
-      <input type="text" class="span3" name="url" placeholder="Url">
-      <button type="submit" class="btn">Save</button>
-    </form>
-  </div>
-</div>
-<script>
-$(document).ready(function() {
-  var refreshList = function() {
-    $.getJSON('/api/jobs', function(jobs) {
-      var lines = [];
-      $.each(jobs, function(key, job) {
-        lines.push('<dt>' + job.expression + '</dt><dd>' + job.url + '</dd>');
-      });
-      $('#job_list').html(lines.join(''));
-    });
-  };
-  $('#new_job').ajaxForm({
-    success: refreshList
-  });
-  refreshList();
-});
-</script>
+<div class="container-full">
+	
+	<div class="row">
+
+		<div class="col-lg-12 text-center v-center">
+			<h1>
+				<img src="images/logo.png" alt="Cron As A Service">
+			   	Cron For Your Webapp
+			</h1>
+			<p class="lead">Sign up for your free trial</p>
+
+			<br><br><br>
+
+			<form class="col-lg-12">
+			<div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+			<input class="form-control input-lg" title="Don't worry. We hate spam, and will not share your email with anyone." placeholder="Enter your email address" type="text">
+			  <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
+			</div>
+			</form>
+		</div>
+
+	  </div> <!-- /row -->
+	
+	<div class="row">
+
+		<div class="col-lg-12 text-center v-center" style="font-size:39pt;">
+			<h3>
+				Ping my app every minute
+			</h3>
+			<pre>
+				curl -d 'expression=0 * * * * *&url=http://myapp.com' http://cronasaservice.com/api/jobs
+			</pre>
+		</div>
+
+	  </div>
+
+	  <div class="row">
+
+		<div class="col-lg-12 text-center v-center" style="font-size:39pt;">
+			<a href="#"><i class="icon-google-plus"></i></a> 
+			<a href="#"><i class="icon-facebook"></i></a>  
+			<a href="#"><i class="icon-twitter"></i></a> 
+			<a href="#"><i class="icon-github"></i></a> 
+			<a href="#"><i class="icon-pinterest"></i></a>
+		</div>
+
+	  </div>
+
+	<br><br><br><br><br>
+
+</div> <!-- /container full -->
