@@ -5,6 +5,7 @@ var Schema   = mongoose.Schema;
 var Job = new Schema({
   expression : String,
   url :        String,
+  user:        String
 });
 
 module.exports = mongoose.model('Job', Job);

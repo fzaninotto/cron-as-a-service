@@ -27,20 +27,21 @@ passport.use(new LocalStrategy(
 ));
 
 app.use(passport.initialize());
-app.use(passport.session());
 
-app.get('/jobs', function(req, res, next) {
-  Job.find(function(err, jobs) {
+
+app.get('/jobs', ensureAuthenticated, function(req, res, next) {
+  Job.find({user: req.user.id},function(err, jobs) {
     if (err) return next(err);
     res.json(jobs);
   });
 });
 
-app.post('/jobs', function(req, res, next) {
+app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   if (!req.body.expression || !req.body.url) return next(new Error('You must provide an expression and an url as POST parameters'), 403);
   var job = new Job();
   job.expression = req.body.expression;
   job.url = req.body.url;
+  job.user = req.user.id;
   job.save(function(err) {
     if (err) return next(err);
     if (CronTab.add(job)) {
@@ -51,19 +52,20 @@ app.post('/jobs', function(req, res, next) {
   });
 });
 
-app.get('/jobs/:id', function(req, res, next) {
+app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
   Job.findOne({ _id: req.params.id }, function(err, job) {
     if (err) return next(err);
     res.json(job);
   });
 });
 
-app.put('/jobs/:id', function(req, res, next) {
+app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
   Job.findOne({ _id: req.params.id }, function(err, job) {
     if (err) return next(err);
     if (!job) return next(new Error('Trying to update non-existing job'), 403);
     job.expression = req.params.expression;
     job.url = req.parms.url;
+	job.user = req.user.id;
     job.save(function(err2) {
       if (err2) return next(err2);
       if (CronTab.update(job)) {
@@ -75,7 +77,7 @@ app.put('/jobs/:id', function(req, res, next) {
   });
 });
 
-app.delete('/jobs/:id', function(req, res, next) {
+app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
   Job.findOne({ _id: req.params.id }, function(err, job) {
     if (err) return next(err);
     if (!job) return next(new Error('Trying to remove non-existing job'), 403);
@@ -91,7 +93,7 @@ app.delete('/jobs/:id', function(req, res, next) {
 });
 
 // route list
-app.get('/', function(req, res) {
+app.get('/', ensureAuthenticated, function(req, res) {
   var routes = [];
   app._router.stack.forEach(function(stackRoute) {
 	  if(stackRoute.route){
@@ -104,4 +106,9 @@ app.get('/', function(req, res) {
 if (!module.parent) {
   app.listen(3000);
   console.log('Express started on port 3000');
+}
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.json({error:'You must provide a valid api key. Visit crontabasaservice.com to register.'});
 }
