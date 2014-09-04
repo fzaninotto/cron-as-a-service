@@ -21,6 +21,7 @@ h1 img{
   width: 100%;
   min-height:100%;
   background-color: #fff;
+  background-image: url('/images/background-500.jpg');
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -37,20 +38,14 @@ h1 img{
   margin-top:7%;
 }
 
-@media (max-width: 799px) {
-    .container-full{
-       background-image: url('/images/background-500.jpg');
-    }
-}
-
-@media (max-width: 1023px) {
+@media (min-width: 500px) {
     .container-full{
        background-image: url('/images/background-800.jpg');
     }
 }
 
-@media (min-width: 1024px) {
-	.container-full{
-		background-image: url('/images/background.jpg');
-	}
+@media (min-width: 800px) {
+    .container-full{
+       background-image: url('/images/background.jpg');
+    }
 }
