@@ -46,6 +46,7 @@ if (app.get('env') === 'development') {
 	if (config.verbose) mongoose.set('debug', true);
 	app.use(express.static(__dirname + '/public'));
 }else{
+	var oneYear = 31557600000;
 	app.use(express.static(__dirname + '/public', { maxAge: oneYear }));
 }
 
