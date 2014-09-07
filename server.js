@@ -16,10 +16,10 @@ var Job     = require('./models/job');
 
 // configure mongodb
 var dbUrl;
-if (global.isProd) {
-	dbUrl = process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME;
-} else {
+if (app.get('env') === 'development') {
 	dbUrl = 'mongodb://localhost/cron';
+} else {
+	dbUrl = process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME;
 }
 
  mongoose.connect(dbUrl, function(err) {
