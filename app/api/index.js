@@ -55,6 +55,10 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
 app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
   Job.findOne({ _id: req.params.id }, function(err, job) {
     if (err) return next(err);
+	  
+	if(job.user !== req.user.id){
+		return next(new Error('This job does not belong to you'), 403);
+	}
     res.json(job);
   });
 });
@@ -69,7 +73,7 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
     job.save(function(err2) {
       if (err2) return next(err2);
       if (CronTab.update(job)) {
-        res.redirect('/jobs/' + job._id);
+        res.json(job);
       } else {
         return next(new Error('Error updating Job'));
       }
