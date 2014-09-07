@@ -14,6 +14,8 @@ var fs     = require('fs'),
 var CronTab = require('./lib/cronTab');
 var Job     = require('./models/job');
 
+var app = module.exports = express();
+
 // configure mongodb
 var dbUrl;
 if (app.get('env') === 'development') {
@@ -33,8 +35,6 @@ mongoose.connection.on('error', function (err) {
   console.error('Make sure a mongoDB server is running and accessible by this application');
   process.exit();
 });
-
-var app = module.exports = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
