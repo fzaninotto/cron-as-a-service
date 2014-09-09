@@ -22,6 +22,10 @@ app.get('/', function(req, res, next) {
   res.render('index', { route: app.route });
 });
 
+app.get('/thanks', function(req, res, next) {
+  res.render('thanks', { route: app.route });
+});
+
 if (!module.parent) {
   app.listen(3000);
   console.log('Express started on port 3000');
