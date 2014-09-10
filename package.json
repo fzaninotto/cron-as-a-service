@@ -1,8 +1,12 @@
 {
   "name": "cron-as-a-service",
-  "description": "Remote cron service",
-  "version": "0.0.1",
-  "author": "Francois Zaninotto",
+  "description": "Cron As A Service",
+  "version": "0.9.0",
+  "author": "Matthew Reid",
+  "apidoc": {
+    "title": "Cron As A Service API",
+    "url" : "http://www.cronasaservice.com/api"
+  },
   "dependencies": {
     "mongoose": "latest",
     "ejs": "latest",
@@ -20,9 +24,10 @@
   },
   "keywords": [
     "cron",
-    "service"
+    "service",
+	"saas"
   ],
-  "repository": "https://github.com/fzaninotto/cron-as-a-service",
+  "repository": "https://github.com/drei01/cron-as-a-service",
   "license": "MIT",
   "engine": {
     "node": ">=0.6"
