@@ -5,6 +5,7 @@ var express    = require('express'),
 	passport = require('passport'),
 	LocalStrategy = require('passport-localapikey').Strategy,
 	logger = require('morgan'),
+    crypto = require('crypto'),
 	Customerio = require('node-customer.io');
 
 var app = module.exports = express();
@@ -61,6 +62,16 @@ app.get('/jobs', ensureAuthenticated, function(req, res, next) {
   Job.find({user: req.user.id},function(err, jobs) {
     if (err) return next(err);
     res.json(jobs);
+      
+    try{
+        cio.track(req.user.id, 'getJobs', data, function(err, res) {
+          if (err != null) {
+            console.log('ERROR', err);
+          }
+          console.log('response headers', res.headers);
+          return console.log('status code', res.statusCode);
+        });
+    }catch(e){}
   });
 });
 
@@ -101,6 +112,16 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
     if (err) return next(err);
     if (CronTab.add(job)) {
       res.json(job);
+        
+    try{
+        cio.track(req.user.id, 'addJob', data, function(err, res) {
+          if (err != null) {
+            console.log('ERROR', err);
+          }
+          console.log('response headers', res.headers);
+          return console.log('status code', res.statusCode);
+        });
+    }catch(e){}
     } else {
       return next(new Error('Error adding Job'));
     }
@@ -141,6 +162,16 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
 		return next(new Error('This job does not belong to you'), 403);
 	}
     res.json(job);
+      
+    try{
+        cio.track(req.user.id, 'getJob', data, function(err, res) {
+          if (err != null) {
+            console.log('ERROR', err);
+          }
+          console.log('response headers', res.headers);
+          return console.log('status code', res.statusCode);
+        });
+    }catch(e){}
   });
 });
 
@@ -183,6 +214,16 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
       if (err2) return next(err2);
       if (CronTab.update(job)) {
         res.json(job);
+          
+    try{
+        cio.track(req.user.id, 'updateJob', data, function(err, res) {
+          if (err != null) {
+            console.log('ERROR', err);
+          }
+          console.log('response headers', res.headers);
+          return console.log('status code', res.statusCode);
+        });
+    }catch(e){}
       } else {
         return next(new Error('Error updating Job'));
       }
@@ -222,6 +263,16 @@ app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
       if (err2) return next(err2);
       if (CronTab.remove(job)) {
         res.json({'response':'deleted'});
+          
+        try{
+        cio.track(req.user.id, 'deleteJob', data, function(err, res) {
+          if (err != null) {
+            console.log('ERROR', err);
+          }
+          console.log('response headers', res.headers);
+          return console.log('status code', res.statusCode);
+        });
+    }catch(e){}
       } else {
         return next(new Error('Error removing job'));
       }
@@ -262,31 +313,41 @@ app.get('/', ensureAuthenticated, function(req, res) {
 	  }
   });
   res.json(routes);
+    
+  try{
+        cio.track(req.user.id, 'getRoutes', data, function(err, res) {
+          if (err != null) {
+            console.log('ERROR', err);
+          }
+          console.log('response headers', res.headers);
+          return console.log('status code', res.statusCode);
+        });
+    }catch(e){}
 });
 
-app.post('/user/:email', ensureAuthenticated, function(req, res, next) {
+app.post('/user/:email', function(req, res, next) {
   User.findOne({ email: req.params.email }, function(err, user) {
     if (err) return next(err);
-    if (!job) return next(new Error('A user with this email exists'), 403);
+    if (user) return next(new Error('A user with this email exists'), 403);
     var user = new User();
 	user.email = req.params.email;
+    user.apikey = crypto.createHash('sha256').update('salt').digest('hex');
 	user.save(function(err) {
 		if (err) return next(err);
 		
 		try{
-			cio.identify(user._id, user.email, {
+			cio.identify(user._id.toString(), user.email, {
 			  created_at: new Date()
 			}, function(err, res) {
 			  if (err != null) {
 				console.log('ERROR', err);
 			  }
-			  console.log('response headers', res.headers);
-			  console.log('status code', res.statusCode);
 			});
 		}catch(err){
-		}
-		
-		return res.json(user);
+            console.log(err);
+		}finally{
+            res.json(user);
+        }
 	});
   });
 });

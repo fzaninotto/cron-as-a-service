@@ -9,6 +9,15 @@ h1 , .lead , .example h3{
 	text-shadow: 0 0 15px rgba(0,0,0,.6),0 -1px 1px rgba(0,0,0,.6);
 }
 
+.example a{
+    text-decoration: underline;
+}
+
+.example a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 h1 img{
 	display: block;
 	margin: 0 auto;

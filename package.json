@@ -21,7 +21,8 @@
     "body-parser": "~1.6.7",
     "morgan": "~1.2.3",
     "express-partials": "~0.3.0",
-    "node-customer.io": "0.0.2"
+    "node-customer.io": "0.0.2",
+    "crypto": "0.0.3"
   },
   "keywords": [
     "cron",
