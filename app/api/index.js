@@ -4,7 +4,8 @@
 var express    = require('express'),
 	passport = require('passport'),
 	LocalStrategy = require('passport-localapikey').Strategy,
-	logger = require('morgan');
+	logger = require('morgan'),
+	Customerio = require('node-customer.io');
 
 var app = module.exports = express();
 
@@ -13,6 +14,8 @@ var Job = require('../../models/job'),
 var CronTab = require('../../lib/cronTab');
 
 app.use(logger('dev'));
+
+var cio = new Customerio('202d0d8efc39e3364794', 'ff0f5ab843d2bde17df5');
 
 // middleware
 
@@ -259,6 +262,33 @@ app.get('/', ensureAuthenticated, function(req, res) {
 	  }
   });
   res.json(routes);
+});
+
+app.post('/user/:email', ensureAuthenticated, function(req, res, next) {
+  User.findOne({ email: req.params.email }, function(err, user) {
+    if (err) return next(err);
+    if (!job) return next(new Error('A user with this email exists'), 403);
+    var user = new User();
+	user.email = req.params.email;
+	user.save(function(err) {
+		if (err) return next(err);
+		
+		try{
+			cio.identify(user._id, user.email, {
+			  created_at: new Date()
+			}, function(err, res) {
+			  if (err != null) {
+				console.log('ERROR', err);
+			  }
+			  console.log('response headers', res.headers);
+			  console.log('status code', res.statusCode);
+			});
+		}catch(err){
+		}
+		
+		return res.json(user);
+	});
+  });
 });
 
 if (!module.parent) {

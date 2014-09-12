@@ -5,7 +5,7 @@
   "author": "Matthew Reid",
   "apidoc": {
     "title": "Cron As A Service API",
-    "url" : "http://www.cronasaservice.com/api"
+    "url": "http://www.cronasaservice.com/api"
   },
   "dependencies": {
     "mongoose": "latest",
@@ -20,12 +20,13 @@
     "yaml": "~0.2.3",
     "body-parser": "~1.6.7",
     "morgan": "~1.2.3",
-    "express-partials": "~0.3.0"
+    "express-partials": "~0.3.0",
+    "node-customer.io": "0.0.2"
   },
   "keywords": [
     "cron",
     "service",
-	"saas"
+    "saas"
   ],
   "repository": "https://github.com/drei01/cron-as-a-service",
   "license": "MIT",
