@@ -103,7 +103,7 @@ app.get('/jobs', ensureAuthenticated, function(req, res, next) {
  *     }
  */
 app.post('/jobs', ensureAuthenticated, function(req, res, next) {
-  if (!req.body.expression || !req.body.url) return next(new Error('You must provide an expression and an url as POST parameters'), 403);
+  if (!req.body.expression || !req.body.url) return res.json({'error':'You must provide an expression and an url as POST parameters'});
   var job = new Job();
   job.expression = req.body.expression;
   job.url = req.body.url;
@@ -123,7 +123,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
         });
     }catch(e){}
     } else {
-      return next(new Error('Error adding Job'));
+      return res.json({'error':'Error adding Job'});
     }
   });
 });
@@ -159,7 +159,7 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
     if (err) return next(err);
 	  
 	if(job.user !== req.user.id){
-		return next(new Error('This job does not belong to you'), 403);
+		return res.json({'error':'This job does not belong to you'});
 	}
     res.json(job);
       
@@ -206,7 +206,7 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
 app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
   Job.findOne({ _id: req.params.id }, function(err, job) {
     if (err) return next(err);
-    if (!job) return next(new Error('Trying to update non-existing job'), 403);
+    if (!job) return res.json({'error':'Trying to update non-existing job'});
     job.expression = req.params.expression;
     job.url = req.parms.url;
 	job.user = req.user.id;
@@ -225,7 +225,7 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
         });
     }catch(e){}
       } else {
-        return next(new Error('Error updating Job'));
+        return res.json({'error':'Error updating Job'});
       }
     });
   });
@@ -258,7 +258,7 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
 app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
   Job.findOne({ _id: req.params.id }, function(err, job) {
     if (err) return next(err);
-    if (!job) return next(new Error('Trying to remove non-existing job'), 403);
+    if (!job) return res.json({'error':'Trying to remove non-existing job'});
     job.remove(function(err2) {
       if (err2) return next(err2);
       if (CronTab.remove(job)) {
@@ -274,7 +274,7 @@ app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
         });
     }catch(e){}
       } else {
-        return next(new Error('Error removing job'));
+        return next(res.json{'error':'Error removing job'});
       }
     });
   });
@@ -328,7 +328,7 @@ app.get('/', ensureAuthenticated, function(req, res) {
 app.post('/user/:email', function(req, res, next) {
   User.findOne({ email: req.params.email }, function(err, user) {
     if (err) return next(err);
-    if (user) return next(new Error('A user with this email exists'), 403);
+    if (user) return res.json({'error':'A user with this email exists'});
     var user = new User();
 	user.email = req.params.email;
     user.apikey = crypto.createHash('sha256').update('salt').digest('hex');
@@ -359,5 +359,5 @@ if (!module.parent) {
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  return next(new Error('You must provide a valid api key. Visit crontabasaservice.com to register.'), 403);
+  return res.json({'error':'You must provide a valid api key. Visit crontabasaservice.com to register.'});
 }
