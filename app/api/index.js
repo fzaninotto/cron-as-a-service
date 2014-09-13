@@ -337,7 +337,8 @@ app.post('/user/:email', function(req, res, next) {
 		
 		try{
 			cio.identify(user._id.toString(), user.email, {
-			  created_at: new Date()
+			  created_at: new Date(),
+              apikey: user.apikey
 			}, function(err, res) {
 			  if (err != null) {
 				console.log('ERROR', err);
