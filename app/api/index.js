@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 var express    = require('express'),
+    session = require('express-session')
 	passport = require('passport'),
 	LocalStrategy = require('passport-localapikey').Strategy,
 	logger = require('morgan'),
@@ -30,7 +31,9 @@ passport.use(new LocalStrategy(
   }
 ));
 
+app.use(session({ secret: 'omgitscronaaservice1987'})); //session secret
 app.use(passport.initialize());
+app.use(passport.session()); //persistent login session
 
 
 /**
@@ -274,7 +277,7 @@ app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
         });
     }catch(e){}
       } else {
-        return next(res.json{'error':'Error removing job'});
+        return res.json({'error':'Error removing job'});
       }
     });
   });

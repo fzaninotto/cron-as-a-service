@@ -22,7 +22,8 @@
     "morgan": "~1.2.3",
     "express-partials": "~0.3.0",
     "node-customer.io": "0.0.2",
-    "crypto": "0.0.3"
+    "crypto": "0.0.3",
+    "express-session": "~1.8.1"
   },
   "keywords": [
     "cron",
