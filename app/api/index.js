@@ -2,7 +2,6 @@
  * Module dependencies.
  */
 var express    = require('express'),
-    session = require('express-session')
 	passport = require('passport'),
 	LocalStrategy = require('passport-localapikey').Strategy,
 	logger = require('morgan'),
@@ -31,9 +30,15 @@ passport.use(new LocalStrategy(
   }
 ));
 
-app.use(session({ secret: 'omgitscronaaservice1987'})); //session secret
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 app.use(passport.initialize());
-app.use(passport.session()); //persistent login session
 
 
 /**
@@ -362,6 +367,12 @@ if (!module.parent) {
 }
 
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  return res.json({'error':'You must provide a valid api key. Visit crontabasaservice.com to register.'});
+    passport.authenticate('localapikey', {session:false}, function(err, user, info) {
+        if (err) { return next(err); }
+        if (!user) { return res.json({'error':'You must provide a valid api key. Visit crontabasaservice.com to register.'}); }
+        req.logIn(user, function(err) {
+          if (err) { return next(err); }
+          return next();
+        });
+      })(req, res, next);
 }
