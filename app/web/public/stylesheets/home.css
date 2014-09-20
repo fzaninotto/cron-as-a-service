@@ -1,0 +1,17 @@
+body{
+    background-color: #efefef;
+    padding-top: 45px;
+    padding-bottom: 40px;
+}
+
+a{
+    color: #000;
+}
+
+a:hover{
+    color: #000;
+}
+
+a:active{
+    color: #000;
+}

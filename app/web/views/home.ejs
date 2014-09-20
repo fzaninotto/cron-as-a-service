@@ -1,0 +1,153 @@
+<!-- Main -->
+<div class="container" ng-controller="cronController">
+<div class="row">
+    <div class="col-sm-12">
+      	
+      <!-- column 2 -->	
+      <h2>Dashboard</h2>
+      
+      	<hr>
+      
+		<div class="row">
+           
+            
+          
+            <!-- center left-->	
+         	<div class="col-md-6">
+			  <div class="panel panel-default">
+                  <div class="panel-heading"><h4>Jobs</h4></div>
+                  <div class="panel-body">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item" ng-repeat="job in cronList" ng-click="remove(job._id)">
+                            {{job.url}}
+                            <i class="icon-remove pull-right"></i>
+                        </a>
+                        <a href="#" class="list-group-item" ng-hide="cronList.length">No jobs here... <br/> Create a new job using the form.</a>
+                    </div>
+                  </div>
+              </div>
+   
+          	</div><!--/col-->
+        	<div class="col-md-6">
+              
+              	<div class="panel panel-default">
+                	<div class="panel-heading">
+                      	<div class="panel-title">
+                  		<i class="icon-briefcase pull-left"></i>
+                      	<h4>New cron job</h4>
+                      	</div>
+                	</div>
+                	<div class="panel-body">
+
+                      <form class="form form-vertical" ng-submit="newJob()">
+                       
+                        <div class="control-group">
+                          <label>URL</label>
+                          <div class="controls">
+                           <input type="text" class="form-control" placeholder="Url to ping" required ng-model="formData.url">
+                          </div>
+                        </div>      
+                        
+                        <div class="control-group">
+                          <label>Expression</label>
+                          <div class="controls">
+                          	<input type="text" class="form-control" placeholder="e.g * * * * *" required ng-model="formData.expression">
+                          </div>
+                        </div>   
+                        
+                        <div class="control-group">
+                          	<label></label>
+                        	<div class="controls">
+                        	<button type="submit" class="btn btn-primary pull-right">
+                              Save
+                            </button>
+                        	</div>
+                        </div>   
+                        
+                      </form>
+                
+                
+                  </div><!--/panel content-->
+                </div><!--/panel-->
+              
+			</div><!--/col-span-6-->
+     
+      </div><!--/row-->
+      
+      <hr>
+  	</div><!--/col-span-9-->
+</div>
+</div>
+<!-- /Main -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script>
+    angular.module('CronAsAService', [
+    'CronAsAService.controllers',
+    'CronAsAService.services'
+]);
+
+angular.module('CronAsAService.controllers', []).
+    controller('cronController', function($scope,apiService) {
+        $scope.cronList = [];
+        $scope.formData = {};
+
+        //new cron job
+        $scope.newJob = function() {
+            apiService.newJob($scope.formData).success(function(data) {
+                $scope.formData = {};//blank out the form
+
+                //reload the cron list
+                $scope.refreshList();
+            });
+        };
+
+        //delete job
+        $scope.remove = function(id){
+            apiService.delete(id).success(function(data){
+                $scope.refreshList(); 
+            }); 
+        }
+
+        //refresh the jobs list
+        $scope.refreshList = function(){
+            apiService.getJobs().success(function(response){
+                $scope.cronList = response;
+            });
+        };
+
+        $scope.refreshList();        
+    });
+
+angular.module('CronAsAService.services', []).
+  factory('apiService', function($http) {
+
+    var API = {};
+
+    API.getJobs = function() {
+      return $http({
+        method: 'GET', 
+        url: '/api/jobs?apikey=<%=apikey%>'
+      });
+    };
+
+    API.newJob = function(formData){
+        return $http({
+            method  : 'POST',
+            url     : '/api/jobs?apikey=<%=apikey%>',
+            data    : formData, 
+            headers : { 'Content-Type': 'application/json' }
+        });
+
+    };
+
+    API.delete = function(id){
+         return $http({
+            method  : 'DELETE',
+            url     : '/api/jobs/' + id + '?apikey=<%=apikey%>', 
+            headers : { 'Content-Type': 'application/json' }
+        });
+    };
+
+    return API;
+  });
+</script>

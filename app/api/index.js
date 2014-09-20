@@ -20,6 +20,7 @@ var cio = new Customerio('202d0d8efc39e3364794', 'ff0f5ab843d2bde17df5');
 
 // middleware
 
+
 passport.use(new LocalStrategy(
   function(apikey, done) {
     User.findOne({ apikey: apikey }, function (err, user) {
@@ -39,6 +40,13 @@ passport.deserializeUser(function(user, done) {
 });
 
 app.use(passport.initialize());
+
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Accept");
+  next();
+ });
 
 
 /**
@@ -369,7 +377,7 @@ if (!module.parent) {
 function ensureAuthenticated(req, res, next) {
     passport.authenticate('localapikey', {session:false}, function(err, user, info) {
         if (err) { return next(err); }
-        if (!user) { return res.json({'error':'You must provide a valid api key. Visit crontabasaservice.com to register.'}); }
+        if (!user) { return res.json({'error':'You must provide a valid api key. Visit cronasaservice.com to register.'}); }
         req.logIn(user, function(err) {
           if (err) { return next(err); }
           return next();

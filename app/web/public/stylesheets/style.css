@@ -9,6 +9,22 @@ h1 , .lead , .example h3{
 	text-shadow: 0 0 15px rgba(0,0,0,.6),0 -1px 1px rgba(0,0,0,.6);
 }
 
+.navbar-default{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.navbar-default .nav li a{
+    color: #fff;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar-default .nav li a:hover{
+    color: #428bca;
+}
+
 .example a{
     text-decoration: underline;
 }

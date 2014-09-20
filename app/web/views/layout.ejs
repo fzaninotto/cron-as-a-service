@@ -48,9 +48,42 @@
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
 		<link href="stylesheets/style.css" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+        <%if (locals.css) { %>
+            <link href="<%- css %>" rel="stylesheet">
+        <% } %>
     </head>
     
-    <body>
+    <body ng-app="CronAsAService">
+        
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div>
+                    <% if(locals.logo && logo==true) { %>
+                    <a class="brand navbar-left"><img src="images/logo.png" alt="Cron As A Service" width="50"></a>
+                    <% } %>
+                    
+                    <% if(!locals.hideNav) { %>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden active">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="/docs">Docs</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="/login">Login</a>
+                        </li>
+                        </li>
+                    </ul>
+                    <% } %>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        
 		<%- body %>
 		
 		<script>
@@ -63,5 +96,29 @@
 		  ga('send', 'pageview');
 
 		</script>
+        <script type="text/javascript">
+          var _cio = _cio || [];
+          (function() {
+            var a,b,c;a=function(f){return function(){_cio.push([f].
+            concat(Array.prototype.slice.call(arguments,0)))}};b=["load","identify",
+            "sidentify","track","page","cookie"];for(c=0;c<b.length;c++){_cio[b[c]]=a(b[c])};
+            var t = document.createElement('script'),
+                s = document.getElementsByTagName('script')[0];
+            t.async = true;
+            t.id    = 'cio-tracker';
+            t.setAttribute('data-site-id', '202d0d8efc39e3364794');
+            t.src = 'https://assets.customer.io/assets/track.js';
+            s.parentNode.insertBefore(t, s);
+          })();
+        </script>
+        <%if (locals.user) { %>
+        <script type="text/javascript">
+            _cio.identify({
+                id: '<%- user._id%>',
+                email: '<%- user.email %>',
+                created_at: new Date('<%- user.created_at %>').getTime()
+            });
+        </script>
+        <% } %>
     </body>
 </html>
