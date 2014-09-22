@@ -8,7 +8,8 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
 	flash = require('connect-flash')
 	partials = require('express-partials'),
-	logger = require('morgan');
+	logger = require('morgan'),
+    Customerio = require('node-customer.io');
 
 /**
 * Models
@@ -18,6 +19,8 @@ var User     = require('../../models/user');
 var app = module.exports = express();
 
 app.use(logger('dev'));
+
+var cio = new Customerio('202d0d8efc39e3364794', 'ff0f5ab843d2bde17df5');
 
 // load the express-partials middleware
 app.use(partials());
@@ -47,6 +50,15 @@ passport.use(new LocalStrategy(function(username, password, done) {
       if (!user) {
         return done(null, false, { message: 'Incorrect email address.' });
       }
+        try{
+        cio.track(user._id, 'webLogin', data, function(err, res) {
+          if (err != null) {
+            console.log('ERROR', err);
+          }
+          console.log('response headers', res.headers);
+          return console.log('status code', res.statusCode);
+        });
+    }catch(e){}
       return done(null, user);
     });
   }
@@ -57,7 +69,8 @@ app.set('views', __dirname + '/views');
   app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res, next) {
-  res.render('index', { route: app.route });
+    var view = req.query.video ? 'index-video' : 'index';
+  res.render(view, { route: app.route });
 });
 
 app.get('/login', function(req, res, next) {

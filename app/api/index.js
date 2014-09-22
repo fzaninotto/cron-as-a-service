@@ -75,12 +75,12 @@ app.all('*', function(req, res, next) {
  *     }
  */
 app.get('/jobs', ensureAuthenticated, function(req, res, next) {
-  Job.find({user: req.user.id},function(err, jobs) {
+  Job.find({user: req.user._id},function(err, jobs) {
     if (err) return next(err);
     res.json(jobs);
       
     try{
-        cio.track(req.user.id, 'getJobs', data, function(err, res) {
+        cio.track(req.user._id, 'getJobs', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
@@ -123,14 +123,14 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   var job = new Job();
   job.expression = req.body.expression;
   job.url = req.body.url;
-  job.user = req.user.id;
+  job.user = req.user._id;
   job.save(function(err) {
     if (err) return next(err);
     if (CronTab.add(job)) {
       res.json(job);
         
     try{
-        cio.track(req.user.id, 'addJob', data, function(err, res) {
+        cio.track(req.user._id, 'addJob', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
@@ -174,13 +174,13 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
   Job.findOne({ _id: req.params.id }, function(err, job) {
     if (err) return next(err);
 	  
-	if(job.user !== req.user.id){
+	if(job.user !== req.user._id){
 		return res.json({'error':'This job does not belong to you'});
 	}
     res.json(job);
       
     try{
-        cio.track(req.user.id, 'getJob', data, function(err, res) {
+        cio.track(req.user._id, 'getJob', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
@@ -225,14 +225,14 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
     if (!job) return res.json({'error':'Trying to update non-existing job'});
     job.expression = req.params.expression;
     job.url = req.parms.url;
-	job.user = req.user.id;
+	job.user = req.user._id;
     job.save(function(err2) {
       if (err2) return next(err2);
       if (CronTab.update(job)) {
         res.json(job);
           
     try{
-        cio.track(req.user.id, 'updateJob', data, function(err, res) {
+        cio.track(req.user._id, 'updateJob', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
@@ -281,7 +281,7 @@ app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
         res.json({'response':'deleted'});
           
         try{
-        cio.track(req.user.id, 'deleteJob', data, function(err, res) {
+        cio.track(req.user._id, 'deleteJob', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
@@ -331,7 +331,7 @@ app.get('/', ensureAuthenticated, function(req, res) {
   res.json(routes);
     
   try{
-        cio.track(req.user.id, 'getRoutes', data, function(err, res) {
+        cio.track(req.user._id, 'getRoutes', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
