@@ -70,7 +70,7 @@ app.set('views', __dirname + '/views');
 
 app.get('/', function(req, res, next) {
     var view = req.query.video ? 'index-video' : 'index';
-  res.render(view, { route: app.route , req:req , video : req.query.video });
+  res.render(view, { route: app.route , req:req , video_test : !req.query.video });
 });
 
 app.get('/login', function(req, res, next) {
