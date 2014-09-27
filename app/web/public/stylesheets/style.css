@@ -91,6 +91,10 @@ footer{
 	display: none;
 }
 
+.lead{
+    padding-top: 7%;
+}
+
 
 @media (min-width: 500px) {
     .container-full{

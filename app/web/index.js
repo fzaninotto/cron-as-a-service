@@ -68,9 +68,18 @@ app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.static(__dirname + '/public'));
 
+var homepage_test = {
+    a:{background:'background.jpg',title:'Cron For Your Webapp'},
+    b:{background:'fun.jpg',title:'So you can be out here, while we take care of your periodic jobs.'},
+    c:{background:'puppy-love.jpg',title:'Because this guy won\'t walk himself. We\'ve got your cron jobs.'}
+};
+
 app.get('/', function(req, res, next) {
     var view = req.query.video ? 'index-video' : 'index';
-  res.render(view, { route: app.route , req:req , video_test : !req.query.video });
+  res.render(view, { 
+      route: app.route ,  
+      video_test : !req.query.video , 
+      test : req.query.test ? homepage_test[req.query.test] : homepage_test.a});
 });
 
 app.get('/login', function(req, res, next) {

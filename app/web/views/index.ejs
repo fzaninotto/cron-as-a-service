@@ -1,3 +1,8 @@
+<style>
+    .container-full{
+        background-image: url(/images/<%- test.background %>);
+    }
+</style>
 <div class="container-full">
 	<div class="gradient"></div>
 	
@@ -15,10 +20,8 @@
 		<div class="col-lg-12 text-center v-center">
 			<h1>
 				<a itemprop="url" href="/"><img src="images/logo.png" alt="Cron As A Service"></a>
-			   	<span itemprop="description">Cron For Your Webapp</span>
+			   	<span itemprop="description"><%- test.title %></span>
 			</h1>
-			
-			<br><br><br>
 			
 			<p class="lead">Sign up for your free account</p>
 
