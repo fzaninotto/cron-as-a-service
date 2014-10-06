@@ -51,6 +51,7 @@ app.all('*', function(req, res, next) {
 
 /**
  * @api {get} /jobs Get all Jobs for the authenticated user
+ * @apiVersion 0.9.0
  * @apiName GetJobs
  * @apiGroup Jobs
  *
@@ -93,6 +94,7 @@ app.get('/jobs', ensureAuthenticated, function(req, res, next) {
 
 /**
  * @api {post} /jobs Create a new job
+ * @apiVersion 0.9.0
  * @apiName CreateJob
  * @apiGroup Jobs
  *
@@ -146,6 +148,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
 
 /**
  * @api {get} /jobs Get a Job by id
+ * @apiVersion 0.9.0
  * @apiName GetJob
  * @apiGroup Jobs
  *
@@ -193,6 +196,7 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
 
 /**
  * @api {put} /jobs Edit an existing Job
+ * @apiVersion 0.9.0
  * @apiName EditJob
  * @apiGroup Jobs
  *
@@ -249,6 +253,7 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
 
 /**
  * @api {delete} /jobs Delete a Job by id
+ * @apiVersion 0.9.0
  * @apiName DeleteJob
  * @apiGroup Jobs
  *
@@ -298,6 +303,7 @@ app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
 
 /**
  * @api {get} / List possible API calls
+ * @apiVersion 0.9.0
  * @apiName ListCalls
  * @apiGroup Api
  *
