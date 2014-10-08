@@ -97,6 +97,7 @@ app.get('/home', function(req, res, next) {
     }
     
     res.render('home', { 
+                        title: 'Cron Dashboard',
                         route: app.route,
                         css: '/stylesheets/home.css',
                         logo: true,

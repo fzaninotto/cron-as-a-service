@@ -15,3 +15,53 @@ a:hover{
 a:active{
     color: #000;
 }
+
+#masthead { 
+ min-height:250px;
+}
+
+#masthead h1 {
+ font-size: 30px;
+ line-height: 1;
+ padding-top:20px;
+}
+
+#masthead .well {
+ margin-top:8%;
+}
+
+@media screen and (min-width: 768px) {
+  #masthead h1 {
+    font-size: 50px;
+  }
+}
+
+.navbar-bright {
+ background-color:#111155;
+ color:#fff;
+}
+
+.affix-top,.affix{
+ position: static;
+}
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+  	margin-top:30px;
+  }
+  
+  #sidebar.affix {
+    position: fixed;
+    top:70px;
+  }
+}
+
+#sidebar li.active {
+  border:0 #5bc0de solid;
+  border-right-width:5px;
+}
+
+.panel-heading.bold{
+    background-color: #94c3ea;
+}
