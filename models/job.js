@@ -11,7 +11,7 @@ var Job = new Schema({
   headers:     []
 });
 
-Job.schema.path('method').validate(function (value) {
+Job.path('method').validate(function (value) {
   return /get,post/i.test(value);
 }, 'Invalid HTTP method');
 
