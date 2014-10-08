@@ -123,7 +123,7 @@ define({ api: [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   {\n     \"expression\": \"* * * *\",\n     \"lastname\": \"http://www.example.com\"\n   }\n",
+          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   {\n     \"expression\": \"* * * *\",\n     \"url\": \"http://www.example.com\",\n     \"method\": \"get\",\n     \"params\": [{test:1}],\n     \"headers\": [{X-Header:'111'}]\n   }\n",
           "type": "json"
         }
       ]
@@ -280,7 +280,7 @@ define({ api: [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   {\n     \"expression\": \"* * * *\",\n     \"lastname\": \"http://www.example.com\"\n   }\n",
+          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   {\n     \"expression\": \"* * * *\",\n     \"url\": \"http://www.example.com\"\n   }\n",
           "type": "json"
         }
       ]

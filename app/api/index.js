@@ -109,7 +109,10 @@ app.get('/jobs', ensureAuthenticated, function(req, res, next) {
  *     HTTP/1.1 200 OK
  *     {
  *       "expression": "* * * *",
- *       "lastname": "http://www.example.com"
+ *       "url": "http://www.example.com",
+ *       "method": "get",
+ *       "params": [{test:1}],
+ *       "headers": [{X-Header:'111'}]
  *     }
  *
  * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
@@ -126,6 +129,9 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   job.expression = req.body.expression;
   job.url = req.body.url;
   job.user = req.user._id;
+  job.method = req.body.method ? req.body.method : 'get';
+  job.params = req.body.params;
+  job.headers = req.body.headers;
   job.save(function(err) {
     if (err) return next(err);
     if (CronTab.add(job)) {
@@ -174,7 +180,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
  *     }
  */
 app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
-  Job.findOne({ _id: req.params.id }, function(err, job) {
+  Job.findOne({ _id: req.params.id , user : req.user._id }, function(err, job) {
     if (err) return next(err);
 	  
 	if(job.user !== req.user._id){
@@ -212,7 +218,7 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  *     HTTP/1.1 200 OK
  *     {
  *       "expression": "* * * *",
- *       "lastname": "http://www.example.com"
+ *       "url": "http://www.example.com"
  *     }
  *
  * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
@@ -224,12 +230,15 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  *     }
  */
 app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
-  Job.findOne({ _id: req.params.id }, function(err, job) {
+  Job.findOne({ _id: req.params.id , user : req.user._id }, function(err, job) {
     if (err) return next(err);
     if (!job) return res.json({'error':'Trying to update non-existing job'});
     job.expression = req.params.expression;
     job.url = req.parms.url;
 	job.user = req.user._id;
+    job.method = req.body.method ? req.body.method : 'get';
+    job.params = req.body.params;
+    job.headers = req.body.headers;
     job.save(function(err2) {
       if (err2) return next(err2);
       if (CronTab.update(job)) {
@@ -277,7 +286,7 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  *     }
  */
 app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
-  Job.findOne({ _id: req.params.id }, function(err, job) {
+  Job.findOne({ _id: req.params.id , user: req.user._id }, function(err, job) {
     if (err) return next(err);
     if (!job) return res.json({'error':'Trying to remove non-existing job'});
     job.remove(function(err2) {
