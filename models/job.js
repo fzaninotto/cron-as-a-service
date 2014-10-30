@@ -7,12 +7,16 @@ var Job = new Schema({
   url :        String,
   user:        String,
   method:      String,
-  params:      [],
-  headers:     []
+  params:      {},
+  headers:     {},
+  responses:   []
 });
 
 Job.path('method').validate(function (value) {
-  return /get,post/i.test(value);
+    if(value===null){
+        return true;
+    }
+    return /get|post/i.test(value);
 }, 'Invalid HTTP method');
 
 module.exports = mongoose.model('Job', Job);

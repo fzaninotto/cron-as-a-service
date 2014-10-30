@@ -85,8 +85,6 @@ app.get('/jobs', ensureAuthenticated, function(req, res, next) {
           if (err != null) {
             console.log('ERROR', err);
           }
-          console.log('response headers', res.headers);
-          return console.log('status code', res.statusCode);
         });
     }catch(e){}
   });
@@ -130,8 +128,8 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   job.url = req.body.url;
   job.user = req.user._id;
   job.method = req.body.method ? req.body.method : 'get';
-  job.params = req.body.params;
-  job.headers = req.body.headers;
+  job.params = req.body.params!=null ? JSON.parse(req.body.params) : null;
+  job.headers = req.body.headers!=null ? JSON.parse(req.body.headers) : null;
   job.save(function(err) {
     if (err) return next(err);
     if (CronTab.add(job)) {
@@ -142,8 +140,6 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
           if (err != null) {
             console.log('ERROR', err);
           }
-          console.log('response headers', res.headers);
-          return console.log('status code', res.statusCode);
         });
     }catch(e){}
     } else {
@@ -193,8 +189,6 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
           if (err != null) {
             console.log('ERROR', err);
           }
-          console.log('response headers', res.headers);
-          return console.log('status code', res.statusCode);
         });
     }catch(e){}
   });
@@ -249,8 +243,6 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
           if (err != null) {
             console.log('ERROR', err);
           }
-          console.log('response headers', res.headers);
-          return console.log('status code', res.statusCode);
         });
     }catch(e){}
       } else {
@@ -299,8 +291,6 @@ app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
           if (err != null) {
             console.log('ERROR', err);
           }
-          console.log('response headers', res.headers);
-          return console.log('status code', res.statusCode);
         });
     }catch(e){}
       } else {
@@ -350,8 +340,6 @@ app.get('/', ensureAuthenticated, function(req, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
-          console.log('response headers', res.headers);
-          return console.log('status code', res.statusCode);
         });
     }catch(e){}
 });

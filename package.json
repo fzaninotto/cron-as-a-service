@@ -26,7 +26,8 @@
     "passport-local": "^1.0.0",
     "passport-localapikey": "0.0.3",
     "request": "latest",
-    "yaml": "~0.2.3"
+    "yaml": "~0.2.3",
+    "unirest": "~0.2.9"
   },
   "keywords": [
     "cron",
