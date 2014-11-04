@@ -97,7 +97,7 @@ app.get('/home', function(req, res, next) {
     }
     
     res.render('home', { 
-                        title: 'Cron Dashboard',
+                        title: '(1) Cron Dashboard',
                         route: app.route,
                         css: '/stylesheets/home.css',
                         logo: true,
@@ -116,7 +116,28 @@ app.post('/login',
 );
 
 app.get('/thanks', function(req, res, next) {
-  res.render('thanks', { route: app.route });
+  res.render('thanks', { 
+	  title: 'Thanks!',
+	  route: app.route 
+  });
+});
+
+app.get('/contact', function(req, res, next) {
+  res.render('contact', { 
+	  title: 'Contact Us',
+	  css: '/stylesheets/contact.css',
+	  logo: true,
+	  route: app.route 
+  });
+});
+
+app.get('/customers', function(req, res, next) {
+  res.render('customers', { 
+	  title: 'Our Customers',
+	  css: '/stylesheets/contact.css',
+	  logo: true,
+	  route: app.route 
+  });
 });
 
 if (!module.parent) {

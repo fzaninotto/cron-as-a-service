@@ -1,0 +1,31 @@
+body{
+	background-color: #efefef;
+}
+h5{
+	vertical-align: middle;
+}
+.navbar-default .nav li a{
+	color: #000;
+}
+.navbar-default .nav li a:active{
+	color: #000;
+}
+.container-full{
+	background-image: none;
+	background-color: transparent;
+	padding-top: 50px;
+	color: #000;
+}
+
+.container-full a , .container-full a:hover, .container-full a:active {
+	color: #000;
+}
+
+.container-full a:hover{
+	text-decoration: underline;
+}
+
+.well , .input-group-addon{
+	background-color: #008000;
+	color: #fff;
+}

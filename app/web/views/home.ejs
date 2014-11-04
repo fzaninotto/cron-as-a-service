@@ -4,7 +4,10 @@
     <div class="col-sm-12">
       	
       <!-- column 2 -->	
-      <h2>Dashboard</h2>
+      <h2>
+		  Dashboard
+	  	<small class="pull-right"><%- user.email %></small>
+	  </h2>
       
       	<hr>
       
@@ -22,7 +25,7 @@
             <!-- center left-->	
          	<div class="col-md-5">
 			  <div class="panel panel-default">
-                  <div class="panel-heading"><h4 id="jobs">Jobs</h4></div>
+                  <div class="panel-heading"><h4 id="jobs">Your Jobs</h4></div>
                   <div class="panel-body">
                     <div class="list-group">
                         <a href="#" class="list-group-item" ng-repeat="job in cronList" ng-click="remove(job._id)">
@@ -49,7 +52,7 @@
               </div>
 				
 				<div class="panel panel-default">
-                  <div class="panel-heading"><h4 id="contact">API Key</h4></div>
+                  <div class="panel-heading"><h4 id="contact">Get in touch</h4></div>
                   <div class="panel-body">
                     <h4>We love human contact. Let us know what we've done well (and not so well) below.</h4>
                     <form role="form" action="//forms.brace.io/cronasaservice@gmail.com" method="post" >
@@ -101,7 +104,51 @@
                           <div class="controls">
                           	<input type="text" class="form-control" placeholder="e.g * * * * *" required ng-model="formData.expression">
                           </div>
-                        </div>   
+                        </div> 
+						  
+						<div class="control-group">
+							<label>Headers</label>
+                        	<div class="controls" ng-repeat="obj in formData.headers">
+								<div class="row">
+									<div class="col-md-6">
+										<input ng-model="obj" type="text" class="form-control" placeholder="Header">
+									</div>
+									<div class="col-md-6">
+										<input ng-model="obj" type="text" class="form-control col-md-6" placeholder="Value...">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-12">
+									<button type="button" class="btn btn-primary pull-left" ng-click="addHeader()">
+									  Add Header
+									</button>
+								</div>
+                        	</div>
+						</div>
+						  
+						<div class="control-group">
+							<label>Parameters</label>
+                        	<div class="controls" ng-repeat="obj in formData.params">
+								<div class="row">
+									<div class="col-md-6">
+										<input ng-model="obj" type="text" class="form-control" placeholder="Parameter">
+									</div>
+									<div class="col-md-6">
+										<input ng-model="obj" type="text" class="form-control col-md-6" placeholder="Value...">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-12">
+									<button type="button" class="btn btn-primary pull-left" ng-click="addParam()">
+									  Add Parameter
+									</button>
+								</div>
+                        	</div>
+						</div>
                         
                         <div class="control-group">
                           	<label></label>
@@ -141,7 +188,10 @@
 angular.module('CronAsAService.controllers', []).
     controller('cronController', function($scope,apiService) {
         $scope.cronList = [];
-        $scope.formData = {};
+        $scope.formData = {
+			headers:[{}],
+			params:[{}]
+		};
 
         //new cron job
         $scope.newJob = function() {
@@ -166,6 +216,14 @@ angular.module('CronAsAService.controllers', []).
                 $scope.cronList = response;
             });
         };
+	
+		$scope.addHeader = function(){
+			$scope.formData.headers.push({});
+		};
+	
+		$scope.addParam = function(){
+			$scope.formData.params.push({});
+		};
 
         $scope.refreshList();        
     });
