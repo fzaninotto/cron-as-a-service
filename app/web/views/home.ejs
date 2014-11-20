@@ -108,13 +108,13 @@
 						  
 						<div class="control-group">
 							<label>Headers</label>
-                        	<div class="controls" ng-repeat="obj in formData.headers">
-								<div class="row">
+                        	<div class="controls" ng-repeat="header in formData.headers">
+								<div class="row" ng-repeat="(key,value) in header">
 									<div class="col-md-6">
-										<input ng-model="obj" type="text" class="form-control" placeholder="Header">
+										<input ng-model="key" type="text" class="form-control" placeholder="Header">
 									</div>
 									<div class="col-md-6">
-										<input ng-model="obj" type="text" class="form-control col-md-6" placeholder="Value...">
+										<input ng-model="value" type="text" class="form-control col-md-6" placeholder="Value...">
 									</div>
 								</div>
 							</div>
@@ -130,13 +130,13 @@
 						  
 						<div class="control-group">
 							<label>Parameters</label>
-                        	<div class="controls" ng-repeat="obj in formData.params">
-								<div class="row">
+                        	<div class="controls" ng-repeat="param in formData.params">
+								<div class="row" ng-repeat="(key,value) in param">
 									<div class="col-md-6">
-										<input ng-model="obj" type="text" class="form-control" placeholder="Parameter">
+										<input ng-model="key" type="text" class="form-control" placeholder="Parameter">
 									</div>
 									<div class="col-md-6">
-										<input ng-model="obj" type="text" class="form-control col-md-6" placeholder="Value...">
+										<input ng-model="value" type="text" class="form-control col-md-6" placeholder="Value...">
 									</div>
 								</div>
 							</div>
@@ -189,8 +189,8 @@ angular.module('CronAsAService.controllers', []).
     controller('cronController', function($scope,apiService) {
         $scope.cronList = [];
         $scope.formData = {
-			headers:[{}],
-			params:[{}]
+			headers:[],
+			params:[]
 		};
 
         //new cron job
@@ -218,11 +218,11 @@ angular.module('CronAsAService.controllers', []).
         };
 	
 		$scope.addHeader = function(){
-			$scope.formData.headers.push({});
+			$scope.formData.headers.push({'header':'value'});
 		};
 	
 		$scope.addParam = function(){
-			$scope.formData.params.push({});
+			$scope.formData.params.push({'parameter':'value'});
 		};
 
         $scope.refreshList();        
@@ -237,7 +237,11 @@ angular.module('CronAsAService.services', []).
       return $http({
         method: 'GET', 
         url: '/api/jobs?apikey=<%=apikey%>'
-      });
+      }).then(
+			function(response) {
+				// error handling here
+			}
+		);
     };
 
     API.newJob = function(formData){
@@ -246,7 +250,11 @@ angular.module('CronAsAService.services', []).
             url     : '/api/jobs?apikey=<%=apikey%>',
             data    : formData, 
             headers : { 'Content-Type': 'application/json' }
-        });
+        }).then(
+			function(response) {
+				// error handling here
+			}
+		);
 
     };
 
@@ -255,7 +263,11 @@ angular.module('CronAsAService.services', []).
             method  : 'DELETE',
             url     : '/api/jobs/' + id + '?apikey=<%=apikey%>', 
             headers : { 'Content-Type': 'application/json' }
-        });
+        }).then(
+			function(response) {
+				// error handling here
+			}
+		);
     };
 
     return API;

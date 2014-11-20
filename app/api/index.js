@@ -128,8 +128,8 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   job.url = req.body.url;
   job.user = req.user._id;
   job.method = req.body.method ? req.body.method : 'get';
-  job.params = req.body.params!=null ? JSON.parse(req.body.params) : null;
-  job.headers = req.body.headers!=null ? JSON.parse(req.body.headers) : null;
+  job.params = req.body.params!=null ? req.body.params : null;
+  job.headers = req.body.headers!=null ? req.body.headers : null;
   job.save(function(err) {
     if (err) return next(err);
     if (CronTab.add(job)) {
