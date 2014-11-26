@@ -11,7 +11,7 @@
 		</h1>
 	</div>
 
-    <form class="form-signin" role="form" action="/login" method="post">
+    <form class="form-signin" role="form" action="/login" method="post" id="form">
         <h2 class="form-signin-heading">Login to get started.</h2>
         <%if (message.length > 0) { %>
             <div class="alert alert-danger" role="alert"><%- message %></div>
@@ -22,3 +22,6 @@
     </form>
 
 </div>
+<script>
+    document.getElementById('form').submit();
+</script>

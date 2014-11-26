@@ -1,6 +1,7 @@
 <!-- Main -->
 <div class="container" ng-controller="cronController">
-<div class="row">
+<tour step="currentStep" post-tour="postTour()">
+<div class="row content">
     <div class="col-sm-12">
       	
       <!-- column 2 -->	
@@ -27,10 +28,17 @@
 			  <div class="panel panel-default">
                   <div class="panel-heading"><h4 id="jobs">Your Jobs</h4></div>
                   <div class="panel-body">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item" ng-repeat="job in cronList" ng-click="remove(job._id)">
+                    <div ng-repeat="alert in jobAlerts" class="alert" ng-class="{{alert.type}}" close="closeAlert($index)">
+                        {{alert.msg}}
+                        <button ng-show="closeable" type="button" class="close" ng-click="close()">
+                            <span aria-hidden="true">×</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                    </div>
+                    <div class="list-group" tourtip="Welcome to your cron home screen, your jobs appear here for easy management.<%if (user.features.indexOf('keepalive') > -1 ) { %> You'll see we've added your first job, woohoo! <% } %>" tourtip-placement="bottom" tourtip-step="0">
+                        <a href="#" class="list-group-item" data-toggle="modal" ng-repeat="job in cronList">
                             {{job.url}}
-                            <i class="icon-remove pull-right"></i>
+                            <span ng-click="remove(job._id)" class="pull-right"><i class="icon-remove"></i></span>
                         </a>
                         <a href="#" class="list-group-item" ng-hide="cronList.length"><i class="icon-frown"></i> No jobs here... <br/> Create a new job using the form.</a>
                     </div>
@@ -39,7 +47,7 @@
 				
 			 <div class="panel panel-default">
                   <div class="panel-heading"><h4 id="key">API Key</h4></div>
-                  <div class="panel-body">
+                  <div class="panel-body" tourtip="When you are ready, you can use your API key to call our REST web service. Check out the docs below for info." tourtip-placement="bottom" tourtip-step="2" tourtip-next-label="Ok, got it">
                     <h4>Your API Key is: <pre><%- user.apikey %></pre></h4>
                   </div>
               </div>
@@ -47,7 +55,7 @@
 			<div class="panel panel-default">
                   <div class="panel-heading"><h4 id="docs">Documentation</h4></div>
                   <div class="panel-body">
-                    <h4>You can check out the API documentation <a href="/docs">here</a>.</h4>
+                    <h4><a href="/docs" class="underline">You can check out the API documentation here.</a></h4>
                   </div>
               </div>
 				
@@ -85,14 +93,21 @@
                 	<div class="panel-heading bold">
                       	<div class="panel-title">
                   		<i class="icon-briefcase pull-left"></i>
-                      	<h4>New cron job</h4>
+                      	<h4 id="newJob">New cron job</h4>
                       	</div>
                 	</div>
                 	<div class="panel-body">
 
                       <form class="form form-vertical" ng-submit="newJob()">
+                        <div ng-repeat="alert in newJobAlerts" class="alert" ng-class="{{alert.type}}" close="closeAlert($index)">
+                            {{alert.msg}}
+                            <button ng-show="closeable" type="button" class="close" ng-click="close()">
+                                <span aria-hidden="true">×</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
                        
-                        <div class="control-group">
+                        <div class="control-group" tourtip="You can create a new job here. Just enter the url and cron expression and we'll do the rest. Simple." tourtip-placement="bottom" tourtip-step="1">
                           <label>URL</label>
                           <div class="controls">
                            <input type="text" class="form-control" placeholder="Url to ping" required ng-model="formData.url">
@@ -105,7 +120,6 @@
                           	<input type="text" class="form-control" placeholder="e.g * * * * *" required ng-model="formData.expression">
                           </div>
                         </div> 
-						  
 						<div class="control-group">
 							<label>Headers</label>
                         	<div class="controls" ng-repeat="header in formData.headers">
@@ -176,22 +190,39 @@
       <hr>
   	</div><!--/col-span-9-->
 </div>
+</tour>
 </div>
+<%- user.features.indexOf('tourcomplete') %>
 <!-- /Main -->
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/scripts/angular-tour-tpls.min.js"></script>
+<script id="tour/tour.tpl.html" type="text/ng-template">
+  <div class="tour-tip">
+      <span class="tour-arrow tt-{{ ttPlacement }}"></span>
+      <div class="tour-content-wrapper">
+          <p ng-bind="ttContent"></p>
+          <a ng-click="setCurrentStep(getCurrentStep() + 1)" ng-bind="ttNextLabel" class="btn btn-primary pull-right tour-next-tip"></a>
+          <button ng-click="closeTour()" type="button" class="close tour-close-tip" data-dismiss="alert"><span aria-hidden="true">&times;             </span></button>
+      </div>
+  </div>
+</script>
 <script>
     angular.module('CronAsAService', [
     'CronAsAService.controllers',
     'CronAsAService.services'
 ]);
 
-angular.module('CronAsAService.controllers', []).
-    controller('cronController', function($scope,apiService) {
+angular.module('CronAsAService.controllers', [<%if (user.features.indexOf('tourcomplete') === -1 ) { %>'angular-tour'<% } %>]).
+    controller('cronController', function($scope,apiService,utils) {
         $scope.cronList = [];
         $scope.formData = {
 			headers:[],
 			params:[]
 		};
+        $scope.newJobAlerts = [];
+        $scope.jobAlerts = [];
 
         //new cron job
         $scope.newJob = function() {
@@ -200,6 +231,8 @@ angular.module('CronAsAService.controllers', []).
 
                 //reload the cron list
                 $scope.refreshList();
+            }).error(function(data, status, headers, config) {
+                $scope.newJobAlerts.push({type:'error' , msg: data});    
             });
         };
 
@@ -207,7 +240,9 @@ angular.module('CronAsAService.controllers', []).
         $scope.remove = function(id){
             apiService.delete(id).success(function(data){
                 $scope.refreshList(); 
-            }); 
+            }).error(function(data, status, headers, config) {
+                $scope.jobAlerts.push({type:'error' , msg: data});    
+            });
         }
 
         //refresh the jobs list
@@ -225,7 +260,19 @@ angular.module('CronAsAService.controllers', []).
 			$scope.formData.params.push({'parameter':'value'});
 		};
 
-        $scope.refreshList();        
+        $scope.closeAlert = function(index) {
+            $scope.alerts.splice(index, 1);
+        };
+
+        $scope.refreshList(); 
+    
+        //tour
+        $scope.currentStep = 0;
+    
+        //tour complete
+        $scope.postTour = function(){
+            apiService.tourComplete();            
+        };
     });
 
 angular.module('CronAsAService.services', []).
@@ -237,11 +284,7 @@ angular.module('CronAsAService.services', []).
       return $http({
         method: 'GET', 
         url: '/api/jobs?apikey=<%=apikey%>'
-      }).then(
-			function(response) {
-				// error handling here
-			}
-		);
+      });
     };
 
     API.newJob = function(formData){
@@ -250,11 +293,7 @@ angular.module('CronAsAService.services', []).
             url     : '/api/jobs?apikey=<%=apikey%>',
             data    : formData, 
             headers : { 'Content-Type': 'application/json' }
-        }).then(
-			function(response) {
-				// error handling here
-			}
-		);
+        });
 
     };
 
@@ -263,18 +302,54 @@ angular.module('CronAsAService.services', []).
             method  : 'DELETE',
             url     : '/api/jobs/' + id + '?apikey=<%=apikey%>', 
             headers : { 'Content-Type': 'application/json' }
-        }).then(
-			function(response) {
-				// error handling here
-			}
-		);
+        });
+    };
+    
+    API.tourComplete = function(){
+        return $http({
+            method  : 'POST',
+            url     : '/tourcomplete',
+            headers : { 'Content-Type': 'application/json' }
+        });
     };
 
     return API;
+  })
+  .factory('utils', function() {
+
+    var UTILS = {};
+
+    UTILS.readCookie = function(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1,c.length);
+            }
+            if (c.indexOf(nameEQ) === 0) {
+                return c.substring(nameEQ.length,c.length);
+            }
+        }
+        return null;
+    }
+    
+    UTILS.createCookie = function(name, value, days) {
+        var expires;
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime()+(days*24*60*60*1000));
+            expires = "; expires="+date.toGMTString();
+        }
+        else {
+            expires = "";
+        }
+        document.cookie = name+"="+value+expires+"; path=/";
+    }
+      
+    return UTILS;
   });
 </script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>
 	/* activate sidebar */
 	$('#sidebar').affix({

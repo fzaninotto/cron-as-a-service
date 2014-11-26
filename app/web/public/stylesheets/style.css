@@ -13,6 +13,10 @@ h1 , .lead , .example h3{
 	text-shadow: 0 0 15px rgba(0,0,0,.6),0 -1px 1px rgba(0,0,0,.6);
 }
 
+.wrapper{
+    min-height: 800px;
+}
+
 .navbar-default{
     background-color: transparent;
     border-color: transparent;
@@ -66,6 +70,10 @@ form .input-group{
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0045484d', endColorstr='#00000000', GradientType=0);
 }
 
+.center{
+    text-align: center;
+}
+
 
 /* Custom container */
 .container-full {
@@ -93,7 +101,7 @@ form .input-group{
 }
 
 footer{
-	color: #ffffff;
+	color: #999;
 	font-weight: 100;
 }
 

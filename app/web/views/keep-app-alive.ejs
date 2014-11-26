@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="col-lg-12 text-center v-center">
+        <h1>
+            <img src="images/logo.png" alt="Cron As A Service">
+        </h1>
+    </div>
+	
+	<div class="col-lg-12 text-center v-center">
+		<h1>
+			Keep your heroku app <a href="https://blog.heroku.com/archives/2013/6/20/app_sleeping_on_heroku" target="_blank">alive</a> forever for <%= __("price") %>
+		</h1>
+	</div>
+
+    <form class="form-signin" action="/keep-alive" method="post" role="form" autocomplete="off" id="form">
+        <h2 class="form-signin-heading">We will ping your heroku app every hour to make sure it doesn't sleep. Simple.</h2>
+        
+        <%if (locals.errors) { %>
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+                <% errors.forEach(function(error){%>
+                   <%= error.msg %>
+                <% }); %>
+            </div>
+        <%} %>
+        
+        <input type="email" class="form-control" name="email" placeholder="Email address" required="" autofocus="" id="email">
+        
+        <div class="input-group">
+			<input type="text" placeholder="yourapp" id="url" required="" class="form-control">
+			<span class="input-group-addon">.herokuapp.com</span>
+		</div>
+        <a class="btn btn-lg btn-primary btn-block" id="purchase"><i class="glyphicon glyphicon-shopping-cart"></i> Purchase Securely</a>
+        
+        <input type="hidden" name="url" id="_url"/>
+        <input type="hidden" name="token" id="_token"/>
+    </form>
+    
+    <div class="row v-center center smallprint">
+        <small>cronasaservice.com will perform a GET request to your chosen Heroku url every hour for 365 days at a cost of <%= __("price") %></small>
+    </div>
+	
+	<script src="https://checkout.stripe.com/checkout.js"></script>
+	<script>
+        
+	  var handler = StripeCheckout.configure({
+		key: '<%- process.env.STRIPE_PUB_KEY || 'pk_test_Zv33f9N9g2JyQevFv38Q9SXn' %>',
+		currency: '<%= __("currency") %>',
+		image: 'images/logo.png',
+        token: function(token) {
+          document.getElementById('form').style = 'display:none;';//hide the form while we submit it
+          document.getElementById('_token').value = token.id;
+          document.getElementById('_url').value = document.getElementById('url').value+'.herokuapp.com';
+          document.getElementById('form').submit();
+        }
+	  });
+        
+      document.getElementById('purchase').onclick = function(e) {
+          if(document.getElementById('email').value==='' || document.getElementById('url').value===''){
+            e.preventDefault();
+            return;
+          }
+          
+            handler.open({
+              name: 'Keep Heroku Alive',
+              description: document.getElementById('url').value+'.herokuapp.com (<%= __("price") %>)',
+              email: document.getElementById('email').value,
+              amount: <%= __("price_num") %>
+            });
+            
+            ga('send', 'event', 'keep_alive', 'checkout', 'heroku', <%= __("price_num") %>);
+                
+            e.preventDefault();
+        }; 
+          
+        window.onpopstate = function() {
+            handler.close();
+        };
+	</script>
+
+</div>

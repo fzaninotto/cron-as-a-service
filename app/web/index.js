@@ -9,20 +9,20 @@ var express = require('express'),
 	flash = require('connect-flash')
 	partials = require('express-partials'),
 	expressValidator = require('express-validator'),
-	crypto = require('crypto'),
 	logger = require('morgan'),
-    Customerio = require('node-customer.io');
+	i18n = require('i18n'),//language detection
+    utils = require('../../lib/utils');
 
 /**
 * Models
 */
-var User     = require('../../models/user');
+var Job = require('../../models/job'),
+	User     = require('../../models/user');
+var CronTab = require('../../lib/cronTab');
 
 var app = module.exports = express();
 
 app.use(logger('dev'));
-
-var cio = new Customerio('202d0d8efc39e3364794', 'ff0f5ab843d2bde17df5');
 
 // load the express-partials middleware
 app.use(partials());
@@ -34,6 +34,13 @@ app.use(flash());
 app.use(expressValidator());
 app.use(passport.initialize());
 app.use(passport.session());
+
+i18n.configure({
+  locales: ['en', 'en-us', 'en-gb', 'en-au'],
+  cookie: 'yourcookiename',
+  directory: __dirname+'/locales'
+});
+app.use(i18n.init);
 
 // middleware
 
@@ -54,7 +61,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
         return done(null, false, { message: 'Incorrect email address.' });
       }
         try{
-        cio.track(user._id, 'webLogin', data, function(err, res) {
+        utils.cio.track(user._id, 'webLogin', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
@@ -134,41 +141,7 @@ app.post('/register', function(req, res, next) {
 					  errors : [{msg:'A user with this email already exists'}]
 				  });
 		}else{
-			var user = new User();
-			user.email = req.body.email;
-			user.apikey = crypto.createHash('sha256').update('salt').digest('hex');
-			user.save(function(err) {
-				if (err){
-					return res.render('index', { 
-						  route: app.route ,
-						  video_test : !req.query.video , 
-						  test : req.query.test ? homepage_test[req.query.test] : homepage_test.a,
-						  errors : errors
-					  });
-				}
-
-				try{
-					cio.identify(user._id.toString(), user.email, {
-					  created_at: new Date(),
-					  apikey: user.apikey
-					}, function(err, res) {
-					  if (err != null) {
-						console.log('ERROR', err);
-					  }
-					});
-				}catch(err){
-					console.log(err);
-				}finally{
-					res.render('thanks', { 
-					  title: 'Thanks!',
-					  css: '/stylesheets/login.css',
-					  logo: true,
-					  user: user,
-					  route: app.route,
-					  message: req.flash('error')
-				  });
-				}
-			});
+			utils.createUser(req,res,next,errors);
 		}
 	  });
   }
@@ -212,6 +185,65 @@ app.get('/customers', function(req, res, next) {
 	  logo: true,
 	  route: app.route 
   });
+});
+
+app.get('/keep-heroku-alive', function(req, res, next) {	
+  res.render('keep-app-alive', { 
+	  title: 'Keep Heroku alive',
+	  css: '/stylesheets/keepalive.css',
+      logo: true,
+	  route: app.route
+  });
+});
+
+app.post('/keep-alive', function(req, res, next) {	
+  req.assert('email', 'Oops you left your email out').notEmpty();   
+  req.assert('url', 'Oops you forgot the url')
+  req.assert('token', 'Oops we couldn\'t confirm your payment');
+	
+  var errors = req.validationErrors();
+  if(errors){
+      res.render('keep-app-alive', { 
+          title: 'Keep Heroku alive',
+          css: '/stylesheets/keepalive.css',
+          logo: true,
+          route: app.route,
+          errors : errors
+      });
+  }else{
+    var token = req.body.token;
+    
+    User.findOne({ email: req.body.email }, function(err, user) {
+        if(user){
+            utils.chargeKeepAliveUser(user,token,res.__("price_num"),res.__("currency"),req.body.url);
+            res.render('thanks', { 
+                  title: 'Thanks!',
+                  css: '/stylesheets/login.css',
+                  logo: true,
+                  user: user,
+                  route: app.route,
+                  message: req.flash('error')
+              });
+        }else{
+            utils.createUser(req, res, next, errors, ['keepalive'], function(user){
+                utils.chargeKeepAliveUser(user,token,res.__("price_num"),res.__("currency"),req.body.url);
+            });
+        }
+    });    
+  }
+});
+
+app.post('/tourcomplete', function(req, res, next) {
+    if(!req.user){
+        res.json({error:true});
+    }else{
+        User.findOne({ _id: req.user._id }, function(err, user) {
+            user.features.push('tourcomplete');   
+            user.save(function(err){
+                res.json({succes:true});
+            });
+        });
+    }
 });
 
 if (!module.parent) {

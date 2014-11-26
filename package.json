@@ -19,6 +19,8 @@
     "express": "latest",
     "express-partials": "~0.3.0",
     "express-session": "~1.8.1",
+    "express-validator": "~2.7.0",
+    "i18n": "~0.5.0",
     "mongoose": "latest",
     "morgan": "~1.2.3",
     "node-customer.io": "0.0.2",
@@ -26,9 +28,9 @@
     "passport-local": "^1.0.0",
     "passport-localapikey": "0.0.3",
     "request": "latest",
-    "yaml": "~0.2.3",
+    "stripe": "^3.0.2",
     "unirest": "~0.2.9",
-    "express-validator": "~2.7.0"
+    "yaml": "~0.2.3"
   },
   "keywords": [
     "cron",

@@ -5,7 +5,7 @@ define({
   "title": "Cron As A Service API",
   "url": "http://www.cronasaservice.com/api",
   "generator": {
-    "version": "0.7.1",
-    "time": "2014-11-20T14:50:15.292Z"
+    "version": "0.7.2",
+    "time": "2014-12-09T21:37:04.006Z"
   }
 });

@@ -1,6 +1,9 @@
 /*
  * Remote cron service
  */
+
+process.env.TZ = 'UTC';//use UTC for all dates
+
 var fs     = require('fs'),
 	config   = require('config'),
 	mongoose = require('mongoose'),

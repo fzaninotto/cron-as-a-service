@@ -59,6 +59,8 @@
 		<meta property="og:site_name" content="Cron As A Service" />
 		<meta property="og:price:amount" content="9.99" />
 		<meta property="og:price:currency" content="USD" />
+		
+		<link rel="icon" type="image/png" href="images/logo.png" />
         
         <!--[if lt IE 9]>
           <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -91,6 +93,11 @@
                         <li class="hidden active">
                             <a href="#page-top"></a>
                         </li>
+						<!--
+                        <li>
+                            <a class="page-scroll" href="/keep-heroku-alive">Heroku</a>
+                        </li>
+						-->
 						<li>
 							<a class="page-scrol" href="/customers">Customers</a>
 						</li>
@@ -112,7 +119,9 @@
             <!-- /.container-fluid -->
         </nav>
         
-		<%- body %>
+        <div class="wrapper">
+		  <%- body %>
+        </div>
 	
 		<% if(!locals.hideNav) { %>
 		<ul class="nav navbar-nav navbar-right visible-xs">
@@ -131,6 +140,10 @@
 			</li>
 		</ul>
 		<% } %>
+
+        <footer class="pull-right">
+            Online Cron | &copy; Codefish Apps Ltd 2014. Registered in England 09341607
+        </footer>
 		
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -152,7 +165,7 @@
                 s = document.getElementsByTagName('script')[0];
             t.async = true;
             t.id    = 'cio-tracker';
-            t.setAttribute('data-site-id', '202d0d8efc39e3364794');
+            t.setAttribute('data-site-id', '<%- process.env.CUSTOMERIO_KEY || 'f138f48dcee884404b51' %>');
             t.src = 'https://assets.customer.io/assets/track.js';
             s.parentNode.insertBefore(t, s);
           })();

@@ -7,6 +7,7 @@ var User = new Schema({
   created_at: { type: Date, default: Date.now },
   email :     { type: String, index: { unique: true }},
   name :      String,
+  features : []
 },{
   toObject: { getters: true }
 });

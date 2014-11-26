@@ -5,7 +5,7 @@ var express    = require('express'),
 	passport = require('passport'),
 	LocalStrategy = require('passport-localapikey').Strategy,
 	logger = require('morgan'),
-	Customerio = require('node-customer.io');
+	utils = require('../../lib/utils');
 
 var app = module.exports = express();
 
@@ -14,8 +14,6 @@ var Job = require('../../models/job'),
 var CronTab = require('../../lib/cronTab');
 
 app.use(logger('dev'));
-
-var cio = new Customerio('202d0d8efc39e3364794', 'ff0f5ab843d2bde17df5');
 
 // middleware
 
@@ -62,7 +60,7 @@ app.all('*', function(req, res, next) {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     [{
- *       "expression": "* * * *",
+ *       "expression": "* * * * *",
  *       "lastname": "http://www.example.com"
  *     }]
  *
@@ -80,7 +78,7 @@ app.get('/jobs', ensureAuthenticated, function(req, res, next) {
     res.json(jobs);
       
     try{
-        cio.track(req.user._id, 'getJobs', data, function(err, res) {
+        utils.cio.track(req.user._id, 'getJobs', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
@@ -105,7 +103,7 @@ app.get('/jobs', ensureAuthenticated, function(req, res, next) {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "expression": "* * * *",
+ *       "expression": "* * * * *",
  *       "url": "http://www.example.com",
  *       "method": "get",
  *       "params": [{test:1}],
@@ -135,7 +133,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
       res.json(job);
         
     try{
-        cio.track(req.user._id, 'addJob', data, function(err, res) {
+        utils.cio.track(req.user._id, 'addJob', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
@@ -162,7 +160,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "expression": "* * * *",
+ *       "expression": "* * * * *",
  *       "lastname": "http://www.example.com"
  *     }
  *
@@ -184,7 +182,7 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
     res.json(job);
       
     try{
-        cio.track(req.user._id, 'getJob', data, function(err, res) {
+        utils.cio.track(req.user._id, 'getJob', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
@@ -210,7 +208,7 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "expression": "* * * *",
+ *       "expression": "* * * * *",
  *       "url": "http://www.example.com"
  *     }
  *
@@ -238,7 +236,7 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
         res.json(job);
           
     try{
-        cio.track(req.user._id, 'updateJob', data, function(err, res) {
+        utils.cio.track(req.user._id, 'updateJob', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
@@ -286,7 +284,7 @@ app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
         res.json({'response':'deleted'});
           
         try{
-        cio.track(req.user._id, 'deleteJob', data, function(err, res) {
+        utils.cio.track(req.user._id, 'deleteJob', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
@@ -335,7 +333,7 @@ app.get('/', ensureAuthenticated, function(req, res) {
   res.json(routes);
     
   try{
-        cio.track(req.user._id, 'getRoutes', data, function(err, res) {
+        utils.cio.track(req.user._id, 'getRoutes', data, function(err, res) {
           if (err != null) {
             console.log('ERROR', err);
           }
