@@ -5,7 +5,7 @@ var Schema   = mongoose.Schema;
 var Job = new Schema({
   expression : String,
   url :        String,
-  user:        String,
+  user:        { type: String, index: true },
   method:      String,
   params:      {},
   headers:     {},

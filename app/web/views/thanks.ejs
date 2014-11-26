@@ -1,53 +1,24 @@
-<div id="itemscope">
-	<span itemprop="name">Cron As A Service</span>
+<div class="container">
+    <div class="col-lg-12 text-center v-center hidden-xs hidden-sm">
+        <h1>
+            <img src="images/logo.png" alt="Cron As A Service">
+        </h1>
+    </div>
 	
-	<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-		<span itemprop="price">$9.99</span>
-		<link itemprop="availability" href="http://schema.org/InStock" />In stock
+	<div class="col-lg-12 text-center v-center">
+		<h1>
+			Success! Your registration is complete.
+		</h1>
 	</div>
+
+    <form class="form-signin" role="form" action="/login" method="post">
+        <h2 class="form-signin-heading">Login to get started.</h2>
+        <%if (message.length > 0) { %>
+            <div class="alert alert-danger" role="alert"><%- message %></div>
+        <% } %>
+        <input type="email" class="form-control" placeholder="Email address" name="username" value="<%- user.email %>" required="" autofocus="">
+        <input type="text" class="form-control" placeholder="API Key" name="password" value="<%- user.apikey %>" required="" autocomplete="off">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+
 </div>
-
-<div class="container-full">
-	<div class="gradient"></div>	
-	
-	<div class="row" itemscope itemtype="http://schema.org/Product">
-
-		<div class="col-lg-12 text-center v-center">
-			<h1>
-				<a itemprop="url" href="http://www.cronasaservice.com"><img src="images/logo.png" alt="Cron As A Service"></a>
-			   	<span itemprop="description">Cron For Your Webapp</span>
-			</h1>
-			
-			<br><br><br>
-			
-			<p class="lead">Thank you for your interest. We will be in touch soon.</p>
-		</div>
-
-	  </div> <!-- /row -->
-	
-	<div class="row">
-
-		<div class="col-lg-12 text-center v-center example">
-			<h3>
-				Get started in 29 seconds
-			</h3>
-			<pre>curl -d 'expression=0 * * * * *&url=http://myapp.com' http://cronasaservice.com/api/jobs</pre>
-			<span>Ping my app every minute</span>
-		</div>
-
-	  </div>
-
-	  <div class="row">
-
-		<div class="col-lg-12 text-center v-center" style="font-size:39pt;">
-			<a href="https://twitter.com/cronasaservice"><i class="icon-twitter"></i></a> 
-			<a href="https://github.com/drei01/cron-as-a-service"><i class="icon-github"></i></a>
-		</div>
-
-	  </div>
-	
-	<footer class="pull-right">
-		2014 &copy; cronasaservice.com
-	</footer>
-
-</div> <!-- /container full -->

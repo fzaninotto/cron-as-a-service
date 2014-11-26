@@ -44,6 +44,12 @@ h1 img{
 	width: 100px;
 }
 
+form .input-group{
+	width:340px;
+	text-align:center;
+	margin:0 auto;
+}
+
 .gradient{
 	position: fixed;
 	top: 0;

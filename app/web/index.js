@@ -8,6 +8,8 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
 	flash = require('connect-flash')
 	partials = require('express-partials'),
+	expressValidator = require('express-validator'),
+	crypto = require('crypto'),
 	logger = require('morgan'),
     Customerio = require('node-customer.io');
 
@@ -29,6 +31,7 @@ app.use(cookieParser());
 var hour = 3600000;
 app.use(session({ cookie: { maxAge: hour }, secret: 'thisiscronasaserviceyes' }));
 app.use(flash());
+app.use(expressValidator());
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -79,7 +82,8 @@ app.get('/', function(req, res, next) {
   res.render(view, { 
       route: app.route ,  
       video_test : !req.query.video , 
-      test : req.query.test ? homepage_test[req.query.test] : homepage_test.a});
+      test : req.query.test ? homepage_test[req.query.test] : homepage_test.a
+  });
 });
 
 app.get('/login', function(req, res, next) {
@@ -107,6 +111,69 @@ app.get('/home', function(req, res, next) {
                      });
 });
 
+app.post('/register', function(req, res, next) {
+  req.assert('email', 'Oops you left your email out').notEmpty();       
+	
+  var errors = req.validationErrors();
+	
+  if(errors){
+  	res.render('index', { 
+		  route: app.route ,
+		  video_test : !req.query.video , 
+          test : req.query.test ? homepage_test[req.query.test] : homepage_test.a,
+		  errors : errors
+	  });
+  }else{
+  	User.findOne({ email: req.body.email }, function(err, user) {
+		if (err) return next(err);
+		if (user){
+			return res.render('index', { 
+					  route: app.route ,
+					  video_test : !req.query.video , 
+					  test : req.query.test ? homepage_test[req.query.test] : homepage_test.a,
+					  errors : [{msg:'A user with this email already exists'}]
+				  });
+		}else{
+			var user = new User();
+			user.email = req.body.email;
+			user.apikey = crypto.createHash('sha256').update('salt').digest('hex');
+			user.save(function(err) {
+				if (err){
+					return res.render('index', { 
+						  route: app.route ,
+						  video_test : !req.query.video , 
+						  test : req.query.test ? homepage_test[req.query.test] : homepage_test.a,
+						  errors : errors
+					  });
+				}
+
+				try{
+					cio.identify(user._id.toString(), user.email, {
+					  created_at: new Date(),
+					  apikey: user.apikey
+					}, function(err, res) {
+					  if (err != null) {
+						console.log('ERROR', err);
+					  }
+					});
+				}catch(err){
+					console.log(err);
+				}finally{
+					res.render('thanks', { 
+					  title: 'Thanks!',
+					  css: '/stylesheets/login.css',
+					  logo: true,
+					  user: user,
+					  route: app.route,
+					  message: req.flash('error')
+				  });
+				}
+			});
+		}
+	  });
+  }
+});
+
 app.post('/login',
   passport.authenticate('local', {
     successRedirect: '/home',
@@ -116,9 +183,16 @@ app.post('/login',
 );
 
 app.get('/thanks', function(req, res, next) {
+  if(!req.user){
+        return res.redirect('/');
+  }
+	
   res.render('thanks', { 
-	  title: 'Thanks!',
-	  route: app.route 
+	  title: 'Thanks!!!',
+	  css: '/stylesheets/login.css',
+      logo: true,
+	  route: app.route,
+	  message: req.flash('error')
   });
 });
 

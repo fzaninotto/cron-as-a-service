@@ -5,7 +5,6 @@ var express    = require('express'),
 	passport = require('passport'),
 	LocalStrategy = require('passport-localapikey').Strategy,
 	logger = require('morgan'),
-    crypto = require('crypto'),
 	Customerio = require('node-customer.io');
 
 var app = module.exports = express();
@@ -342,34 +341,6 @@ app.get('/', ensureAuthenticated, function(req, res) {
           }
         });
     }catch(e){}
-});
-
-app.post('/user/:email', function(req, res, next) {
-  User.findOne({ email: req.params.email }, function(err, user) {
-    if (err) return next(err);
-    if (user) return res.json({'error':'A user with this email exists'});
-    var user = new User();
-	user.email = req.params.email;
-    user.apikey = crypto.createHash('sha256').update('salt').digest('hex');
-	user.save(function(err) {
-		if (err) return next(err);
-		
-		try{
-			cio.identify(user._id.toString(), user.email, {
-			  created_at: new Date(),
-              apikey: user.apikey
-			}, function(err, res) {
-			  if (err != null) {
-				console.log('ERROR', err);
-			  }
-			});
-		}catch(err){
-            console.log(err);
-		}finally{
-            res.json(user);
-        }
-	});
-  });
 });
 
 if (!module.parent) {

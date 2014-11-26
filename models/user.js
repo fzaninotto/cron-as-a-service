@@ -5,8 +5,8 @@ var Schema   = mongoose.Schema;
 var User = new Schema({
   apikey : String,
   created_at: { type: Date, default: Date.now },
-  email :        String,
-  name :        String,
+  email :     { type: String, index: { unique: true }},
+  name :      String,
 },{
   toObject: { getters: true }
 });
