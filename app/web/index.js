@@ -187,6 +187,24 @@ app.get('/customers', function(req, res, next) {
   });
 });
 
+app.get('/terms', function(req, res, next) {
+  res.render('terms', { 
+	  title: 'Terms of Use',
+      css: '/stylesheets/terms.css',
+	  logo: true,
+	  route: app.route 
+  });
+});
+
+app.get('/privacy', function(req, res, next) {
+  res.render('privacy', { 
+	  title: 'Privacy Policy',
+      css: '/stylesheets/terms.css',
+	  logo: true,
+	  route: app.route 
+  });
+});
+
 app.get('/keep-heroku-alive', function(req, res, next) {	
   res.render('keep-app-alive', { 
 	  title: 'Keep Heroku alive',

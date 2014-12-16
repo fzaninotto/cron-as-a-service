@@ -1,0 +1,15 @@
+.content{
+    padding-top: 100px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.content h1{
+    text-shadow: none;
+    padding-bottom: 80px;
+}
+
+.content h6{
+    font-size: 28px;
+    font-weight: 600;
+}
