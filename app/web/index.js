@@ -205,13 +205,19 @@ app.get('/privacy', function(req, res, next) {
   });
 });
 
-app.get('/keep-heroku-alive', function(req, res, next) {	
-  res.render('keep-app-alive', { 
-	  title: 'Keep Heroku alive',
-	  css: '/stylesheets/keepalive.css',
-      logo: true,
-	  route: app.route
-  });
+app.get('/keep-heroku-alive', function(req, res, next) {
+  //force redirect to https so payment is secure for user
+  var schema = (req.headers['x-forwarded-proto'] || '').toLowerCase();
+  if (schema === 'https') {
+    res.render('keep-app-alive', { 
+          title: 'Keep Heroku alive',
+          css: '/stylesheets/keepalive.css',
+          logo: true,
+          route: app.route
+      });
+  } else {
+    res.redirect('https://' + req.headers.host + req.url);
+  }
 });
 
 app.post('/keep-alive', function(req, res, next) {	

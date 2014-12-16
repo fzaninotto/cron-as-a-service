@@ -28,12 +28,10 @@
 			  <div class="panel panel-default">
                   <div class="panel-heading"><h4 id="jobs">Your Jobs</h4></div>
                   <div class="panel-body">
-                    <div ng-repeat="alert in jobAlerts" class="alert" ng-class="{{alert.type}}" close="closeAlert($index)">
-                        {{alert.msg}}
-                        <button ng-show="closeable" type="button" class="close" ng-click="close()">
-                            <span aria-hidden="true">×</span>
-                            <span class="sr-only">Close</span>
-                        </button>
+                    <div ng-repeat="alert in jobAlerts" class="alert alert-danger" role="alert">
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      <span class="sr-only">Error:</span>
+                      {{alert.msg}}
                     </div>
                     <div class="list-group" tourtip="Welcome to your cron home screen, your jobs appear here for easy management.<%if (user.features.indexOf('keepalive') > -1 ) { %> You'll see we've added your first job, woohoo! <% } %>" tourtip-placement="bottom" tourtip-step="0">
                         <a href="#" class="list-group-item" data-toggle="modal" ng-repeat="job in cronList">
@@ -99,12 +97,10 @@
                 	<div class="panel-body">
 
                       <form class="form form-vertical" ng-submit="newJob()">
-                        <div ng-repeat="alert in newJobAlerts" class="alert" ng-class="{{alert.type}}" close="closeAlert($index)">
-                            {{alert.msg}}
-                            <button ng-show="closeable" type="button" class="close" ng-click="close()">
-                                <span aria-hidden="true">×</span>
-                                <span class="sr-only">Close</span>
-                            </button>
+                        <div ng-repeat="alert in newJobAlerts" class="alert alert-danger" role="alert">
+                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                          <span class="sr-only">Error:</span>
+                          {{alert.msg}}
                         </div>
                        
                         <div class="control-group" tourtip="You can create a new job here. Just enter the url and cron expression and we'll do the rest. Simple." tourtip-placement="bottom" tourtip-step="1">
@@ -231,7 +227,7 @@ angular.module('CronAsAService.controllers', [<%if (user.features.indexOf('tourc
                 //reload the cron list
                 $scope.refreshList();
             }).error(function(data, status, headers, config) {
-                $scope.newJobAlerts.push({type:'error' , msg: data});    
+                $scope.newJobAlerts.push({type:'error' , msg: data || status});    
             });
         };
 
@@ -240,7 +236,7 @@ angular.module('CronAsAService.controllers', [<%if (user.features.indexOf('tourc
             apiService.delete(id).success(function(data){
                 $scope.refreshList(); 
             }).error(function(data, status, headers, config) {
-                $scope.jobAlerts.push({type:'error' , msg: data});    
+                $scope.jobAlerts.push({type:'error' , msg: data || status});    
             });
         }
 
