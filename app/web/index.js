@@ -233,15 +233,17 @@ app.post('/keep-alive', function(req, res, next) {
     
     User.findOne({ email: req.body.email }, function(err, user) {
         if(user){
-            utils.chargeKeepAliveUser(user,token,res.__("price_num"),res.__("currency"),req.body.url);
-            res.render('thanks', { 
-                  title: 'Thanks!',
-                  css: '/stylesheets/login.css',
-                  logo: true,
-                  user: user,
-                  route: app.route,
-                  message: req.flash('error')
-              });
+            User.update({_id: user._id}, {$addToSet:{ attr:{name:'stripeToken',value:token} } } ,function(){
+                utils.chargeKeepAliveUser(user,token,res.__("price_num"),res.__("currency"),req.body.url);
+                res.render('thanks', { 
+                      title: 'Thanks!',
+                      css: '/stylesheets/login.css',
+                      logo: true,
+                      user: user,
+                      route: app.route,
+                      message: req.flash('error')
+                  });
+            });
         }else{
             utils.createUser(req, res, next, errors, ['keepalive'], function(user){
                 utils.chargeKeepAliveUser(user,token,res.__("price_num"),res.__("currency"),req.body.url);
@@ -255,11 +257,8 @@ app.post('/tourcomplete', function(req, res, next) {
     if(!req.user){
         res.json({error:true});
     }else{
-        User.findOne({ _id: req.user._id }, function(err, user) {
-            user.features.push('tourcomplete');   
-            user.save(function(err){
-                res.json({succes:true});
-            });
+        User.update({_id: user._id}, {$addToSet:{ features:'tourcomplete' } } ,function(){
+           res.json({succes:true}); 
         });
     }
 });
