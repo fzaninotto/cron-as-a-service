@@ -61,15 +61,15 @@ passport.use(new LocalStrategy(function(username, password, done) {
         return done(null, false, { message: 'Incorrect email address.' });
       }
         try{
-        utils.cio.track(user._id, 'webLogin', data, function(err, res) {
-          if (err != null) {
-            console.log('ERROR', err);
-          }
-          console.log('response headers', res.headers);
-          return console.log('status code', res.statusCode);
-        });
-    }catch(e){}
-      return done(null, user);
+            utils.cio.track(user._id, 'webLogin', data, function(err, res) {
+              if (err != null) {
+                console.log('ERROR', err);
+              }
+              return console.log('status code', res.statusCode);
+            });
+        }catch(e){}finally{
+            return done(null, user);
+        }
     });
   }
 ));

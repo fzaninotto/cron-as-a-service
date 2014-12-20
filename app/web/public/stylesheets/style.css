@@ -55,7 +55,7 @@ form .input-group{
 }
 
 .gradient{
-	position: fixed;
+	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -104,6 +104,10 @@ footer{
 	color: #999;
 	font-weight: 100;
     padding: 10px 20px 10px 0;
+}
+
+.nav-bottom{
+    font-weight: 300;
 }
 
 #itemscope{
