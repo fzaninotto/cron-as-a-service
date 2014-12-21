@@ -10,7 +10,7 @@ var express = require('express'),
 	partials = require('express-partials'),
 	expressValidator = require('express-validator'),
 	logger = require('morgan'),
-	i18n = require('i18n'),//language detection
+	i18n = require('../../lib/i18n'),//language detection
     utils = require('../../lib/utils');
 
 /**
@@ -35,9 +35,18 @@ app.use(expressValidator());
 app.use(passport.initialize());
 app.use(passport.session());
 
+if (app.get('env') === 'development') {
+    app.use(function (req, res, next) {
+       res.locals = {
+         dev:true
+       };
+       next();
+    });
+}
+
 i18n.configure({
   locales: ['en', 'en-us', 'en-gb', 'en-au'],
-  cookie: 'yourcookiename',
+  cookie: 'cronasaservice-locale',
   directory: __dirname+'/locales'
 });
 app.use(i18n.init);

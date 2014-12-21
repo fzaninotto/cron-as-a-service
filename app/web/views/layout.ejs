@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-		<%if (locals.video_test && !locals.errors) { %>
+		<%if (locals.video_test && !locals.errors && !locals.dev) { %>
         <!-- Google Analytics Content Experiment code -->
         <script>function utmx_section(){}function utmx(){}(function(){var
         k='90828279-0',d=document,l=d.location,c=d.cookie;
@@ -75,6 +75,14 @@
         <%if (locals.css) { %>
             <link href="<%- css %>" rel="stylesheet">
         <% } %>
+        
+        <%if (!locals.dev) { %>
+        <script>
+            if(window.location.protocol != 'https:') {
+              window.location.href = location.href.replace("http://", "https://");
+            }
+        </script>
+        <% } %>
     </head>
     
     <body ng-app="CronAsAService">
@@ -93,11 +101,9 @@
                         <li class="hidden active">
                             <a href="#page-top"></a>
                         </li>
-						<!--
                         <li>
                             <a class="page-scroll" href="/keep-heroku-alive">Heroku</a>
                         </li>
-						-->
 						<li>
 							<a class="page-scrol" href="/customers">Customers</a>
 						</li>
