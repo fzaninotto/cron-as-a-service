@@ -94,11 +94,10 @@ var homepage_test = {
 };
 
 app.get('/', function(req, res, next) {
-    var view = req.query.video ? 'index-video' : 'index';
-  res.render(view, { 
+  res.render('index', { 
       route: app.route ,  
       video_test : !req.query.video , 
-      test : req.query.test ? homepage_test[req.query.test] : homepage_test.a
+      test : homepage_test.b//test winner 12/2014
   });
 });
 
