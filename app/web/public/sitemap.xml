@@ -4,9 +4,34 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
   <loc>http://www.cronasaservice.com/</loc>
+</url>
+<url>
+  <loc>http://www.cronasaservice.com/keep-heroku-alive</loc>
+</url>
+<url>
+  <loc>http://www.cronasaservice.com/customers</loc>
+</url>
+<url>
+  <loc>http://www.cronasaservice.com/contact</loc>
+</url>
+<url>
+  <loc>http://www.cronasaservice.com/docs/</loc>
+  <lastmod>2014-12-27T12:25:06+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.cronasaservice.com/login</loc>
+</url>
+<url>
+  <loc>http://www.cronasaservice.com/blog/cron-builder/</loc>
+  <lastmod>2014-12-27T12:25:06+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.cronasaservice.com/privacy</loc>
+</url>
+<url>
+  <loc>http://www.cronasaservice.com/terms</loc>
 </url>
 </urlset>
