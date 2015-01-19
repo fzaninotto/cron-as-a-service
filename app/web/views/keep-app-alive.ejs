@@ -12,7 +12,7 @@
 	</div>
 
     <form class="form-signin" action="/keep-alive" method="post" role="form" autocomplete="off" id="form">
-        <h2 class="form-signin-heading">We will ping your heroku app every hour to make sure it doesn't sleep. Simple.</h2>
+        <h2 class="form-signin-heading">We will send an HTTP request your heroku app every hour to make sure it doesn't sleep. Simple.</h2>
         
         <%if (locals.errors) { %>
             <div class="alert alert-danger" role="alert">

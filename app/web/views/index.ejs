@@ -23,7 +23,7 @@
 			   	<span itemprop="description"><%- test.title %></span>
 			</h1>
 			
-			<p class="lead">Sign up for your unlimited free trial. No Credit Card required.</p>
+			<p class="lead">Sign up for your unlimited <span class="green">free</span> trial. No Credit Card required.</p>
 			
 			<%if (locals.errors) { %>
 				<div class="alert alert-danger" role="alert">
@@ -50,25 +50,9 @@
 
 		<div class="col-lg-12 text-center v-center example">
 			<h3>
-				Ping any url periodically. Get starting in 29 seconds
+				Get starting in 29 seconds
 			</h3>
-			<div class="terminal-window">
-			  <header>
-				<div class="button green"></div>
-				<div class="button yellow"></div>
-				<div class="button red"></div>
-			  </header>
-			  <section class="terminal">
-				<div class="history"></div>
-				$&nbsp;<span class="prompt"></span>
-				<span class="typed-cursor"></span>
-
-			  </section>
-			</div>
-			<!-- data -->
-			<div class="terminal-data mimik-run-output">
-			curl -d 'expression=0 * * * *&url=http://yourapp' http://cronasaservice.com/api/jobs 
-			</div>
+            <img src="/images/laptop_cron.png" class="img-responsive center-block" alt="Cron As A Service">
 			<br/>
 			<span>
 				 We've processed <span class="counter" data-count="31017">30000</span> api calls and counting. Leaving you free to build your app.
@@ -99,26 +83,10 @@
 	  </div>
 
 </div> <!-- /container full -->
+<script src="/scripts/jquery.min.js"></script>
 <script>
-	(function(e,t){typeof module!="undefined"&&module.exports?module.exports=t():typeof define=="function"&&define.amd?define(t):this[e]=t()})("$script",function(){function p(e,t){for(var n=0,i=e.length;n<i;++n)if(!t(e[n]))return r;return 1}function d(e,t){p(e,function(e){return!t(e)})}function v(e,t,n){function g(e){return e.call?e():u[e]}function y(){if(!--h){u[o]=1,s&&s();for(var e in f)p(e.split("|"),g)&&!d(f[e],g)&&(f[e]=[])}}e=e[i]?e:[e];var r=t&&t.call,s=r?t:n,o=r?e.join(""):t,h=e.length;return setTimeout(function(){d(e,function t(e,n){if(e===null)return y();e=!n&&e.indexOf(".js")===-1&&!/^https?:\/\//.test(e)&&c?c+e+".js":e;if(l[e])return o&&(a[o]=1),l[e]==2?y():setTimeout(function(){t(e,!0)},0);l[e]=1,o&&(a[o]=1),m(e,y)})},0),v}function m(n,r){var i=e.createElement("script"),u;i.onload=i.onerror=i[o]=function(){if(i[s]&&!/^c|loade/.test(i[s])||u)return;i.onload=i[o]=null,u=1,l[n]=2,r()},i.async=1,i.src=h?n+(n.indexOf("?")===-1?"?":"&")+h:n,t.insertBefore(i,t.lastChild)}var e=document,t=e.getElementsByTagName("head")[0],n="string",r=!1,i="push",s="readyState",o="onreadystatechange",u={},a={},f={},l={},c,h;return v.get=m,v.order=function(e,t,n){(function r(i){i=e.shift(),e.length?v(i,r):v(i,t,n)})()},v.path=function(e){c=e},v.urlArgs=function(e){h=e},v.ready=function(e,t,n){e=e[i]?e:[e];var r=[];return!d(e,function(e){u[e]||r[i](e)})&&p(e,function(e){return u[e]})?t():!function(e){f[e]=f[e]||[],f[e][i](t),n&&n(r)}(e.join("|")),v},v.done=function(e){v([null],e)},v})
-</script>
-<script>
-	$script('/scripts/jquery.min.js', function(){
-		$script('/scripts/typed.custom.js', function(){
-			$(function() {
-			  var data = [
-				  { 
-					action: 'type',
-					strings: ["curl -d 'expression=0 * * * *&url=http://myapp.com' http://cronasaservice.com/api/jobs"],
-					output: '<span class="gray">{"method":"get",\n\r"url":"http://yourapp",\n\r"expression":"0 * * * *",\n\r"responses":[]}</span><br>&nbsp;Sign up for your unlimited free trial now.',
-					postDelay: 1000
-				  }
-
-				];
-			  	
-				runScripts(data, 0);
-				
-				$('.counter').each(function() {
+    $(document).ready(function(){
+    $('.counter').each(function() {
 				  var $this = $(this),
 					  countTo = $this.attr('data-count');
 
@@ -136,41 +104,5 @@
 					}
 				  });  
 				});
-			});
-
-			function runScripts(data, pos) {
-				var prompt = $('.prompt'),
-					script = data[pos];
-				if(script.clear === true) {
-				  $('.history').html(''); 
-				}
-				switch(script.action) {
-					case 'type':
-					  // cleanup for next execution
-					  prompt.removeData();
-					  $('.typed-cursor').text('');
-					  prompt.typed({
-						strings: script.strings,
-						typeSpeed: 30,
-						callback: function() {
-						  var history = $('.history').html();
-						  history = history ? [history] : [];
-						  //history.push('$ ' + prompt.text());
-						  if(script.output) {
-							history.push(script.output);
-							prompt.html('');
-							$('.history').html(history.join('<br>'));
-						  }
-						  //hide the cursor
-                          $('.typed-cursor').hide();
-						}
-					  });
-					  break;
-					case 'view':
-
-					  break;
-				}
-			}
-		});
-	});
+    });
 </script>

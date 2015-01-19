@@ -42,6 +42,16 @@ h1 , .lead , .example h3{
     font-weight: bold;
 }
 
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.green{
+    color: #008000;
+}
+
 h1 img{
 	display: block;
 	margin: 0 auto;
@@ -89,6 +99,7 @@ form .input-group{
   color:#fff;
   overflow:hidden;
   display:table;
+  position: relative;
 }
 
 .container-full a {

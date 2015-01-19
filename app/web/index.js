@@ -90,14 +90,15 @@ app.set('views', __dirname + '/views');
 var homepage_test = {
     a:{background:'background.jpg',title:'Cron For Your Webapp'},
     b:{background:'fun.jpg',title:'So you can be out here, while we take care of your periodic jobs.'},
-    c:{background:'puppy-love.jpg',title:'Because this guy won\'t walk himself. We\'ve got your cron jobs.'}
+    c:{background:'puppy-love.jpg',title:'Because this guy won\'t walk himself. We\'ve got your cron jobs.'},
+	d:{background:'fun.jpg',title:'Schedule regular HTTP requests to your webapp.'}//based on B (test winner), make wording more obvious
 };
 
 app.get('/', function(req, res, next) {
   res.render('index', { 
       route: app.route ,  
       video_test : !req.query.video , 
-      test : homepage_test.b//test winner 12/2014
+      test : homepage_test.d//test winner
   });
 });
 
