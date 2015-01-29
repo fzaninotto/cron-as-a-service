@@ -119,11 +119,12 @@ app.get('/home', function(req, res, next) {
     res.render('home', { 
                         title: '(1) Cron Dashboard',
                         route: app.route,
-                        css: '/stylesheets/home.css',
                         logo: true,
                         hideNav: true,
                         apikey: req.user.apikey,
-                        user: req.user
+                        user: req.user,
+                        css: '/stylesheets/home.css',
+                        layout: 'homelayout'
                      });
 });
 

@@ -1,3 +1,5 @@
+@import 'theme/components-rounded.css';
+
 html, body { box-sizing: border-box; margin: 0 0 0 0; padding: 0; width: 100%; height: 100%; }
 
 body{
@@ -5,8 +7,8 @@ body{
 }
 
 h1 {
-  font-family: Arial,sans-serif
-  font-size:80px;
+  font-family: "Open Sans", sans-serif;
+  font-size:36px;
 }
 
 h1 , .lead , .example h3{
@@ -128,6 +130,11 @@ footer{
 
 .lead{
     padding-top: 7%;
+}
+
+.social-icons a i{
+    font-size: 39pt;
+    padding: 10px;
 }
 
 .terminal-window {

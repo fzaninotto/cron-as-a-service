@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>        
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+        <meta charset="utf-8">
+        <title>
+            <%if (locals.title) { %>
+                <%- title %>
+            <% } else{%>
+                Hosted crontab api for your webapp
+            <%} %> - CronAsAService.com
+        </title>
+		<meta name="title" content="Online Cron - CronAsAService.com">
+		<meta name="description" content="Online cron job scheduler with a beautifully simple interface so you can worry about building your app. Schedule regular HTTP requests to your web or mobile application.">
+		<link rel="publisher" href="https://plus.google.com/b/113756774044075337521/113756774044075337521"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="google-site-verification" content="coGYyEvqKVddMbz3oeuRjWvt0vg2FPTLkSl7TVll5cs" />
+		
+		<!-- Schema.org markup for Google+ -->
+		<meta itemprop="name" content="Cron As A Service">
+		<meta itemprop="description" content="We host your cron with a beautifully simple api so you can worry about building your app. Schedule regular HTTP requests to your web or mobile application.">
+		<meta itemprop="image" content="http://www.cronasaservice.com/images/logo.png">
+
+		<!-- Twitter Card data -->
+		<meta name="twitter:card" content="product">
+		<meta name="twitter:site" content="@cronasaservice">
+		<meta name="twitter:title" content="Cron As A Service">
+		<meta name="twitter:description" content="We host your cron with a beautifully simple api so you can worry about building your app. Schedule regular HTTP requests to your web or mobile application.">
+		<meta name="twitter:creator" content="@cronasaservice">
+		<meta name="twitter:image" content="http://www.cronasaservice.com/images/logo.png">
+		<meta name="twitter:data1" content="$9.99">
+		<meta name="twitter:label1" content="Price">
+
+		<!-- Open Graph data -->
+		<meta property="og:title" content="Cron As A Service" />
+		<meta property="og:type" content="product" />
+		<meta property="og:availability" content="instock" />
+		<meta property="og:url" content="http://www.cronasaservice.com/" />
+		<meta property="og:image" content="http://www.cronasaservice.com/images/logo.png" />
+		<meta property="og:description" content="We host your cron with a beautifully simple api so you can worry about building your app. Schedule regular HTTP requests to your web or mobile application." />
+		<meta property="og:site_name" content="Cron As A Service" />
+		<meta property="og:price:amount" content="9.99" />
+		<meta property="og:price:currency" content="USD" />
+		
+		<link rel="icon" type="image/png" href="images/logo.png" />
+        
+        <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
+        <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+		<link href="stylesheets/style.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+        <%if (locals.css) { %>
+            <link href="<%- css %>" rel="stylesheet">
+        <% } %>
+        
+        <%if (!locals.dev) { %>
+        <script>
+            if(window.location.protocol != 'https:') {
+              window.location.href = location.href.replace("http://", "https://");
+            }
+        </script>
+        <% } %>
+    </head>

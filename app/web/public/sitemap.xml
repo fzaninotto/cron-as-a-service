@@ -6,32 +6,32 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-  <loc>http://www.cronasaservice.com/</loc>
+  <loc>https://www.cronasaservice.com/</loc>
 </url>
 <url>
-  <loc>http://www.cronasaservice.com/keep-heroku-alive</loc>
+  <loc>https://www.cronasaservice.com/keep-heroku-alive</loc>
 </url>
 <url>
-  <loc>http://www.cronasaservice.com/customers</loc>
+  <loc>https://www.cronasaservice.com/customers</loc>
 </url>
 <url>
-  <loc>http://www.cronasaservice.com/contact</loc>
+  <loc>https://www.cronasaservice.com/contact</loc>
 </url>
 <url>
-  <loc>http://www.cronasaservice.com/docs/</loc>
+  <loc>https://www.cronasaservice.com/docs/</loc>
   <lastmod>2014-12-27T12:25:06+00:00</lastmod>
 </url>
 <url>
-  <loc>http://www.cronasaservice.com/login</loc>
+  <loc>https://www.cronasaservice.com/login</loc>
 </url>
 <url>
-  <loc>http://www.cronasaservice.com/blog/cron-builder/</loc>
+  <loc>https://www.cronasaservice.com/blog/cron-builder/</loc>
   <lastmod>2014-12-27T12:25:06+00:00</lastmod>
 </url>
 <url>
-  <loc>http://www.cronasaservice.com/privacy</loc>
+  <loc>https://www.cronasaservice.com/privacy</loc>
 </url>
 <url>
-  <loc>http://www.cronasaservice.com/terms</loc>
+  <loc>https://www.cronasaservice.com/terms</loc>
 </url>
 </urlset>
