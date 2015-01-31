@@ -111,6 +111,11 @@ app.get('/login', function(req, res, next) {
                       });
 });
 
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
 app.get('/home', function(req, res, next) {
     if(!req.user){
         return res.redirect('/login');

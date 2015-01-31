@@ -2,20 +2,57 @@
     <div class="col-lg-12 text-center v-center hidden-xs hidden-sm">
         <h1>
             <img src="images/logo.png" alt="Cron As A Service">
-            <span itemprop="description">Cron As A Service</span>
         </h1>
     </div>
+</div>
 
-    <form class="form-signin" role="form" action="/login" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <%if (message.length > 0) { %>
-            <div class="alert alert-danger" role="alert"><%- message %></div>
-        <% } %>
-        <input type="email" class="form-control" placeholder="Email address" name="username" required="" autofocus="">
-        <input type="text" class="form-control" placeholder="API Key" name="password" required="" autocomplete="off">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-		
-		<span>Don't have an account? <a href="/">Sign up free here.</a></span>
-    </form>
-
+<div class="login">
+    <div class="content">
+        <!-- BEGIN LOGIN FORM -->
+        <form class="login-form" action="/login" method="post">
+            <h3 class="form-title">Login to your account</h3>
+            <%if (message.length > 0) { %>
+                <div class="alert alert-danger">
+                    <button class="close" data-close="alert"></button>
+                    <span><%- message %></span>
+                </div>
+            <% } %>
+            <div class="form-group">
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                <label class="control-label visible-ie8 visible-ie9">Email</label>
+                <div class="input-icon">
+                    <i class="icon-envelope"></i>
+                    <input class="form-control placeholder-no-fix" type="email" class="form-control" placeholder="Email address" name="username" required="" autofocus="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">API Key</label>
+                <div class="input-icon">
+                    <i class="icon-lock"></i>
+                    <input class="form-control placeholder-no-fix" type="text" class="form-control" placeholder="API Key" name="password" required="" autocomplete="off">
+                </div>
+            </div>
+            <div class="form-actions">
+                <label class="checkbox"></label>
+                <button type="submit" class="btn green-haze pull-right">
+                Login <i class="icon-circle-arrow-right"></i>
+                </button>
+            </div>
+            <!--<div class="forget-password">
+                <h4>Forgot your password ?</h4>
+                <p>
+                     no worries, click <a href="javascript:;" id="forget-password">
+                    here </a>
+                    to reset your password.
+                </p>
+            </div>-->
+            <div class="create-account">
+                <p>
+                     Don't have an account yet ?&nbsp; 
+                    <a href="/" id="register-btn"> Create a free account </a>
+                </p>
+            </div>
+        </form>
+        <!-- END LOGIN FORM -->
+    </div>
 </div>

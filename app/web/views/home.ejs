@@ -261,7 +261,7 @@
     <div class="portlet light">
         <div class="portlet-title">
             <div class="caption">
-                <span class="caption-subject font-green-sharp bold uppercase">Create a new Job</span>
+                <span class="caption-subject font-green-sharp bold uppercase">Create a new job</span>
             </div>
         </div>
         <div class="portlet-body">
@@ -272,21 +272,23 @@
                           {{alert.msg}}
                         </div>
                        
-                        <div class="control-group">
-                          <label>URL</label>
+                        <div class="form-group">
+                          <label class="control-label">Url <span class="required">*</span></label>
                           <div class="controls">
-                           <input type="text" class="form-control" placeholder="Url to ping" required ng-model="formData.url">
+                           <input type="text" class="form-control" placeholder="http://myawsomewebbyapp.com" required ng-model="formData.url">
                           </div>
+                          <span class="help-block">Enter the full url to send an HTTP request to</span>
                         </div>      
                         
-                        <div class="control-group">
-                          <label>Expression</label>
+                        <div class="form-group">
+                          <label class="control-label">Expression <span class="required">*</span></label>
                           <div class="controls">
                           	<input type="text" class="form-control" placeholder="e.g * * * * *" required ng-model="formData.expression">
                           </div>
+                          <span class="help-block">Enter a cron expression defining how often to send the request</span>
                         </div> 
-						<div class="control-group">
-							<label>Headers</label>
+						<div class="form-group">
+							<label class="control-label">Headers</label>
                         	<div class="controls" ng-repeat="header in formData.headers">
 								<div class="row" ng-repeat="(key,value) in header">
 									<div class="col-md-6">
@@ -307,8 +309,8 @@
                         	</div>
 						</div>
 						  
-						<div class="control-group">
-							<label>Parameters</label>
+						<div class="form-group">
+							<label class="control-label">Parameters</label>
                         	<div class="controls" ng-repeat="param in formData.params">
 								<div class="row" ng-repeat="(key,value) in param">
 									<div class="col-md-6">
