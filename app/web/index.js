@@ -267,8 +267,11 @@ app.post('/tourcomplete', function(req, res, next) {
     if(!req.user){
         res.json({error:true});
     }else{
-        User.update({_id: user._id}, {$addToSet:{ features:'tourcomplete' } } ,function(){
-           res.json({succes:true}); 
+        req.user.features.push('tourcomplete');
+        req.user.save(function(err,user){
+            req.logIn(user,function(){
+                res.json({succes:true}); 
+               });
         });
     }
 });

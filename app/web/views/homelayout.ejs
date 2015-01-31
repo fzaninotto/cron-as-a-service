@@ -82,42 +82,44 @@
 	<div class="page-sidebar-wrapper">
 		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
 		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-		<div class="page-sidebar navbar-collapse collapse">
-			<!-- BEGIN SIDEBAR MENU -->
-			<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-			<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-			<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-				<li class="start" ng-class="{active:location.path()==='/jobs'}">
-					<a href="#/jobs">
-					<i class="icon-home"></i>
-					<span class="title">Jobs</span>
-					</a>
-				</li>
-                <li class="start">
-					<a href="/docs" target="_blank">
-					<i class="icon-file-text-alt"></i>
-					<span class="title">Documentation</span>
-					</a>
-				</li>
-                <li class="start" ng-class="{active:location.path()==='/contact'}">
-					<a href="#/contact">
-					<i class="icon-envelope-alt"></i>
-					<span class="title">Contact</span>
-					</a>
-				</li>
-                <li class="start" ng-class="{active:location.path()==='/settings'}">
-					<a href="#/settings">
-					<i class="icon-cog"></i>
-					<span class="title">Settings</span>
-					</a>
-				</li>
-			</ul>
-			<!-- END SIDEBAR MENU -->
-		</div>
+        <tour step="currentStep" post-tour="postTour()">
+            <div class="page-sidebar navbar-collapse collapse">
+                <!-- BEGIN SIDEBAR MENU -->
+                <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+                <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+                <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+                <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                    <li class="start" ng-class="{active:location.path()==='/jobs'}" tourtip="Welcome to your cron home screen, your jobs appear here for easy management.<%if (user.features.indexOf('keepalive') > -1 ) { %> You'll see we've added your first job, woohoo! <% } %>" tourtip-placement="right" tourtip-offset="30" tourtip-next-label="Got it!" tourtip-step="0">
+                        <a href="#/jobs">
+                        <i class="icon-home"></i>
+                        <span class="title">Jobs</span>
+                        </a>
+                    </li>
+                    <li class="start">
+                        <a href="/docs" target="_blank">
+                        <i class="icon-file-text-alt"></i>
+                        <span class="title">Documentation</span>
+                        </a>
+                    </li>
+                    <li class="start" ng-class="{active:location.path()==='/contact'}">
+                        <a href="#/contact">
+                        <i class="icon-envelope-alt"></i>
+                        <span class="title">Contact</span>
+                        </a>
+                    </li>
+                    <li class="start" ng-class="{active:location.path()==='/settings'}" tourtip="You can find your API key here." tourtip-placement="right" tourtip-offset="30" tourtip-next-label="Enough of the pleasantries" tourtip-step="1">
+                        <a href="#/settings">
+                        <i class="icon-cog"></i>
+                        <span class="title">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- END SIDEBAR MENU -->
+            </div>
+        </tour>
 	</div>
 	<!-- END SIDEBAR -->
         <div class="page-content-wrapper">

@@ -69,6 +69,7 @@ Tour Tip
 
 .tour-tip .tour-content-wrapper {
   padding: 1.125em 1.25em 1.5em;
+  min-width: 200px;
 }
 
 .tour-tip .tour-content-wrapper .button {
