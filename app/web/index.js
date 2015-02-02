@@ -142,7 +142,7 @@ app.post('/register', function(req, res, next) {
   	res.render('index', { 
 		  route: app.route ,
 		  video_test : !req.query.video , 
-          test : req.query.test ? homepage_test[req.query.test] : homepage_test.a,
+          test : req.query.test ? homepage_test[req.query.test] : homepage_test.d,
 		  errors : errors
 	  });
   }else{
@@ -152,7 +152,7 @@ app.post('/register', function(req, res, next) {
 			return res.render('index', { 
 					  route: app.route ,
 					  video_test : !req.query.video , 
-					  test : req.query.test ? homepage_test[req.query.test] : homepage_test.a,
+					  test : req.query.test ? homepage_test[req.query.test] : homepage_test.d,
 					  errors : [{msg:'A user with this email already exists'}]
 				  });
 		}else{
@@ -272,11 +272,13 @@ app.post('/tourcomplete', function(req, res, next) {
     if(!req.user){
         res.json({error:true});
     }else{
-        req.user.features.push('tourcomplete');
-        req.user.save(function(err,user){
-            req.logIn(user,function(){
-                res.json({succes:true}); 
-               });
+        User.findOne({ _id: req.user._id }, function(err, user) {
+            user.features.push('tourcomplete');
+            user.save(function(err,user){
+                req.logIn(user,function(){
+                        res.json({succes:true}); 
+                    });
+            });
         });
     }
 });
