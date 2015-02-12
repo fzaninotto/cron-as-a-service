@@ -60,7 +60,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit crontabasaservice.com to register.\"\n   }\n",
+          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
           "type": "json"
         }
       ]
@@ -89,7 +89,7 @@
             "type": "String",
             "field": "expression",
             "optional": false,
-            "description": "<p>Cron expression.</p>"
+            "description": "<p>Cron expression (Times are in UTC).</p>"
           },
           {
             "group": "Parameter",
@@ -142,7 +142,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit crontabasaservice.com to register.\"\n   }\n",
+          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
           "type": "json"
         }
       ]
@@ -210,7 +210,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit crontabasaservice.com to register.\"\n   }\n",
+          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
           "type": "json"
         }
       ]
@@ -266,7 +266,7 @@
             "type": "String",
             "field": "expression",
             "optional": false,
-            "description": "<p>Cron Expression</p>"
+            "description": "<p>Cron Expression (Times are in UTC)</p>"
           },
           {
             "group": "Success 200",
@@ -299,7 +299,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit crontabasaservice.com to register.\"\n   }\n",
+          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
           "type": "json"
         }
       ]
@@ -341,7 +341,7 @@
             "type": "String",
             "field": "expression",
             "optional": false,
-            "description": "<p>Cron Expression</p>"
+            "description": "<p>Cron Expression (Times are in UTC)</p>"
           },
           {
             "group": "Success 200",
@@ -374,7 +374,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit crontabasaservice.com to register.\"\n   }\n",
+          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
           "type": "json"
         }
       ]
@@ -409,7 +409,7 @@
             "type": "String",
             "field": "expression",
             "optional": false,
-            "description": "<p>Cron Expression</p>"
+            "description": "<p>Cron Expression (Times are in UTC)</p>"
           },
           {
             "group": "Success 200",
@@ -442,7 +442,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit crontabasaservice.com to register.\"\n   }\n",
+          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
           "type": "json"
         }
       ]

@@ -1,0 +1,15 @@
+{
+	"name": "Cron As A Service",
+	"description": "Schedule regular HTTP requests to your web app. We've got your cron jobs so you can build awesome apps",
+	"version": "0.0.0.1",
+	"manifest_version": 2,
+	"icons": {
+		"128": "icon_128.png"
+	},
+	"app": {
+		"urls": ["https://www.cronasaservice.com/"],
+		"launch": {
+			"web_url": "https://www.cronasaservice.com/"
+		}
+	}
+}

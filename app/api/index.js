@@ -54,7 +54,7 @@ app.all('*', function(req, res, next) {
  *
  * @apiParam {String} apikey Api Key.
  *
- * @apiSuccess {String} expression Cron Expression
+ * @apiSuccess {String} expression Cron Expression (Times are in UTC)
  * @apiSuccess {String} url  URL to request
  *
  * @apiSuccessExample Success-Response:
@@ -69,7 +69,7 @@ app.all('*', function(req, res, next) {
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "You must provide a valid api key. Visit crontabasaservice.com to register."
+ *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
  *     }
  */
 app.get('/jobs', ensureAuthenticated, function(req, res, next) {
@@ -94,7 +94,7 @@ app.get('/jobs', ensureAuthenticated, function(req, res, next) {
  * @apiGroup Jobs
  *
  * @apiParam {String} apikey Api Key.
- * @apiParam {String} expression Cron expression.
+ * @apiParam {String} expression Cron expression (Times are in UTC).
  * @apiParam {String} url URL to request.
  *
  * @apiSuccess {String} expression Cron Expression
@@ -115,7 +115,7 @@ app.get('/jobs', ensureAuthenticated, function(req, res, next) {
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "You must provide a valid api key. Visit crontabasaservice.com to register."
+ *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
  *     }
  */
 app.post('/jobs', ensureAuthenticated, function(req, res, next) {
@@ -154,7 +154,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
  * @apiParam {String} apikey Api Key.
  * @apiParam {String} id ID for the job.
  *
- * @apiSuccess {String} expression Cron Expression
+ * @apiSuccess {String} expression Cron Expression (Times are in UTC)
  * @apiSuccess {String} url  URL to request
  *
  * @apiSuccessExample Success-Response:
@@ -169,7 +169,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "You must provide a valid api key. Visit crontabasaservice.com to register."
+ *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
  *     }
  */
 app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
@@ -202,7 +202,7 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  * @apiParam {String} expression Cron expression.
  * @apiParam {String} url URL to request.
  *
- * @apiSuccess {String} expression Cron Expression
+ * @apiSuccess {String} expression Cron Expression (Times are in UTC)
  * @apiSuccess {String} url  URL to request
  *
  * @apiSuccessExample Success-Response:
@@ -217,7 +217,7 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "You must provide a valid api key. Visit crontabasaservice.com to register."
+ *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
  *     }
  */
 app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
@@ -271,7 +271,7 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "You must provide a valid api key. Visit crontabasaservice.com to register."
+ *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
  *     }
  */
 app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
@@ -320,7 +320,7 @@ app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "You must provide a valid api key. Visit crontabasaservice.com to register."
+ *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
  *     }
  */
 app.get('/', ensureAuthenticated, function(req, res) {

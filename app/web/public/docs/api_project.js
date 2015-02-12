@@ -6,6 +6,6 @@ define({
   "url": "https://www.cronasaservice.com/api",
   "generator": {
     "version": "0.7.2",
-    "time": "2014-12-27T13:01:16.139Z"
+    "time": "2015-02-03T20:34:46.287Z"
   }
 });

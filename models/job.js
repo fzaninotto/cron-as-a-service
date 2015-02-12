@@ -29,6 +29,26 @@ Job.virtual('nextRun').get(function () {
     }
 });
 
+Job.virtual('responseStatuses').get(function () {
+    var statuses = [];
+    for(var i in this.responses){
+        if(this.responses[i] && this.responses[i].statusCode){
+            statuses.push(this.responses[i].statusCode)
+        }
+    }
+    return statuses;
+});
+
+Job.virtual('responseDates').get(function () {
+    var statuses = [];
+    for(var i in this.responses){
+        if(this.responses[i] && this.responses[i].statusCode){
+            statuses.push(this.responses[i].date.toUTCString());
+        }
+    }
+    return statuses;
+});
+
 Job.path('method').validate(function (value) {
     if(value===null){
         return true;
