@@ -1,32 +1,45 @@
 <div class="container-full">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<h4>We love human contact. Let us know what we've done well (and not so well) below.</h4>
-			<form role="form" action="//forms.brace.io/cronasaservice@gmail.com" method="post" >
-				<input type="hidden" name="_subject" value="Contact" />
-				<div class="col-lg-12">
-				  <div class="well well-sm"><strong><i class="glyphicon glyphicon-ok form-control-feedback"></i> Required Field</strong></div>
-				  <div class="form-group">
-					<label for="InputName">Your Name</label>
-					<div class="input-group">
-					  <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
-					  <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
-				  </div>
-				  <div class="form-group">
-					<label for="InputName">Your Email</label>
-					<div class="input-group">
-					  <input type="text" class="form-control" name="_replyTo" id="InputName" placeholder="Enter Name" required>
-					  <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
-				  </div>
-				  <div class="form-group">
-					<label for="InputMessage">Message</label>
-					<div class="input-group">
-					  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
-					  <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
-				  </div>
-				  <input type="submit" name="submit" id="submit" value="Send Message" class="btn btn-info pull-right">
-				</div>
-			  </form>
+            <div class="portlet light bordered form-fit">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-blue-hoki bold uppercase">We love human contact!</span>
+                        <span class="caption-helper">What can we help you with?</span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <form action="//forms.brace.io/cronasaservice@gmail.com" method="post" class="form-horizontal form-bordered">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Your Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="InputName" id="InputName" placeholder="John Smith" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Your Email</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="_replyTo" id="InputName" placeholder="john@smith.com" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Message</label>
+                                <div class="col-md-9">
+                                    <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required placeholder="Is something confusing you about the service? We will get back to you within 24 hours."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn green pull-right"><i class="fa fa-check"></i> Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,23 @@
+<div class="portlet light">
+    <div class="portlet-title">
+        <div class="caption">
+            Tell us what you think
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form role="form" action="//formspree.io/cronasaservice@gmail.com" method="post">
+            <input type="hidden" name="_subject" value="Feedback" />
+            <input type="hidden" name="_replyTo" value="<%- user.email %>" />
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" rows="3" name="InputMessage" placeholder="What can we help you with?"></textarea>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Submit</button>
+                <button type="button" class="btn default">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

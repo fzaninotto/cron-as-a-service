@@ -18,7 +18,7 @@ canvas.response-chart{
     max-height:100px;
 }
 
-td.no-data{
+td.nodata{
     text-align: center;
     margin-top: 50px;
     margin-bottom: -50px;
