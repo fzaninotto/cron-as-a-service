@@ -1,4 +1,5 @@
 angular.module('CronAsAService.controllers')
-    .controller('SettingsController', ['ngRoute','$scope', '$routeParams'], function($scope, $routeParams) {
+    .controller('SettingsController', function($scope, $routeParams,apiKey) {
         $scope.params = $routeParams;
+        $scope.apiKey = apiKey;
     });

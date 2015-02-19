@@ -16,20 +16,22 @@
 <script src="/scripts/angular-tour-tpls.min.js"></script>
 <% } %>
 
-<script src="/scripts/home/app.js"></script>
 <script>
-    var apiKey = '<%=apikey%>';
-    angular.module('CronAsAService.controllers', ['ngRoute','angularMoment','chart.js'<%if (user.features.indexOf('tourcomplete') === -1 ) { %>,'angular-tour'<% } %>])
+    var app = angular.module('CronAsAService.controllers', ['ngRoute','angularMoment','chart.js'<%if (user.features.indexOf('tourcomplete') === -1 ) { %>,'angular-tour'<% } %>]);
+    app.constant('apiKey', '<%=apikey%>');
                
 </script>
+<script src="/scripts/home/app.js"></script>
 <script src="/scripts/home/api-service.js"></script>
 <script src="/scripts/home/job-controller.js"></script>
 <script src="/scripts/home/contact-controller.js"></script>
 <script src="/scripts/home/settings-controller.js"></script>
 
 <!-- Templates -->
+<div style="display:none;">
 <div id="tour/tour.tpl.html" ng-include src="'/templates/tour.tpl.html'"></div>
 <div id="templates/jobs.html" ng-include src="'/templates/jobs.html'"></div>
 <div id="templates/newJob.html" ng-include src="'/templates/newJob.html'"></div>
 <div id="templates/contact.html" ng-include src="'/templates/contact.html'"></div>
 <div id="templates/settings.html" ng-include src="'templates/settings.html'"></div>
+</div>
