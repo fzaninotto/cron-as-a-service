@@ -11,7 +11,8 @@ var express = require('express'),
 	expressValidator = require('express-validator'),
 	logger = require('morgan'),
 	i18n = require('../../lib/i18n'),//language detection
-    utils = require('../../lib/utils');
+    utils = require('../../lib/utils'),
+	twitterRss = process.env.CONSUMER_KEY ? require('rss-twitter')(process.env.CONSUMER_KEY,process.env.CONSUMER_SECRET,process.env.ACCESS_TOKEN,process.env.ACCESS_SECRET) : {};
 
 /**
 * Models
@@ -116,7 +117,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-app.get('/home', function(req, res, next) {
+app.get(['/home','/upgrade'], function(req, res, next) {
     if(!req.user){
         return res.redirect('/login');
     }
@@ -281,6 +282,69 @@ app.post('/tourcomplete', function(req, res, next) {
             });
         });
     }
+});
+
+//twitter feed as rss
+app.get('/rss.xml', function(req, res, next){
+	twitterRss.feed('cronasaservice', function(err, feed){
+		if(err){
+			res.send('404 Not found', 404);
+		}else{
+			res.set('Content-Type', 'text/xml');
+      		res.send(feed.render('rss-2.0'));
+		}
+	});
+});
+
+app.post('/upgrade', function(req, res, next){
+  req.assert('plan', 'Oops we couldn\'t confirm your payment');    
+  req.assert('token', 'Oops we couldn\'t confirm your payment');
+	
+  var errors = req.validationErrors();
+  
+  if(!req.user){
+    errors = [{'msg':'Oops, something went wrong. Try refreshing the page'}];
+  }
+    
+  if(errors){
+      res.render('home', { 
+                        title: '(1) Cron Dashboard',
+                        route: app.route,
+                        logo: true,
+                        hideNav: true,
+                        apikey: req.user.apikey,
+                        user: req.user,
+                        css: '/stylesheets/home.css',
+                        layout: 'homelayout',
+                        errors: errors
+                     });
+  }else{
+    var token = req.body.token;
+    var plan = req.body.plan;
+    
+    utils.createPlan(req.user, token, (plan+'_'+res.__("currency")).toLowerCase(), function(err,user){
+        if(err) {
+            errors = [{'msg':'Sorry, something went wrong creating your subscription: ' + err}];
+        }else{
+            messages = [{'msg':'Success, we have upgraded you to the '+plan+' plan! Wohoo!'}]
+        }
+        
+        req.user = user;
+        
+        res.render('home', { 
+                        title: '(1) Cron Dashboard',
+                        route: app.route,
+                        logo: true,
+                        hideNav: true,
+                        apikey: req.user.apikey,
+                        user: req.user,
+                        css: '/stylesheets/home.css',
+                        layout: 'homelayout',
+                        errors: errors,
+                        messages: messages
+                     });
+    });  
+  }
 });
 
 if (!module.parent) {

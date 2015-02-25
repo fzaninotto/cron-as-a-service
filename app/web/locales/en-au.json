@@ -1,5 +1,7 @@
 {
 	"price": "$9.99",
 	"currency": "AUD",
-	"price_num":"999"
+	"price_num":"999",
+    "price_month": "$9.99",
+    "price_year": "$104.99"
 }

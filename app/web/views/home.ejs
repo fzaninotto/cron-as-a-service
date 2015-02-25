@@ -19,19 +19,39 @@
 <script>
     var app = angular.module('CronAsAService.controllers', ['ngRoute','angularMoment','chart.js'<%if (user.features.indexOf('tourcomplete') === -1 ) { %>,'angular-tour'<% } %>]);
     app.constant('apiKey', '<%=apikey%>');
-               
+    app.constant('email', '<%=user.email%>');
+    app.constant('plan', '<%= user.stripe.plan ? user.stripe.plan : 'free' %>');
+    app.constant('price_month', '<%= __("price_month") %>');
+    app.constant('price_year', '<%= __("price_year") %>');               
 </script>
 <script src="/scripts/home/app.js"></script>
 <script src="/scripts/home/api-service.js"></script>
 <script src="/scripts/home/job-controller.js"></script>
 <script src="/scripts/home/contact-controller.js"></script>
 <script src="/scripts/home/settings-controller.js"></script>
+<script src="/scripts/home/plan-controller.js"></script>
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script>
+
+  var handler = StripeCheckout.configure({
+    key: '<%- process.env.STRIPE_PUB_KEY || 'pk_test_Zv33f9N9g2JyQevFv38Q9SXn' %>',
+    currency: '<%= __("currency") %>',
+    image: 'images/logo.png',
+    token: function(token) {
+      document.getElementById('plan-token').value = token.id;
+      document.getElementById('plan-form').submit();
+    }
+  }); 
+    
+  app.constant('stripe',handler);
+
+  window.onpopstate = function() {
+    handler.close();
+  };
+</script>
 
 <!-- Templates -->
 <div style="display:none;">
 <div id="tour/tour.tpl.html" ng-include src="'/templates/tour.tpl.html'"></div>
-<div id="templates/jobs.html" ng-include src="'/templates/jobs.html'"></div>
-<div id="templates/newJob.html" ng-include src="'/templates/newJob.html'"></div>
-<div id="templates/contact.html" ng-include src="'/templates/contact.html'"></div>
-<div id="templates/settings.html" ng-include src="'templates/settings.html'"></div>
 </div>

@@ -20,6 +20,10 @@ angular.module('CronAsAService', [
                 templateUrl: 'templates/settings.html',
                 controller: 'SettingsController'
               }).
+              when('/plan', {
+                templateUrl: 'templates/plan.html',
+                controller: 'PlanController'
+              }).
               otherwise({
                 redirectTo: '/jobs'
               });

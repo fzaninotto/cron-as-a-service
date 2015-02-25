@@ -1,4 +1,5 @@
 angular.module('CronAsAService.controllers')
-    .controller('ContactController', ['ngRoute'], function($scope, $routeParams) {
+    .controller('ContactController', function($scope, $routeParams, email) {
         $scope.params = $routeParams;
+        $scope.email = email;
     });

@@ -1,5 +1,5 @@
 angular.module('CronAsAService.controllers')
-        .controller('JobController', function($scope,$location,apiService,utils) {
+        .controller('JobController', function($scope,$location,apiService,utils,plan) {
             $scope.location = $location;
             $scope.cronList = [];
             $scope.formData = {
@@ -8,6 +8,7 @@ angular.module('CronAsAService.controllers')
             };
             $scope.newJobAlerts = [];
             $scope.jobAlerts = [];
+            $scope.plan = plan;
 
             //new cron job
             $scope.newJob = function() {
