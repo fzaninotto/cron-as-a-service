@@ -34,7 +34,7 @@
     "stripe": "^3.0.2",
     "unirest": "~0.2.9",
     "yaml": "~0.2.3",
-    "rss-twitter": "0.0.1"
+    "rss-twitter": "0.0.2"
   },
   "keywords": [
     "cron",
