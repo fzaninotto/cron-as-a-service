@@ -329,7 +329,7 @@ app.post('/upgrade', function(req, res, next){
             messages = [{'msg':'Success, we have upgraded you to the '+plan+' plan! Wohoo!'}]
         }
         
-        req.user = user;
+        req.user = user;//replace logged in user with one containing new plan
         
         res.render('home', { 
                         title: '(1) Cron Dashboard',
