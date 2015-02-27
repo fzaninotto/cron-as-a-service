@@ -12,7 +12,7 @@ var express = require('express'),
 	logger = require('morgan'),
 	i18n = require('../../lib/i18n'),//language detection
     utils = require('../../lib/utils'),
-	twitterRss = process.env.CONSUMER_KEY ? require('rss-twitter')(process.env.CONSUMER_KEY,process.env.CONSUMER_SECRET,process.env.ACCESS_TOKEN,process.env.ACCESS_SECRET) : {};
+	twitterRss = process.env.CONSUMER_KEY ? (require('rss-twitter')(process.env.CONSUMER_KEY,process.env.CONSUMER_SECRET,process.env.ACCESS_TOKEN,process.env.ACCESS_SECRET)) : {};
 
 /**
 * Models
