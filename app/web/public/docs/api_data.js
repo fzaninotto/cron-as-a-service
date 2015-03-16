@@ -307,6 +307,95 @@ define({ api: [
     "filename": "app/api/index.js"
   },
   {
+    "type": "post",
+    "url": "/jobs",
+    "title": "Add an alarm to an existing job",
+    "version": "0.9.0",
+    "name": "EditJob",
+    "group": "Jobs",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "field": "statusCode",
+            "optional": false,
+            "description": "<p>HTTP status code to check for (alarms if not found)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "jsonPath",
+            "optional": false,
+            "description": "<p>JsonPath to check for in the response</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "jsonPathResult",
+            "optional": false,
+            "description": "<p>The value for the matching jsonPath (alarms if no match)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "field": "statusCode",
+            "optional": false,
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "jsonPath",
+            "optional": false,
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "jsonPathResult",
+            "optional": false,
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   {\n     \"statusCode\" : 200,\n     \"jsonPath\" : \"/json/path\",\n\t \"jsonPathResult\" : \"OK\"\n   }\n",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "field": "NotAuthenticatedError",
+            "optional": false,
+            "description": "<p>The apikey is incorrect or no apikey is provided</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/api/index.js"
+  },
+  {
     "type": "get",
     "url": "/jobs",
     "title": "Get a Job by id",

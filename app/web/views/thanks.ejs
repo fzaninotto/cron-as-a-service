@@ -9,6 +9,15 @@
 		<h1>
 			Success! Your registration is complete.
 		</h1>
+        <form class="form-signin" role="form" action="/login" method="post" id="form" style="display:none;">
+            <h2 class="form-signin-heading">Login to get started.</h2>
+            <%if (message.length > 0) { %>
+                <div class="alert alert-danger" role="alert"><%- message %></div>
+            <% } %>
+            <input type="email" class="form-control" placeholder="Email address" name="username" value="<%- user.email %>" required="" autofocus="">
+            <input type="text" class="form-control" placeholder="API Key" name="password" value="<%- user.apikey %>" required="" autocomplete="off">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
 	</div>
 </div>
 <!-- Ensure goal tracking -->
