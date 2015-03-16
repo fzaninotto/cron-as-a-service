@@ -27,4 +27,33 @@ angular.module('CronAsAService', [
               otherwise({
                 redirectTo: '/jobs'
               });
-          }); 
+          }).directive('showtab',
+            function () {
+                return {
+                    link: function (scope, element, attrs) {
+                        element[0].onclick = function(event) {
+                            event.preventDefault();
+                            var activePanes = document.querySelectorAll('.active'),
+                                activeTabs = document.querySelectorAll('.active');
+
+                            // deactivate existing active tab and panel
+                            for (var i=0; i < activePanes.length; i++){
+                              activePanes[i].className = activePanes[i].className.replace('active', '');
+                            }
+                            
+                            for (var i=0; i < activeTabs.length; i++){
+                              activeTabs[i].className = activeTabs[i].className.replace('activeTab', '');
+                              activeTabs[i].className = activeTabs[i].className.replace('active', '');
+                            }
+
+                            // activate new tab and panel
+                            event.target.parentElement.className += ' active';
+                            event.target.parentElement.className += ' activeTab';
+                            var matchingPanes = document.querySelectorAll('#' + event.target.href.split('#')[1]);
+                            for(var i=0; i < matchingPanes.length; i++){
+                                matchingPanes[i].className += ' active';
+                            }
+                        };
+                    }
+                };
+            });

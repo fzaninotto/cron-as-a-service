@@ -27,6 +27,15 @@ angular.module('CronAsAService.services', []).
                 headers : { 'Content-Type': 'application/json' }
             });
         };
+    
+        API.createAlarm = function(job){
+            return $http({
+                method  : 'POST',
+                url     : '/api/jobs/'+job._id+'/alarms?apikey='+apiKey,
+                data    : job.alarmFormData, 
+                headers : { 'Content-Type': 'application/json' }
+            });
+        };
 
         API.tourComplete = function(){
             return $http({

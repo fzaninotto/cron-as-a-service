@@ -10,7 +10,12 @@ var Job = new Schema({
   method:      String,
   params:      {},
   headers:     {},
-  responses:   []
+  responses:   [],
+  alarms:      [{
+                    statusCode: Number,
+                    jsonPath: String,
+	  				jsonPathResult: String
+                }]
 },{
     toObject: {
       virtuals: true
@@ -64,5 +69,27 @@ Job.path('expression').validate(function (expression) {
     }
     return true;
 },'Invalid CRON syntax');
+
+Job.path('alarms').validate(function (value) {
+    if(value==null){
+		return true;
+	}
+    for(var i=0; i<value.length; i++){
+		var alarm =  value[i];
+		//must have at least 1 of status code and jsonPath
+		if(alarm.statusCode==null && alarm.jsonPath==null){
+			return false;
+		}
+		
+		if(alarm.jsonPath!=null && alarm.jsonPathResult==null){
+			return false;
+		}
+		
+		if(alarm.jsonPath==null && alarm.jsonPathResult!=null){
+			return false;
+		}
+	}
+	return true;
+}, 'Invalid alarm');
 
 module.exports = mongoose.model('Job', Job);

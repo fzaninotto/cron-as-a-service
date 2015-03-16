@@ -250,6 +250,60 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
 });
 
 /**
+ * @api {post} /jobs Add an alarm to an existing job
+ * @apiVersion 0.9.0
+ * @apiName EditJob
+ * @apiGroup Jobs
+ *
+ * @apiParam {Number} statusCode HTTP status code to check for (alarms if not found)
+ * @apiParam {String} jsonPath JsonPath to check for in the response
+ * @apiParam {String} jsonPathResult The value for the matching jsonPath (alarms if no match)
+ *
+ * @apiSuccess {Number} statusCode
+ * @apiSuccess {String} jsonPath
+ * @apiSuccess {String} jsonPathResult
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "statusCode" : 200,
+ *       "jsonPath" : "/json/path",
+ *		 "jsonPathResult" : "OK"
+ *     }
+ *
+ * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
+ *     }
+ */
+app.post('/jobs/:id/alarms', ensureAuthenticated, function(req, res, next) {
+  Job.findOne({ _id: req.params.id , user : req.user._id }, function(err, job) {
+    if (err) return next(err);
+    if (!job) return res.json({'error':'Trying to update non-existing job'});
+	job.alarms.push(req.body);
+    job.save(function(err2) {
+      if (err2) return next(err2);
+      if (CronTab.update(job)) {
+        res.json(req.body);
+          
+    try{
+        utils.cio.track(req.user._id, 'updateJob', data, function(err, res) {
+          if (err != null) {
+            console.log('ERROR', err);
+          }
+        });
+    }catch(e){}
+      } else {
+        return res.json({'error':'Error updating Job'});
+      }
+    });
+  });
+});
+
+/**
  * @api {delete} /jobs Delete a Job by id
  * @apiVersion 0.9.0
  * @apiName DeleteJob

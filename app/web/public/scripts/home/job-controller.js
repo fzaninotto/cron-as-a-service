@@ -1,5 +1,11 @@
 angular.module('CronAsAService.controllers')
-        .controller('JobController', function($scope,$location,apiService,utils,plan) {
+        .controller('JobController', function($scope,$location,apiService,utils,plan,email) {
+            var defaultAlarmForm = {
+                            statusCode:null,
+                            jsonPath:null,
+                            jsonPathResult:null
+                        };
+    
             $scope.location = $location;
             $scope.cronList = [];
             $scope.formData = {
@@ -9,6 +15,7 @@ angular.module('CronAsAService.controllers')
             $scope.newJobAlerts = [];
             $scope.jobAlerts = [];
             $scope.plan = plan;
+            $scope.email = email;
 
             //new cron job
             $scope.newJob = function() {
@@ -34,6 +41,18 @@ angular.module('CronAsAService.controllers')
                     });
                 }
             }
+            
+            $scope.createAlarm = function(job){
+                apiService.createAlarm(job)
+                    .success(function(data){
+                        job.alarmFormData = defaultAlarmForm;
+                    
+                        $scope.refreshList();
+                    })
+                    .error(function(data, status, headers, config){
+                        job.alarmAlerts.push({type:'error' , msg: data.substr(0 , data.indexOf('<br>'))});
+                    });
+            };
             
             //when a chart is created
             $scope.$on('create', function (event, chart) {
@@ -81,6 +100,10 @@ angular.module('CronAsAService.controllers')
                             scaleShowGridLines: false,
                             showScale: true
                         };
+                        
+                        job.showAlarms = job.alarms && job.alarms.length>0;
+                        job.alarmFormData = defaultAlarmForm;
+                        job.alarmAlerts = [];
                     });
                     $scope.cronList = response;
                 });

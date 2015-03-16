@@ -31,11 +31,14 @@
                                 <th width="10%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
                                  Expression (UTC)
                                 </th>
-                                <th width="30%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
+                                <th width="25%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
                                  Next Run
                                 </th>
                                 <th width="35%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
                                  Responses - Http Status Code
+                                </th>
+                                <th width="5%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
+                                    Alarm
                                 </th>
                                 <th width="5%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
 
@@ -43,7 +46,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr role="row" ng-repeat="job in cronList">
+                            <tr role="row" ng-repeat-start="job in cronList">
                                 <td>{{job.url}}</td>
                                 <td>{{job.expression}}</td>
                                 <td>{{job.nextRun | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
@@ -53,7 +56,54 @@
                                         <canvas class="chart chart-bar response-chart" data="job.graphData" labels="job.responseDates" colours="job.graphColours" options="job.options"></canvas>
                                     </div>
                                 </td>
-                                <td><button class="btn btn-sm red filter-cancel" ng-click="remove(job._id)"><i class="fa fa-times"></i> Delete</button></td>
+                                <td>
+                                    <button class="btn btn-sm yellow" ng-click="job.showAlarms = !job.showAlarms"><i class="icon-bell"></i></button>
+                                </td>
+                                <td><button class="btn btn-sm red" ng-click="remove(job._id)">Delete</button></td>
+                            </tr>
+                            <tr ng-repeat-end ng-show="job.showAlarms">
+                                <td colspan="5">
+                                    <table>
+                                        <tr ng-repeat="alarm in job.alarms">
+                                            <td>
+                                            <span ng-show="alarm.statusCode!=null"><i class="icon-bell"></i> If the status code is not <b>{{alarm.statusCode}}</b>, we'll email <b>{{email}}</b> to let you know.</span>
+                                            <span ng-show="alarm.jsonPath!=null"><i class="icon-bell"></i> If the response jsonPath <b>{{alarm.jsonPath}}</b> does not match <b>{{alarm.jsonPathResult}}</b>, we'll email <b>{{email}}</b> to let you know.</span></td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <div ng-hide="job.alarms && job.alarms.length>0">
+                                        <h4><i class="icon-bell"></i> New Alarm - choose a criteria and we'll email {{email}} if a response doesn't match</h4>
+
+                                        <div role="tabpanel">
+                                          <!-- Nav tabs -->
+                                          <ul class="nav nav-tabs" role="tablist">
+                                            <li role="presentation" class="active"><a href="#status" showtab="" aria-controls="status" role="tab" data-toggle="tab">Status Code</a></li>
+                                            <li role="presentation"><a href="#json" showtab="" aria-controls="json" role="tab" data-toggle="tab">JSON</a></li>
+                                          </ul>
+
+                                          <!-- Tab panes -->
+                                        <form autocomplete="off" class="form form-inline" ng-submit="createAlarm(job)">
+                                          <div ng-repeat="alert in job.alarmAlerts" class="alert alert-danger" role="alert">
+                                              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                              <span class="sr-only">Error:</span>
+                                              {{alert.msg}}
+                                            </div>
+                                          <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane active" id="status">
+                                                    <div class="form-group">
+                                                    Response HTTP status code should be <input type="number" name="statusCode" placeholder="200" ng-model="job.alarmFormData.statusCode"/></div>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="json">
+                                                    JsonPath <input type="text" name="jsonPath" placeholder="$.result.*" ng-model="job.alarmFormData.jsonPath"/> should result in
+                                                    <input type="text" name="jsonPathResult" placeholder="OK" ng-model="job.alarmFormData.jsonPathResult"/>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn green-haze pull-right"><i class="icon-ok"></i> Create Alarm</button>
+                                          </form>
+
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr ng-hide="cronList.length">
                                 <td colspan="3">
