@@ -43,6 +43,7 @@ angular.module('CronAsAService.controllers')
             }
             
             $scope.createAlarm = function(job){
+                job.alarmAlerts = [];
                 apiService.createAlarm(job)
                     .success(function(data){
                         job.alarmFormData = defaultAlarmForm;
@@ -50,7 +51,7 @@ angular.module('CronAsAService.controllers')
                         $scope.refreshList();
                     })
                     .error(function(data, status, headers, config){
-                        job.alarmAlerts.push({type:'error' , msg: data.substr(0 , data.indexOf('<br>'))});
+                        job.alarmAlerts.push({type:'error' , msg: data.error});
                     });
             };
             

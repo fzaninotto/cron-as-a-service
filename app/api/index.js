@@ -223,7 +223,10 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
 app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
   Job.findOne({ _id: req.params.id , user : req.user._id }, function(err, job) {
     if (err) return next(err);
-    if (!job) return res.json({'error':'Trying to update non-existing job'});
+    if (!job) { 
+        res.status(400);
+        return res.json({'error':'Trying to update non-existing job'});
+    }
     job.expression = req.params.expression;
     job.url = req.parms.url;
 	job.user = req.user._id;
@@ -282,24 +285,46 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
 app.post('/jobs/:id/alarms', ensureAuthenticated, function(req, res, next) {
   Job.findOne({ _id: req.params.id , user : req.user._id }, function(err, job) {
     if (err) return next(err);
-    if (!job) return res.json({'error':'Trying to update non-existing job'});
-	job.alarms.push(req.body);
-    job.save(function(err2) {
-      if (err2) return next(err2);
-      if (CronTab.update(job)) {
-        res.json(req.body);
-          
-    try{
-        utils.cio.track(req.user._id, 'updateJob', data, function(err, res) {
-          if (err != null) {
-            console.log('ERROR', err);
-          }
+    if (!job) {
+        res.status(400); 
+        return res.json({'error':'Trying to update non-existing job'});
+    }
+    
+      //make sure the user hasn't reached their alarm limit
+      User.findOne({ _id: req.user._id }, function(err, user) {
+        
+        Job.where({ 'user': req.user._id , 'alarms': {$exists: true } }).count(function(err,count){
+            //users who have signed up can have any number of alarms, free users can have 1 alarm
+            if((!user.stripe || user.stripe.plan==='free') && count>1){
+                res.status(400);
+                return res.json({'error':'Free users may only use 1 alarm. Please sign up to a paid plan.'});
+            }
+
+            job.alarms.push(req.body);
+            job.save(function(err2) {
+              if (err2) return next(err2);
+
+              //update the number of alarms a user has
+              user.attr.alarmCount = user.attr.alarmCount + 1;
+              user.save();
+
+              if (CronTab.update(job)) {
+                res.json(req.body);
+
+                try{
+                    utils.cio.track(req.user._id, 'updateJob', data, function(err, res) {
+                      if (err != null) {
+                        console.log('ERROR', err);
+                      }
+                    });
+                }catch(e){}
+              } else {
+                res.status(501);
+                return res.json({'error':'Error updating Job'});
+              }
+            });            
         });
-    }catch(e){}
-      } else {
-        return res.json({'error':'Error updating Job'});
-      }
-    });
+      });
   });
 });
 
@@ -331,7 +356,10 @@ app.post('/jobs/:id/alarms', ensureAuthenticated, function(req, res, next) {
 app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
   Job.findOne({ _id: req.params.id , user: req.user._id }, function(err, job) {
     if (err) return next(err);
-    if (!job) return res.json({'error':'Trying to remove non-existing job'});
+    if (!job) {
+        res.status(400); 
+        return res.json({'error':'Trying to remove non-existing job'});
+    }
     job.remove(function(err2) {
       if (err2) return next(err2);
       if (CronTab.remove(job)) {
@@ -345,6 +373,7 @@ app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
         });
     }catch(e){}
       } else {
+        res.status(501);
         return res.json({'error':'Error removing job'});
       }
     });
