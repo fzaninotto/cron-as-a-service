@@ -146,7 +146,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
 });
 
 /**
- * @api {get} /jobs Get a Job by id
+ * @api {get} /jobs/{id} Get a Job by id
  * @apiVersion 0.9.0
  * @apiName GetJob
  * @apiGroup Jobs
@@ -192,7 +192,7 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
 });
 
 /**
- * @api {put} /jobs Edit an existing Job
+ * @api {put} /jobs/{id} Edit an existing Job
  * @apiVersion 0.9.0
  * @apiName EditJob
  * @apiGroup Jobs
@@ -253,7 +253,7 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
 });
 
 /**
- * @api {post} /jobs Add an alarm to an existing job
+ * @api {post} /jobs/{id}/alarms Add an alarm to an existing job
  * @apiVersion 0.9.0
  * @apiName EditJob
  * @apiGroup Jobs
@@ -329,7 +329,7 @@ app.post('/jobs/:id/alarms', ensureAuthenticated, function(req, res, next) {
 });
 
 /**
- * @api {delete} /jobs Delete a Job by id
+ * @api {delete} /jobs/{id} Delete a Job by id
  * @apiVersion 0.9.0
  * @apiName DeleteJob
  * @apiGroup Jobs

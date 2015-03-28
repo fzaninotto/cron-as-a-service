@@ -151,7 +151,7 @@ define({ api: [
   },
   {
     "type": "delete",
-    "url": "/jobs",
+    "url": "/jobs/{id}",
     "title": "Delete a Job by id",
     "version": "0.9.0",
     "name": "DeleteJob",
@@ -219,7 +219,7 @@ define({ api: [
   },
   {
     "type": "put",
-    "url": "/jobs",
+    "url": "/jobs/{id}",
     "title": "Edit an existing Job",
     "version": "0.9.0",
     "name": "EditJob",
@@ -308,7 +308,7 @@ define({ api: [
   },
   {
     "type": "post",
-    "url": "/jobs",
+    "url": "/jobs/{id}/alarms",
     "title": "Add an alarm to an existing job",
     "version": "0.9.0",
     "name": "EditJob",
@@ -397,7 +397,7 @@ define({ api: [
   },
   {
     "type": "get",
-    "url": "/jobs",
+    "url": "/jobs/{id}",
     "title": "Get a Job by id",
     "version": "0.9.0",
     "name": "GetJob",
