@@ -8,16 +8,13 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div>
                     <% if(locals.logo && logo==true) { %>
-                    <a class="brand navbar-left" href="/"><img src="images/logo.png" alt="Cron As A Service" width="50"></a>
+                    <a class="brand navbar-left" href="/"><img src="/images/logo.png" alt="Cron As A Service" width="50"></a>
                     <% } %>
                     
                     <% if(!locals.hideNav) { %>
                     <ul class="nav navbar-nav navbar-right hidden-xs">
                         <li class="hidden active">
                             <a href="#page-top"></a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="/keep-heroku-alive">Heroku</a>
                         </li>
 						<li>
 							<a class="page-scrol" href="/customers">Customers</a>
@@ -26,7 +23,10 @@
 							<a class="page-scrol" href="/contact">Contact</a>
 						</li>
                         <li>
-                            <a class="page-scroll" href="/docs">Docs</a>
+                            <a class="page-scroll" href="/docs">API Docs</a>
+                        </li>
+						<li>
+                            <a class="page-scroll" href="/pricing">Pricing</a>
                         </li>
                         <li>
                             <a class="page-scroll" href="/login">Login</a>

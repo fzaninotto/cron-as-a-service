@@ -4,17 +4,46 @@
             <span class="caption-subject font-blue-madison bold uppercase">Account Settings</span>
         </div>
     </div>
-    <div class="portlet-body">
+    <div class="portlet-body form">
+        
+                <div ng-repeat="alert in userAlerts" ng-class="alert.class" role="alert">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  {{alert.msg}}
+                </div>
 
-                <form role="form" action="#">
-                    <div class="form-group">
-                        <label class="control-label">API Key</label>
-                        <input type="text" class="form-control" value="" ng-value="apiKey" readonly>
+                <form role="form" ng-submit="updateUser()">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label">API Key</label>
+                            <input type="text" class="form-control" value="" ng-value="apiKey" readonly>
+                            <span class="help-block">Your key can be used to interact with our REST API.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <input type="text" class="form-control" value="" ng-value="email" readonly>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label">Name</label>
+                            <input type="text" class="form-control" value="" ng-model="user.name">
+                            <span class="help-block">Your full name</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label">New Password</label>
+                            <input type="password" class="form-control" value="" ng-model="user.password">
+                            <span class="help-block">Enter a new password</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label">Confirm New Password</label>
+                            <input type="password" class="form-control" value="" ng-model="user.confirmPassword">
+                            <span class="help-block">Confirm your new password</span>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label class="control-label">Email</label>
-                        <input type="text" class="form-control" value="" ng-value="email" readonly>
+                    <div class="form-actions">
+                        <button type="submit" class="btn blue pull-right">Save</button>
                     </div>
                 </form>
         </div>

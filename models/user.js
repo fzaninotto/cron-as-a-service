@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    bcrypt = require('bcrypt-nodejs');
 var Schema   = mongoose.Schema;
 
 // main model
@@ -7,6 +8,9 @@ var User = new Schema({
   created_at: { type: Date, default: Date.now },
   email :     { type: String, index: { unique: true }},
   name :      String,
+  password: String,
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
   features :  [],
   attr :      [{ name : String, value : String }],
   stripe: {
@@ -20,6 +24,30 @@ var User = new Schema({
 },{
   toObject: { getters: true }
 });
+
+User.pre('save', function(next) {
+  var user = this;
+  var SALT_FACTOR = 5;
+
+  if (!user.isModified('password')) return next();
+
+  bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
+    if (err) return next(err);
+
+    bcrypt.hash(user.password, salt, null, function(err, hash) {
+      if (err) return next(err);
+      user.password = hash;
+      next();
+    });
+  });
+});
+
+User.methods.comparePassword = function(candidatePassword, cb) {
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
+};
 
 
 module.exports = mongoose.model('User', User);

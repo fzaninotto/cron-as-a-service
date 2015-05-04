@@ -1,0 +1,37 @@
+<!-- The big featured header on the homepage, with the site logo and description  -->
+<header class="site-head" <% if (blog.cover) { %>style="background-image: url(<%= blog.cover %>)"<% } %>>
+    <div class="vertical">
+        <div class="site-head-content inner">
+            <% if (blog.logo) { %><a class="blog-logo" href="<%= blog.url %>"><img src="<%= blog.logo %>" alt="Blog Logo" /></a><% } %>
+            <h1 class="blog-title"><%= blog.title %></h1>
+            <h2 class="blog-description"><%= blog.description %></h2>
+            <p class="post-meta"><a href="<%= blog.url %>">Schedule HTTP requests to your app for free</a></p>
+
+        </div>
+    </div>
+</header>
+
+<!-- The main content area on the homepage  -->
+<main class="content" role="main">
+    <!-- Each post will be output using this markup  -->
+    <% for (url in public._data) { %>
+    <% var post = public._data[url] %>
+
+    <article class="post"><!-- K: also needs class tag- for each tag -->
+        <header class="post-header">
+            <span class="post-meta"><time datetime="<%- new Date(post.date).toUTCString() %>"><%- post.date %></time> on <%- post.tags %><!-- {{tags prefix="on "}}--></span>
+            <h2 class="post-title"><a href="<%= url %>.html"><%- post.title %></a></h2>
+
+        </header>
+        <section class="post-excerpt">
+            <p><%-: partial(url).replace(/<[^>]*>/g, "") | truncate_words: 50 %>&hellip;</p><!-- K: Exerpt isn’t cuttoff exactly the same yet, needs to be plaintext -->
+        </section>
+    </article>
+
+
+    <% } %>
+
+    <!--! After all the posts, we have the previous/next pagination links  -->
+    <!-- {{pagination}} -->
+
+</main>

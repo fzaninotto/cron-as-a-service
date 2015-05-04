@@ -1,0 +1,52 @@
+<main class="content" role="main">
+
+    <article class="post"><!-- K: {{post_class}}, tags- -->
+        <!-- Each post has the blog logo at the top, with a link back to the home page -->
+        <%- partial("_shared/header") %>
+
+        <!-- Everything below outputs content of the the post which has been published -->
+        <span class="post-meta"><time datetime="<%- new Date(date).toUTCString() %>"><%- date %></time> on <%- tags %><!-- {{tags prefix="on " separator=" | "}} --></span>
+
+        <h1 class="post-title"><%= title %></h1>
+
+        <section class="post-content">
+            <%- yield %>
+        </section>
+        
+        <section class="subscribe">
+    <div class="subscribe-pitch">
+      <h3>Free Trial</h3>
+      <p>Sign up for an unlimited free trial of cronasaservice.com and get started running your online cron jobs straight away!</p><p>
+    </p></div>
+    <form action="/register" method="post" class="subscribe-form">
+      <input type="email" name="email" class="subscribe-input" placeholder="Email address">
+      <button type="submit" class="subscribe-submit">Subscribe</button>
+    </form>
+  </section>
+
+        <footer class="post-footer">
+
+            <% if(author) { %>
+                <section class="author">
+                    <h4><%= author.name %></h4>
+                    <p><%= author.bio %></p>
+                </section>
+            <% } %>
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=<%= title %>&url=<%= blog.url + current.source %>"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=<%= blog.url + current.source %>"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+
+</main>

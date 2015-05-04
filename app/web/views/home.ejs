@@ -20,6 +20,7 @@
     var app = angular.module('CronAsAService.controllers', ['ngRoute','angularMoment','chart.js'<%if (user.features.indexOf('tourcomplete') === -1 ) { %>,'angular-tour'<% } %>]);
     app.constant('apiKey', '<%=apikey%>');
     app.constant('email', '<%=user.email%>');
+    app.constant('name', '<%=user.name%>');
     app.constant('plan', '<%= user.stripe.plan ? user.stripe.plan : 'free' %>');
     app.constant('price_month', '<%= __("price_month") %>');
     app.constant('price_year', '<%= __("price_year") %>');               

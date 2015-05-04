@@ -36,6 +36,15 @@ angular.module('CronAsAService.services', []).
                 headers : { 'Content-Type': 'application/json' }
             });
         };
+    
+        API.updateUser = function(user){
+            return $http({
+                method  : 'POST',
+                url     : '/user/update?apikey='+apiKey,
+                data    : user, 
+                headers : { 'Content-Type': 'application/json' }
+            });
+        };
 
         API.tourComplete = function(){
             return $http({

@@ -9,6 +9,8 @@ var express = require('express'),
 	flash = require('connect-flash')
 	partials = require('express-partials'),
 	expressValidator = require('express-validator'),
+    crypto = require('crypto'),
+    async = require('async'),
 	logger = require('morgan'),
 	i18n = require('../../lib/i18n'),//language detection
     utils = require('../../lib/utils'),
@@ -55,31 +57,58 @@ app.use(i18n.init);
 // middleware
 
 passport.serializeUser(function(user, done) {
-  done(null, user);
+  done(null, user.id);
 });
 
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
 });
 
 passport.use(new LocalStrategy(function(username, password, done) {
-    User.findOne({ email: username, apikey:password }, function(err, user) {
+    User.findOne({ email: username }, function(err, user) {
       if (err) { 
         return done(err); 
       }
       if (!user) {
-        return done(null, false, { message: 'Incorrect email address.' });
+        return done(null, false, { message: 'Incorrect password.' });
       }
-        try{
-            utils.cio.track(user._id, 'webLogin', data, function(err, res) {
-              if (err != null) {
-                console.log('ERROR', err);
+        
+      var hasPassword = typeof user.password != 'undefined' && user.password.length >0;
+        
+      if(!hasPassword && user.apikey === password){
+            try{
+                    utils.cio.track(user._id, 'webLogin', data, function(err, res) {
+                      if (err != null) {
+                        console.log('ERROR', err);
+                      }
+                      return console.log('status code', res.statusCode);
+                    });
+              }catch(e){}finally{
+                    return done(null, user);
               }
-              return console.log('status code', res.statusCode);
+      } else if(hasPassword){
+            user.comparePassword(password, function(err, isMatch) {
+              if (isMatch) {
+                  try{
+                    utils.cio.track(user._id, 'webLogin', data, function(err, res) {
+                      if (err != null) {
+                        console.log('ERROR', err);
+                      }
+                      return console.log('status code', res.statusCode);
+                    });
+              }catch(e){}finally{
+                    return done(null, user);
+              }
+              } else {
+                return done(null, false, { message: 'Incorrect password.' });
+              }
             });
-        }catch(e){}finally{
-            return done(null, user);
-        }
+      }else{
+        return done(null, false, { message: 'Incorrect email address or password.' });
+      }
+      
     });
   }
 ));
@@ -108,13 +137,132 @@ app.get('/login', function(req, res, next) {
                         route: app.route,
                         css: '/stylesheets/login.css',
                         logo: true,
-                        message: req.flash('error')
+                        messages:{
+                                    error: req.flash('error'),
+                                    info: req.flash('info'),
+                                    success: req.flash('success')
+                                 }
                       });
 });
 
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
+});
+
+app.get('/forgot', function(req, res, next) {
+  res.render('forgot-password', { 
+                        route: app.route,
+                        css: '/stylesheets/login.css',
+                        logo: true,
+                        messages:{
+                                    error: req.flash('error'),
+                                    info: req.flash('info'),
+                                    success: req.flash('success')
+                                 }
+                      });
+});
+
+app.post('/forgot', function(req, res, next) {
+  async.waterfall([
+    function(done) {
+      crypto.randomBytes(20, function(err, buf) {
+        var token = buf.toString('hex');
+        done(err, token);
+      });
+    },
+    function(token, done) {
+      User.findOne({ email: req.body.email }, function(err, user) {
+        if (!user) {
+          req.flash('error', 'No account with that email address exists.');
+          return res.redirect('/forgot');
+        }
+
+        user.resetPasswordToken = token;
+        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+        user.save(function(err) {
+          done(err, token, user);
+        });
+      });
+    },
+    function(token, user, done) {
+      var mailOptions = {
+        to: user.email,
+        from: 'passwordreset@cronasaservice.com',
+        subject: 'Password Reset - Cron As A Service',
+        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+      };
+      utils.sendEmail(mailOptions, function(err) {
+        req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+        done(err, 'done');
+      });
+    }
+  ], function(err) {
+    if (err) return next(err);
+    res.redirect('/forgot');
+  });
+});
+
+app.get('/reset/:token', function(req, res) {
+  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+    if (!user) {
+      req.flash('error', 'Password reset token is invalid or has expired.');
+      return res.redirect('/forgot');
+    }
+    res.render('reset-password', { 
+                        token: req.params.token,
+                        route: app.route,
+                        css: '/stylesheets/login.css',
+                        logo: true,
+                        messages:{
+                                    error: req.flash('error'),
+                                    info: req.flash('info'),
+                                    success: req.flash('success')
+                                 }
+                      });
+  });
+});
+
+app.post('/reset/:token', function(req, res) {
+  async.waterfall([
+    function(done) {
+      User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+        if (!user) {
+          req.flash('error', 'Password reset token is invalid or has expired.');
+          return res.redirect('back');
+        }
+
+        user.password = req.body.password;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
+
+        user.save(function(err) {
+          req.logIn(user, function(err) {
+            done(err, user);
+          });
+        });
+      });
+    },
+    function(user, done) {
+      var mailOptions = {
+        to: user.email,
+        from: 'passwordreset@cronasaservice.com',
+        subject: 'Your password has been changed',
+        text: 'Hello,\n\n' +
+          'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+      };
+      utils.sendEmail(mailOptions, function(err) {
+        req.flash('success', 'Success! Your password has been changed.');
+        done(err);
+      });
+    }
+  ], function(err) {
+    res.redirect('/login');
+  });
 });
 
 app.get(['/home','/upgrade'], function(req, res, next) {
@@ -203,6 +351,15 @@ app.get('/customers', function(req, res, next) {
   });
 });
 
+app.get('/pricing', function(req, res, next) {
+  res.render('pricing', { 
+	  title: 'Our Pricing',
+      css: '/stylesheets/pricing.css',
+	  logo: true,
+	  route: app.route 
+  });
+});
+
 app.get('/terms', function(req, res, next) {
   res.render('terms', { 
 	  title: 'Terms of Use',
@@ -275,6 +432,28 @@ app.post('/tourcomplete', function(req, res, next) {
     }else{
         User.findOne({ _id: req.user._id }, function(err, user) {
             user.features.push('tourcomplete');
+            user.save(function(err,user){
+                req.logIn(user,function(){
+                        res.json({succes:true}); 
+                    });
+            });
+        });
+    }
+});
+
+app.post('/user/update', function(req, res, next) {
+    if(!req.user || ! req.body.user){
+        res.status(400);
+        res.json({error:true});
+    }else{
+        User.findOne({ _id: req.user._id }, function(err, user) {
+            var data = req.body.user;
+            if(data.name){
+                user.name = data.name;
+            }
+            if(data.password){
+                user.password = data.password;
+            }
             user.save(function(err,user){
                 req.logIn(user,function(){
                         res.json({succes:true}); 

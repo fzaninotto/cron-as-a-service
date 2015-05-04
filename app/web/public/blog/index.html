@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Page Meta -->
+    <title>Cron As A Service</title>
+    <meta name="description" content="Hosted crontab api for your webapp" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- K: Need assets variable , or something like basepath -->
+
+    <!-- <link rel="shortcut icon" href="favicon.ico">-->
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="assets/css/screen.css" /><!-- K: Need assets variable , or something like basepath -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+    <!-- Ghost outputs important style and meta data with this tag -->
+    <!-- {{ghost_head}} -->
+</head>
+<body class="home-template"><!-- K: body_class variable, home page class is home-template, post is like: post-template tag-getting-started -->
+
+    <!-- Everything else gets inserted here -->
+    
+        <!-- The big featured header on the homepage, with the site logo and description  -->
+<header class="site-head">
+    <div class="vertical">
+        <div class="site-head-content inner">
+            
+            <h1 class="blog-title">Cron As A Service</h1>
+            <h2 class="blog-description">Hosted crontab api for your webapp</h2>
+            <p class="post-meta"><a href="https://www.cronasaservice.com">Schedule HTTP requests to your app for free</a></p>
+
+        </div>
+    </div>
+</header>
+
+<!-- The main content area on the homepage  -->
+<main class="content" role="main">
+    <!-- Each post will be output using this markup  -->
+    
+    
+
+    <article class="post"><!-- K: also needs class tag- for each tag -->
+        <header class="post-header">
+            <span class="post-meta"><time datetime="Tue, 21 Apr 2015 16:10:57 GMT">1429632657929</time> on alarms<!-- {{tags prefix="on "}}--></span>
+            <h2 class="post-title"><a href="introducing-alarms.html">Introducing Alarms</a></h2>
+
+        </header>
+        <section class="post-excerpt">
+            <p>Introducing Cron AlarmsWe just launched a brand new feature, cron alarms and they are pretty freaking awesome.
+Free cron monitoring, all thanks to you.We get some great feedback here at cronasaservice.com, several users have asked us to add an alarm feature to monitor their jobs. Well here it is, we will&hellip;</p><!-- K: Exerpt isn’t cuttoff exactly the same yet, needs to be plaintext -->
+        </section>
+    </article>
+
+
+    
+
+    <!--! After all the posts, we have the previous/next pagination links  -->
+    <!-- {{pagination}} -->
+
+</main>
+    
+
+    <footer class="site-footer">
+    <a class="subscribe icon-feed" href="/rss/index.xml"><span class="tooltip">Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Cron As A Service</a> &copy; 2015 &bull; All rights reserved.</section>
+         <section class="poweredby">Proudly published with <a class="" href="http://harpjs.com">Harp</a></section>
+    </div>
+</footer>
+
+    <!-- Ghost outputs important scripts and data with this tag -->
+    <!-- {{ghost_foot}} -->
+
+    <!-- The main JavaScript file for Casper -->
+    <script type="text/javascript" src="asset/js/jquery.fitvids.js"></script><!-- K: Change back to relative links -->
+    <script type="text/javascript" src="asset/js/index.js"></script>
+
+</body>
+</html>

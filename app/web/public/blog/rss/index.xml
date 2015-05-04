@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cron As A Service</title>
+    <link>https://www.cronasaservice.com</link>
+    <description>Hosted crontab api for your webapp</description>
+    <atom:link href="introducing-alarms/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Introducing Alarms</title>
+        <description><![CDATA[<h1>Introducing Cron Alarms</h1><p>We just launched a brand new feature, <a href="https://www.cronasaservice.com/">cron alarms</a> and they are pretty freaking awesome.</p>
+<h2>Free cron monitoring, all thanks to you.</h2><p>We get some great feedback here at <a href="https://www.cronasaservice.com/">cronasaservice.com</a>, several users have asked us to add an alarm feature to monitor their jobs. Well here it is, we will email you when the http request from your cron job doesn&#39;t return the status code you expect. If you are feeling really awesome, you can set up an alarm to parse a JSON response looking for a value (using jsonPath).</p>
+<p>Alarms are so simple to add to your existing cron jobs, just check out the demo below.</p>
+<p><img src="http://giant.gfycat.com/UnrulyCleverAsianwaterbuffalo.gif" alt="cron alarms demo"></p>
+<h2>Your first alarm is on us.</h2><p>You get 1 alarm completely free with your trial plan. If you need more, you can upgrade to a paid plan for as little as £9.99 a month. Trust us, this awesomeness is worth it.</p>
+<p><a href="https://www.cronasaservice.com/">Get started</a> by setting up your first alarm now and you truly never have to worry about your cron jobs again.</p>
+<p><img src="https://s3.amazonaws.com/cronasaservice/Screen+Shot+2015-03-31+at+18.45.20.png" alt="pricing"></p>
+]]></description>
+        <pubDate>Mon May 04 2015 10:37:05 GMT+0100 (BST)</pubDate>
+        <link>https://www.cronasaservice.comintroducing-alarms</link>
+        <guid isPermaLink="true">https://www.cronasaservice.comintroducing-alarms</guid>
+      </item>
+    
+  </channel>
+</rss>

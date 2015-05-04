@@ -1,0 +1,17 @@
+{
+  "globals": {
+    "blog": {
+      "title": "Cron As A Service",
+      "description": "Hosted crontab api for your webapp",
+      "logo": false,
+      "cover": false,
+      "url": "https://www.cronasaservice.com"
+    },
+    "author": {
+      "name": "Matt",
+      "email": "cronasaservice@gmail.com",
+      "bio": "Creator of cron as a service. Loves food and good coffee."
+    }
+  },
+  "domains": []
+}

@@ -25,13 +25,21 @@
   <loc>https://www.cronasaservice.com/login</loc>
 </url>
 <url>
-  <loc>https://www.cronasaservice.com/blog/cron-builder/</loc>
-  <lastmod>2014-12-27T12:25:06+00:00</lastmod>
+  <loc>https://www.cronasaservice.com/cron-builder/</loc>
+</url>
+<url>
+  <loc>https://www.cronasaservice.com/blog/</loc>
 </url>
 <url>
   <loc>https://www.cronasaservice.com/privacy</loc>
 </url>
 <url>
   <loc>https://www.cronasaservice.com/terms</loc>
+</url>
+<url>
+  <loc>https://www.cronasaservice.com/blog</loc>
+</url>
+<url>
+  <loc>https://www.cronasaservice.com/blog/introducing-alarms.html</loc>
 </url>
 </urlset>

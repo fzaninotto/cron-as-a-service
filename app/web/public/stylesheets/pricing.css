@@ -1,0 +1,10 @@
+@import 'theme/plugins.css';
+@import 'theme/layout.css';
+@import 'theme/light.css';
+
+.navbar-default .nav li a{
+	color: #000;
+}
+.navbar-default .nav li a:active{
+	color: #000;
+}
