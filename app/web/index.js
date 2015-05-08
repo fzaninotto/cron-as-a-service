@@ -482,6 +482,7 @@ app.post('/upgrade', function(req, res, next){
   var errors = req.validationErrors();
   
   if(!req.user){
+    req.flash('error', 'Oops. Something went wrong. Try logging into your account again.');
     res.redirect('/login');
   }
     
