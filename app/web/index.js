@@ -482,7 +482,7 @@ app.post('/upgrade', function(req, res, next){
   var errors = req.validationErrors();
   
   if(!req.user){
-    errors = [{'msg':'Oops, something went wrong. Try refreshing the page'}];
+    res.redirect('/login');
   }
     
   if(errors){
