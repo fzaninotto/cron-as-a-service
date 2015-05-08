@@ -502,13 +502,15 @@ app.post('/upgrade', function(req, res, next){
     var plan = req.body.plan;
     
     utils.createPlan(req.user, token, (plan+'_'+res.__("currency")).toLowerCase(), function(err,user){
-        if(err) {
+        var messages = [];
+        
+        if(err || !user) {
             errors = [{'msg':'Sorry, something went wrong creating your subscription: ' + err}];
         }else{
             messages = [{'msg':'Success, we have upgraded you to the '+plan+' plan! Wohoo!'}]
         }
         
-        req.user = user;//replace logged in user with one containing new plan
+        req.user = user || req.user;//replace logged in user with one containing new plan
         
         res.render('home', { 
                         title: '(1) Cron Dashboard',
