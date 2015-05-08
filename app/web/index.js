@@ -283,7 +283,7 @@ app.get(['/home','/upgrade'], function(req, res, next) {
 });
 
 app.post('/register', function(req, res, next) {
-  req.assert('email', 'Oops you left your email out').notEmpty();       
+  req.checkBody('email', 'Oops you left your email out').notEmpty();       
 	
   var errors = req.validationErrors();
 	
@@ -388,9 +388,9 @@ app.get('/keep-heroku-alive', function(req, res, next) {
 });
 
 app.post('/keep-alive', function(req, res, next) {	
-  req.assert('email', 'Oops you left your email out').notEmpty();   
-  req.assert('url', 'Oops you forgot the url')
-  req.assert('token', 'Oops we couldn\'t confirm your payment');
+  req.checkBody('email', 'Oops you left your email out').notEmpty();   
+  req.checkBody('url', 'Oops you forgot the url')
+  req.checkBody('token', 'Oops we couldn\'t confirm your payment');
 	
   var errors = req.validationErrors();
   if(errors){
@@ -476,8 +476,8 @@ app.get('/rss.xml', function(req, res, next){
 });
 
 app.post('/upgrade', function(req, res, next){
-  req.assert('plan', 'Oops we couldn\'t confirm your payment');    
-  req.assert('token', 'Oops we couldn\'t confirm your payment');
+  req.checkBody('plan', 'Oops we couldn\'t confirm your payment');    
+  req.checkBody('token', 'Oops we couldn\'t confirm your payment');
 	
   var errors = req.validationErrors();
   
