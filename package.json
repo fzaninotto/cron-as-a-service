@@ -39,7 +39,8 @@
     "sprintf": "^0.1.5",
     "stripe": "^3.0.2",
     "unirest": "~0.2.9",
-    "yaml": "~0.2.3"
+    "yaml": "~0.2.3",
+    "raven": "~0.7.3"
   },
   "keywords": [
     "cron",

@@ -14,6 +14,9 @@ var fs     = require('fs'),
 	port    = process.env.OPENSHIFT_NODEJS_PORT || '9090',
     ipaddr  = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
+var raven = require('raven'),
+	client = new raven.Client('https://6fddc3e4c23745c3a46721e07656efec:20257613604745ca9cace7995157564a@app.getsentry.com/43811');
+
 var CronTab = require('./lib/cronTab');
 var Job     = require('./models/job');
 

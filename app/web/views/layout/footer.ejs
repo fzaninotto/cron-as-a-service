@@ -37,5 +37,11 @@
             });
         </script>
         <% } %>
+
+		<script>
+		Raven.config('https://3c0011112cdf488cbcaaea6a9fbbb92d@app.getsentry.com/43811', {
+			whitelistUrls: ['cronasaservice.com']
+		}).install();
+		</script>
     </body>
 </html>
