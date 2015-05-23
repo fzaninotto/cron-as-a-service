@@ -54,6 +54,15 @@ i18n.configure({
 });
 app.use(i18n.init);
 
+app.use(expressValidator({
+ customValidators: {
+    nonSpamEmail: function(value) {
+        //had spam from yahoo email addresses so block them
+        return !(/@yahoo.com/g.test(value));
+    }
+ }
+}));
+
 // middleware
 
 passport.serializeUser(function(user, done) {
@@ -283,7 +292,7 @@ app.get(['/home','/upgrade'], function(req, res, next) {
 });
 
 app.post('/register', function(req, res, next) {
-  req.checkBody('email', 'Oops you left your email out').notEmpty();       
+  req.checkBody('email', 'Oops you left your email out').notEmpty().nonSpamEmail();       
 	
   var errors = req.validationErrors();
 	
