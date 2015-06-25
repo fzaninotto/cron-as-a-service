@@ -120,6 +120,7 @@ app.get('/jobs', ensureAuthenticated, function(req, res, next) {
  */
 app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   if (!req.body.expression || !req.body.url) return res.json({'error':'You must provide an expression and an url as POST parameters'});
+	
   var job = new Job();
   job.expression = req.body.expression;
   job.url = req.body.url;
@@ -127,21 +128,29 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   job.method = req.body.method ? req.body.method : 'get';
   job.params = req.body.params!=null ? req.body.params : null;
   job.headers = req.body.headers!=null ? req.body.headers : null;
-  job.save(function(err) {
-    if (err) return next(err);
-    if (CronTab.add(job)) {
-      res.json(job);
-        
-    try{
-        utils.cio.track(req.user._id, 'addJob', data, function(err, res) {
-          if (err != null) {
-            console.log('ERROR', err);
-          }
-        });
-    }catch(e){}
-    } else {
-      return res.json({'error':'Error adding Job'});
-    }
+
+  Job.where({ 'user': req.user._id }).count(function(err,count){
+	if((!user.stripe || user.stripe.plan==='free') && count>1){
+  		res.status(400);
+		return res.json({'error':'Free users may only create 1 job. Please sign up to a paid plan.'});
+  	}
+	  
+  	job.save(function(err) {
+		if (err) return next(err);
+		if (CronTab.add(job)) {
+		  res.json(job);
+
+		try{
+			utils.cio.track(req.user._id, 'addJob', data, function(err, res) {
+			  if (err != null) {
+				console.log('ERROR', err);
+			  }
+			});
+		}catch(e){}
+		} else {
+		  return res.json({'error':'Error adding Job'});
+		}
+	  });
   });
 });
 
