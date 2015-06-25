@@ -130,7 +130,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   job.headers = req.body.headers!=null ? req.body.headers : null;
 
   Job.where({ 'user': req.user._id }).count(function(err,count){
-	if((!req.user.stripe || req.user.stripe.plan==='free') && count>1){
+	if((!req.user.stripe || req.user.stripe.plan==='free') && count>0){
   		res.status(400);
 		return res.json({'error':'Free users may only create 1 job. Please sign up to a paid plan.'});
   	}

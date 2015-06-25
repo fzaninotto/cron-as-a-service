@@ -27,7 +27,7 @@ angular.module('CronAsAService.controllers')
                     $scope.refreshList();
                     $location.path('/jobs');
                 }).error(function(data, status, headers, config) {
-                    $scope.newJobAlerts.push({type:'error' , msg: data.substr(0 , data.indexOf('<br>'))});    
+                    $scope.newJobAlerts.push({type:'error' , msg: data.error || data.substr(0 , data.indexOf('<br>'))});    
                 });
             };
 
