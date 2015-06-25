@@ -130,7 +130,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   job.headers = req.body.headers!=null ? req.body.headers : null;
 
   Job.where({ 'user': req.user._id }).count(function(err,count){
-	if((!user.stripe || user.stripe.plan==='free') && count>1){
+	if((!req.user.stripe || req.user.stripe.plan==='free') && count>1){
   		res.status(400);
 		return res.json({'error':'Free users may only create 1 job. Please sign up to a paid plan.'});
   	}
@@ -184,7 +184,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
 app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
   Job.findOne({ _id: req.params.id , user : req.user._id }, function(err, job) {
     if (err) return next(err);
-	  
+	  2
 	if(job.user !== req.user._id){
 		return res.json({'error':'This job does not belong to you'});
 	}
