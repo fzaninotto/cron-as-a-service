@@ -13,6 +13,7 @@ var User = new Schema({
   resetPasswordExpires: Date,
   features :  [],
   attr :      [{ name : String, value : String }],
+  info: {},
   stripe: {
       customerId: String,
       token: String,
