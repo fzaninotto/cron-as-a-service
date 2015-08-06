@@ -2,9 +2,9 @@
   "introducing-alarms": {
     "ID": 1,
     "author": {
-				"name" : "Matt",
-			   	"bio" : "Founder, cronasaservice.com"
-			},
+      "name": "Matt",
+      "bio": "Founder, cronasaservice.com"
+    },
     "date": 1429632657929,
     "ptype": "post",
     "description": "Why you should be getting excited about our new cron alarms feature",
@@ -12,6 +12,25 @@
     "status": "publish",
     "title": "Introducing Alarms",
     "FBImage": "http://giant.gfycat.com/UnrulyCleverAsianwaterbuffalo.gif",
-	"tags":["alarms"]
+    "tags": [
+      "alarms"
+    ]
+  },
+  "retention-is-the-key-to-a-successful-startup": {
+    "ID": 2,
+    "author": {
+      "name": "Matt",
+      "bio": "Founder, cronasaservice.com"
+    },
+    "date": 1438874484668,
+    "ptype": "post",
+    "description": "Most people talk about growth when building a successful company, but retention holds the key.",
+    "slug": "retention-is-the-key-to-a-successful-startup",
+    "status": "publish",
+    "title": "Retention Is The Key To A Successful Startup",
+    "FBImage": "https://c2.staticflickr.com/6/5141/5589129130_103bc7b114_b.jpg",
+	"tags": [
+      "saas","startups"
+    ]
   }
 }
