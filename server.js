@@ -15,7 +15,9 @@ var fs     = require('fs'),
     ipaddr  = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 var raven = require('raven'),
-	client = new raven.Client('https://6fddc3e4c23745c3a46721e07656efec:20257613604745ca9cace7995157564a@app.getsentry.com/43811');
+	client = new raven.Client('https://3c0011112cdf488cbcaaea6a9fbbb92d:ea784073d6cc4872910fa984d6b23fd7@app.getsentry.com/43811');
+
+client.patchGlobal();
 
 var CronTab = require('./lib/cronTab');
 var Job     = require('./models/job');
