@@ -29,8 +29,26 @@
     "status": "publish",
     "title": "Retention Is The Key To A Successful Startup",
     "FBImage": "https://c2.staticflickr.com/6/5141/5589129130_103bc7b114_b.jpg",
-	"tags": [
-      "saas","startups"
+    "tags": [
+      "saas",
+      "startups"
+    ]
+  },
+  "how-to-launch-a-startup-part-1": {
+    "ID": 3,
+    "author": {
+      "name": "Matt",
+      "bio": "Founder, cronasaservice.com"
+    },
+    "date": 1448191895151,
+    "ptype": "post",
+    "description": "Lecture by Sam Altman from YCombinator",
+    "slug": "how-to-launch-a-startup-part-1",
+    "status": "publish",
+    "title": "How to Launch a Startup - Part 1",
+    "FBImage": ":https://s3.amazonaws.com/cronasaservice/start-a-startup.jpeg",
+    "tags": [
+        "startups"
     ]
   }
 }

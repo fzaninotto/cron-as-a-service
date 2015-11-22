@@ -4,7 +4,7 @@
     <title>Cron As A Service</title>
     <link>https://www.cronasaservice.com</link>
     <description>Hosted crontab api for your webapp</description>
-    <atom:link href="retention-is-the-key-to-a-successful-startup/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="how-to-launch-a-startup-part-1/feed.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
@@ -17,7 +17,7 @@
 <p><a href="https://www.cronasaservice.com/">Get started</a> by setting up your first alarm now and you truly never have to worry about your cron jobs again.</p>
 <p><img src="https://s3.amazonaws.com/cronasaservice/Screen+Shot+2015-03-31+at+18.45.20.png" alt="pricing"></p>
 ]]></description>
-        <pubDate>Thu Aug 06 2015 16:42:55 GMT+0100 (BST)</pubDate>
+        <pubDate>Sun Nov 22 2015 11:50:52 GMT+0000 (GMT)</pubDate>
         <link>https://www.cronasaservice.comintroducing-alarms</link>
         <guid isPermaLink="true">https://www.cronasaservice.comintroducing-alarms</guid>
       </item>
@@ -45,9 +45,25 @@
 <p>This blog was originally posted on <a href="http://jacquesmattheij.com/retention-is-the-key">Jacques Mattheij&#39;s</a> blog.</p>
 </blockquote>
 ]]></description>
-        <pubDate>Thu Aug 06 2015 16:42:55 GMT+0100 (BST)</pubDate>
+        <pubDate>Sun Nov 22 2015 11:50:52 GMT+0000 (GMT)</pubDate>
         <link>https://www.cronasaservice.comretention-is-the-key-to-a-successful-startup</link>
         <guid isPermaLink="true">https://www.cronasaservice.comretention-is-the-key-to-a-successful-startup</guid>
+      </item>
+    
+    
+      <item>
+        <title>How to Launch a Startup - Part 1</title>
+        <description><![CDATA[<h3>Lecture by Sam Altman from YCombinator</h3><p>Starting your own Startup is a daunting but exciting task. Luckily, there are plenty of people before you who&#39;ve done it all and build <strong>billion dollar</strong> businesses in the process. Sam Altman is one of those guys, he quit college to start his own company and then launched YCombinator, one of the worlds best known accelerators of the back of it.</p>
+<p>Sam recently taught a course at <em>Stanford University</em> on launching a Startup. It&#39;s fantastic viewing and we thoroughly recommend it. We&#39;ve learnt so much from Sam and over the next few blog posts we hope you will too.</p>
+<blockquote>
+<p>Move fast. Speed is one of your main advantages over large companies.
+Sam Altman</p>
+</blockquote>
+<p>Without further ado, let me introduce Sam Altman and Startup Lesson One.</p>
+<iframe src="https://clip.mn/embed/yt-CBYhVcO4WgI&pid=1448189585" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>]]></description>
+        <pubDate>Sun Nov 22 2015 11:50:52 GMT+0000 (GMT)</pubDate>
+        <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-1</link>
+        <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-1</guid>
       </item>
     
   </channel>

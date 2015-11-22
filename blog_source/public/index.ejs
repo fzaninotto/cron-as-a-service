@@ -19,7 +19,7 @@
 
     <article class="post"><!-- K: also needs class tag- for each tag -->
         <header class="post-header">
-            <span class="post-meta"><time datetime="<%- new Date(post.date).toUTCString() %>"><%- post.date %></time> on <%- post.tags %><!-- {{tags prefix="on "}}--></span>
+            <span class="post-meta"><%- post.author.name %> on <%- post.tags %><!-- {{tags prefix="on "}}--></span>
             <h2 class="post-title"><a href="<%= url %>.html"><%- post.title %></a></h2>
 
         </header>
