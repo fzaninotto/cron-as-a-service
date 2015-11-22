@@ -756,8 +756,8 @@ margin on the iframe, cause it breaks stuff. */
 
 .subscribe-pitch {
   padding-left: 120px;
-  background: url("/images/clock.png") 5px center no-repeat;
-  background-size:  contain;
+  background: url("/images/clock.png") 10px center no-repeat;
+  background-size:  10% auto;
 }
 .subscribe-pitch > h3 {
   margin: 0 0 12px;
