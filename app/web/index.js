@@ -435,6 +435,29 @@ app.post('/keep-alive', function(req, res, next) {
   }
 });
 
+//TODO: Find a better way to login and redirect a user
+/*
+* PARAMETERS
+* t = apiKey for user
+* r = redirect url
+*/
+app.get('/ln', function(req, res, next){
+    //check the required parameters are present
+    if(!req.query.t || !req.query.r){
+        res.redirect('/login');
+    }else{
+        User.findOne({ apikey: req.query.t }, function(err, user) {
+            if(!user){//user not found for this apiKey
+                res.redirect('/login');
+            }
+            
+            req.logIn(user,function(){
+                        res.redirect('/' + req.query.r);
+                    });
+        });
+    }
+});
+
 app.post('/tourcomplete', function(req, res, next) {
     if(!req.user){
         res.json({error:true});
