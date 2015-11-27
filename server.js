@@ -14,8 +14,8 @@ var fs     = require('fs'),
 	port    = process.env.OPENSHIFT_NODEJS_PORT || '9090',
     ipaddr  = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
-var raven = require('raven'),
-	client = new raven.Client('https://3c0011112cdf488cbcaaea6a9fbbb92d:ea784073d6cc4872910fa984d6b23fd7@app.getsentry.com/43811');
+var raven = require('raven');
+var client = new raven.Client('https://3c0011112cdf488cbcaaea6a9fbbb92d:ea784073d6cc4872910fa984d6b23fd7@app.getsentry.com/43811');
 
 client.patchGlobal();
 
