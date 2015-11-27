@@ -14,13 +14,14 @@ var express = require('express'),
 	logger = require('morgan'),
 	i18n = require('../../lib/i18n'),//language detection
     utils = require('../../lib/utils'),
+    customValidators = require('../../lib/customValidators'),
 	twitterRss = process.env.CONSUMER_KEY ? (require('rss-twitter')(process.env.CONSUMER_KEY,process.env.CONSUMER_SECRET,process.env.ACCESS_TOKEN,process.env.ACCESS_SECRET)) : {};
 
 /**
 * Models
 */
-var Job = require('../../models/job'),
-	User     = require('../../models/user');
+var Job = require('../../models/job');
+var User     = require('../../models/user');
 var CronTab = require('../../lib/cronTab');
 
 var app = module.exports = express();
@@ -54,14 +55,7 @@ i18n.configure({
 });
 app.use(i18n.init);
 
-app.use(expressValidator({
- customValidators: {
-    nonSpamEmail: function(value) {
-        //had spam from yahoo email addresses so block them
-        return !(/@yahoo.com/g.test(value));
-    }
- }
-}));
+app.use(customValidators.customValidators);
 
 // middleware
 
