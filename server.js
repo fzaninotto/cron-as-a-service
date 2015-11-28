@@ -17,12 +17,14 @@ var fs     = require('fs'),
 var raven = require('raven');
 var client = new raven.Client('https://3c0011112cdf488cbcaaea6a9fbbb92d:ea784073d6cc4872910fa984d6b23fd7@app.getsentry.com/43811');
 
-client.patchGlobal();
-
 var CronTab = require('./lib/cronTab');
 var Job     = require('./models/job');
 
 var app = module.exports = express();
+
+if (app.get('env') != 'development') {
+    client.patchGlobal();
+}
 
 // configure mongodb
 var dbUrl;

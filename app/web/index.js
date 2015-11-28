@@ -55,7 +55,7 @@ i18n.configure({
 });
 app.use(i18n.init);
 
-app.use(customValidators);
+app.use(customValidators());
 
 // middleware
 
