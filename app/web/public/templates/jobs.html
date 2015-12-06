@@ -25,6 +25,9 @@
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" aria-describedby="datatable_orders_info" role="grid">
                         <thead>
                             <tr role="row" class="heading">
+                                <th width="2.5%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
+
+                                </th>
                                 <th width="20%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
                                  Url
                                 </th>
@@ -40,15 +43,25 @@
                                 <th width="5%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
                                     Alarm
                                 </th>
-                                <th width="5%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
+                                <th width="2.5%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
 
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr role="row" ng-repeat-start="job in cronList">
-                                <td>{{job.url}}</td>
-                                <td>{{job.expression}}</td>
+                                <td>
+                                    <button class="btn btn-sm" title="Edit" ng-if="!job.edit" ng-click="job.edit = !job.edit"><i class="icon-pencil"></i></button>
+                                    <button class="btn btn-sm green" ng-if="job.edit" ng-click="saveJob(job)">Save</button>
+                                </td>
+                                <td>
+                                    <span ng-if="!job.edit">{{job.url}}</span>
+                                    <input ng-if="job.edit" ng-model="job.url" class="form-control">
+                                </td>
+                                <td>
+                                    <span ng-if="!job.edit">{{job.expression}}</span>
+                                    <input ng-if="job.edit" ng-model="job.expression" class="form-control">
+                                </td>
                                 <td>{{job.nextRun | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
                                 <td ng-class="{nodata:job.responses.length == 0}">
                                     <span ng-show="{{job.responses.length == 0}}">No Data Yet...</span>
@@ -59,7 +72,9 @@
                                 <td>
                                     <button class="btn btn-sm yellow" ng-click="job.showAlarms = !job.showAlarms"><i class="icon-bell"></i></button>
                                 </td>
-                                <td><button class="btn btn-sm red" ng-click="remove(job._id)">Delete</button></td>
+                                <td>
+                                    <button class="btn btn-sm red" ng-click="remove(job._id)"><i class="icon-trash"></i></button>
+                                </td>
                             </tr>
                             <tr ng-repeat-end ng-show="job.showAlarms">
                                 <td colspan="5">

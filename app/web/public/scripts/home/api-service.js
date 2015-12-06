@@ -17,13 +17,21 @@ angular.module('CronAsAService.services', []).
                 data    : formData, 
                 headers : { 'Content-Type': 'application/json' }
             });
-
         };
 
         API.delete = function(id){
              return $http({
                 method  : 'DELETE',
                 url     : '/api/jobs/' + id + '?apikey='+apiKey, 
+                headers : { 'Content-Type': 'application/json' }
+            });
+        };
+    
+        API.saveJob = function(job){
+            return $http({
+                method  : 'PUT',
+                url     : '/api/jobs/' + job.id + '?apikey='+apiKey,
+                data    : job, 
                 headers : { 'Content-Type': 'application/json' }
             });
         };

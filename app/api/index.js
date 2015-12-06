@@ -236,8 +236,8 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
         res.status(400);
         return res.json({'error':'Trying to update non-existing job'});
     }
-    job.expression = req.params.expression;
-    job.url = req.parms.url;
+    job.expression = req.body.expression;
+    job.url = req.body.url;
 	job.user = req.user._id;
     job.method = req.body.method ? req.body.method : 'get';
     job.params = req.body.params;

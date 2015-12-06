@@ -33,6 +33,7 @@ angular.module('CronAsAService.controllers')
 
             //delete job
             $scope.remove = function(id){
+                $scope.jobAlerts = [];
                 if(confirm('Are you sure you wish to delete this job?')){
                     apiService.delete(id).success(function(data){
                         $scope.refreshList(); 
@@ -41,6 +42,16 @@ angular.module('CronAsAService.controllers')
                     });
                 }
             }
+            
+            //Save an edited job
+            $scope.saveJob = function(job) {
+                $scope.jobAlerts = [];
+                apiService.saveJob(job).success(function(data){
+                    $scope.refreshList(); 
+                }).error(function(data, status, headers, config) {
+                    $scope.jobAlerts.push({type:'error' , msg: data || status});    
+                });
+            };
             
             $scope.createAlarm = function(job){
                 job.alarmAlerts = [];
