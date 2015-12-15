@@ -41,7 +41,7 @@
     "slug": "~0.9.1",
     "sprintf": "^0.1.5",
     "stripe": "^3.0.2",
-    "unirest": "~0.2.9",
+    "unirest": "latest",
     "yaml": "~0.2.3"
   },
   "keywords": [

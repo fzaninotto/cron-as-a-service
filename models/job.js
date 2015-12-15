@@ -9,6 +9,7 @@ var Job = new Schema({
   user:        { type: String, index: true },
   method:      String,
   params:      {},
+  requestBody: String,
   headers:     {},
   responses:   [],
   alarms:      [{

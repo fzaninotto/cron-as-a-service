@@ -10,16 +10,26 @@ angular.module('CronAsAService.controllers')
             $scope.cronList = [];
             $scope.formData = {
                 headers:[],
-                params:[]
+                params:[],
+                method:'get'
             };
             $scope.newJobAlerts = [];
             $scope.jobAlerts = [];
             $scope.plan = plan;
             $scope.email = email;
+    
+            $scope.$watch('formData.requestBody', function () {
+                        try {
+                            $scope.formData.requestBody = angular.toJson(JSON.parse($scope.formData.requestBody), true);
+                        } catch(exp) {
+                            //Exception handler
+                        };
+                    });
 
             //new cron job
             $scope.newJob = function() {
                 $scope.newJobAlerts = [];
+                $scope.formData.requestBody = $scope.formData.requestBody ? $scope.formData.requestBody.replace('\n','') : null;
                 apiService.newJob($scope.formData).success(function(data) {
                     $scope.formData = {};//blank out the form
 

@@ -11,15 +11,7 @@
               <span class="sr-only">Error:</span>
               {{alert.msg}}
             </div>
-
-            <div class="form-group">
-              <label class="control-label">Url <span class="required">*</span></label>
-              <div class="controls">
-               <input type="text" class="form-control" placeholder="http://myawsomewebbyapp.com" required ng-model="formData.url">
-              </div>
-              <span class="help-block">Enter the full url to send an HTTP request to</span>
-            </div>      
-
+            
             <div class="form-group">
               <label class="control-label">Expression <span class="required">*</span></label>
               <div class="controls">
@@ -27,6 +19,35 @@
               </div>
               <span class="help-block">Enter a cron expression defining how often to send the request. Requests are run in <strong>UTC</strong></span>
             </div> 
+
+            <div class="form-group">
+              <label class="control-label">Url <span class="required">*</span></label>
+              <div class="controls">
+               <input type="text" class="form-control" placeholder="http://myawsomewebbyapp.com" required ng-model="formData.url">
+              </div>
+              <span class="help-block">Enter the full url to send an HTTP request to</span>
+            </div>
+            
+            <div class="form-group">
+              <label class="control-label">HTTP Method</label>
+              <div class="controls">
+               <select type="text" class="form-control" placeholder="http://myawsomewebbyapp.com" required ng-model="formData.method">
+                   <option value="get">GET</option>
+                   <option value="post">POST</option>
+                   <option value="put">PUT</option>
+                </select>
+              </div>
+              <span class="help-block">Enter the full url to send an HTTP request to</span>
+            </div>
+            
+            <div class="form-group">
+              <label class="control-label">Request Body (Optional)</label>
+              <div class="controls">
+                  <textarea class="form-control" ng-model="formData.requestBody"></textarea>
+              </div>
+              <span class="help-block">Enter a cron expression defining how often to send the request. Requests are run in <strong>UTC</strong></span>
+            </div> 
+
             <div class="form-group">
                 <label class="control-label">Headers</label>
                 <div class="controls" ng-repeat="header in formData.headers">
