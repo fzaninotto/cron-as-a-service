@@ -33,7 +33,7 @@ fs.readFile(file, 'utf8', function (err, data) {
     rl.question("Description: ", function(description) {
       rl.question("Facebook Thumbnail Image URL: ", function(fbImage) {
         rl.question("Tags: ", function(tags){
-            var author = harpConfig.author;
+            var author = harpConfig.globals.author;
             var ptype = "post";
             var status = "publish";
 

@@ -46,9 +46,26 @@
     "slug": "how-to-launch-a-startup-part-1",
     "status": "publish",
     "title": "How to Launch a Startup - Part 1",
-    "FBImage": ":https://s3.amazonaws.com/cronasaservice/start-a-startup.jpeg",
+    "FBImage": "https://s3.amazonaws.com/cronasaservice/start-a-startup.jpeg",
     "tags": [
-        "startups"
+      "startups"
+    ]
+  },
+  "how-to-launch-a-startup-part-2": {
+    "ID": 4,
+    "author": {
+      "name": "Matt",
+      "bio": "Founder, cronasaservice.com"
+    },
+    "date": 1450602903268,
+    "ptype": "post",
+    "description": "Second lecture by Sam Altman from YCombinator on launching a startup",
+    "slug": "how-to-launch-a-startup-part-2",
+    "status": "publish",
+    "title": "How to Launch a Startup - Part 2",
+    "FBImage": "https://s3.amazonaws.com/cronasaservice/start-a-startup.jpeg",
+    "tags": [
+      "startups"
     ]
   }
 }

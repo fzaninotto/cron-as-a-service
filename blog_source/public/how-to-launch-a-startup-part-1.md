@@ -11,3 +11,7 @@ Sam recently taught a course at *Stanford University* on launching a Startup. It
 Without further ado, let me introduce Sam Altman and Startup Lesson One.
 
 <iframe src="https://clip.mn/embed/yt-CBYhVcO4WgI&pid=1448189585" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
+
+<hr/>
+
+<a href="how-to-launch-a-startup-part-2.html">Part 2: Building a Team</a>
