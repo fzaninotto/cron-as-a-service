@@ -130,10 +130,17 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   job.requestBody = req.body.requestBody !=null ? req.body.requestBody : null;
   job.headers = req.body.headers!=null ? req.body.headers : null;
 
-  Job.where({ 'user': req.user._id }).count(function(err,count){
-	if((!req.user.stripe || req.user.stripe.plan==='free') && count>0){
-  		res.status(400);
-		return res.json({'error':'Free users may only create 1 job. Please sign up to a paid plan.'});
+  Job.where({ 'user': req.user._id }).count(function(err,userJobCount){
+	if(!req.user.stripe || req.user.stripe.plan==='free'){
+        if(userJobCount>0){//Free users can only create one job
+            res.status(400);
+            return res.json({'error':'Free users may only create 1 job. Please upgrade to a paid plan.'});
+        }
+        
+        if(job.expression.trim().indexOf('* * * * *') > -1){//Free users can't schedule jobs every minute
+            res.status(400);
+            return res.json({'error':'Free users cannot schedule a job so frequently. Please upgrade to a paid plan.'});
+        }
   	}
 	  
   	job.save(function(err) {
@@ -237,6 +244,14 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
         res.status(400);
         return res.json({'error':'Trying to update non-existing job'});
     }
+      
+    if(!req.user.stripe || req.user.stripe.plan==='free'){        
+        if(job.expression.trim().indexOf('* * * * *') > -1){//Free users can't schedule jobs every minute
+            res.status(400);
+            return res.json({'error':'Free users cannot schedule a job so frequently. Please upgrade to a paid plan.'});
+        }
+  	}
+      
     job.expression = req.body.expression;
     job.url = req.body.url;
 	job.user = req.user._id;
