@@ -67,5 +67,23 @@
     "tags": [
       "startups"
     ]
+  },
+  "how-to-launch-a-startup-part-3": {
+    "ID": 5,
+    "author": {
+      "name": "Matt",
+      "email": "cronasaservice@gmail.com",
+      "bio": "Creator of cron as a service. Loves food and good coffee."
+    },
+    "date": 1454862131031,
+    "ptype": "post",
+    "description": "Third lecure in the series with guest host Paul Graham, co-founder of YCombinator",
+    "slug": "how-to-launch-a-startup-part-3",
+    "status": "publish",
+    "title": "How to Launch a Startup - Part 3",
+    "FBImage": "https://s3.amazonaws.com/cronasaservice/cron-as-a-service.jpeg",
+    "tags": [
+      "startup"
+    ]
   }
 }

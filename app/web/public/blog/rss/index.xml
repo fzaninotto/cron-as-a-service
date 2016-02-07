@@ -4,7 +4,7 @@
     <title>Cron As A Service</title>
     <link>https://www.cronasaservice.com</link>
     <description>Hosted crontab api for your webapp</description>
-    <atom:link href="how-to-launch-a-startup-part-2/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="how-to-launch-a-startup-part-3/feed.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
@@ -17,7 +17,7 @@
 <p><a href="https://www.cronasaservice.com/">Get started</a> by setting up your first alarm now and you truly never have to worry about your cron jobs again.</p>
 <p><img src="https://s3.amazonaws.com/cronasaservice/Screen+Shot+2015-03-31+at+18.45.20.png" alt="pricing"></p>
 ]]></description>
-        <pubDate>Sun Dec 20 2015 10:09:11 GMT+0000 (GMT)</pubDate>
+        <pubDate>Sun Feb 07 2016 16:43:33 GMT+0000 (GMT)</pubDate>
         <link>https://www.cronasaservice.comintroducing-alarms</link>
         <guid isPermaLink="true">https://www.cronasaservice.comintroducing-alarms</guid>
       </item>
@@ -45,7 +45,7 @@
 <p>This blog was originally posted on <a href="http://jacquesmattheij.com/retention-is-the-key">Jacques Mattheij&#39;s</a> blog.</p>
 </blockquote>
 ]]></description>
-        <pubDate>Sun Dec 20 2015 10:09:11 GMT+0000 (GMT)</pubDate>
+        <pubDate>Sun Feb 07 2016 16:43:33 GMT+0000 (GMT)</pubDate>
         <link>https://www.cronasaservice.comretention-is-the-key-to-a-successful-startup</link>
         <guid isPermaLink="true">https://www.cronasaservice.comretention-is-the-key-to-a-successful-startup</guid>
       </item>
@@ -66,7 +66,7 @@ Sam Altman</p>
 
 <p><a href="how-to-launch-a-startup-part-2.html">Part 2: Building a Team</a></p>
 ]]></description>
-        <pubDate>Sun Dec 20 2015 10:09:11 GMT+0000 (GMT)</pubDate>
+        <pubDate>Sun Feb 07 2016 16:43:33 GMT+0000 (GMT)</pubDate>
         <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-1</link>
         <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-1</guid>
       </item>
@@ -83,11 +83,30 @@ Sam Altman</p>
 
 <hr/>
 
-<p><a href="how-to-launch-a-startup-part-1.html">Part 1: Starting a Startup</a></p>
+<p><a href="how-to-launch-a-startup-part-1.html">Part 1: Starting a Startup</a>
+<a href="how-to-launch-a-startup-part-3.html">Part 3: Before the Startup - Paul Graham</a></p>
 ]]></description>
-        <pubDate>Sun Dec 20 2015 10:09:11 GMT+0000 (GMT)</pubDate>
+        <pubDate>Sun Feb 07 2016 16:43:33 GMT+0000 (GMT)</pubDate>
         <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-2</link>
         <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-2</guid>
+      </item>
+    
+    
+      <item>
+        <title>How to Launch a Startup - Part 3</title>
+        <description><![CDATA[<h3>Third lecure in the series with guest host Paul Graham, co-founder of YCombinator</h3><p>Paul Graham gives a brilliant and funny guest lecture. Paul discusses what happens before a startup. How do you come up with ideas? What should you study at college and who should you hire? Paul answers all these questions and gives very important advice to founders you and old.</p>
+<blockquote>
+<p>What you need to succeed in a startup is NOT expertise in startups. You will learn as you go along instead of &quot;playing house&quot;.</p>
+</blockquote>
+<iframe src="https://www.youtube.com/embed/ii1jcLg-eIQ" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
+
+<hr/>
+
+<p><a href="how-to-launch-a-startup-part-2.html">Part 2: Building a Team</a></p>
+]]></description>
+        <pubDate>Sun Feb 07 2016 16:43:33 GMT+0000 (GMT)</pubDate>
+        <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-3</link>
+        <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-3</guid>
       </item>
     
   </channel>

@@ -10,3 +10,4 @@ This lecture discusses choosing a co-founder, how important it is to choose wise
 <hr/>
 
 <a href="how-to-launch-a-startup-part-1.html">Part 1: Starting a Startup</a>
+<a href="how-to-launch-a-startup-part-3.html">Part 3: Before the Startup - Paul Graham</a>
