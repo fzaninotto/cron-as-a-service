@@ -127,6 +127,11 @@ passport.use(new LocalStrategy(function(username, password, done) {
 
 //tracking middleware
 app.use(function(req, res, next) {
+  //check the user-agent isn't a bot or openshift
+  if(req.headers['user-agent'].match(/bot|openshift/g)){
+      next();
+  }
+    
   //if no user token has been generated, create one and set it on the session cookie
   if (!req.session.user_token) {
     req.session.user_token = utils.generateToken();
