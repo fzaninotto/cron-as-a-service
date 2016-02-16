@@ -14,6 +14,7 @@ var express = require('express'),
 	logger = require('morgan'),
 	i18n = require('../../lib/i18n'),//language detection
     utils = require('../../lib/utils'),
+    tracking = require('../../lib/tracking'),
     customValidators = require('../../lib/customValidators').customValidators,
 	twitterRss = process.env.CONSUMER_KEY ? (require('rss-twitter')(process.env.CONSUMER_KEY,process.env.CONSUMER_SECRET,process.env.ACCESS_TOKEN,process.env.ACCESS_SECRET)) : {};
 
@@ -38,6 +39,14 @@ app.use(flash());
 app.use(expressValidator());
 app.use(passport.initialize());
 app.use(passport.session());
+
+//Session tracking cookies
+var sessions = require("client-sessions");
+app.use(sessions({
+  cookieName: 'session',
+  secret: 'kJTY7WNCy7e8f6uja6TcyH6UsNHF4t',
+  duration: 365 * 24 * 60 * 60 * 1000 //1 year
+}));
 
 if (app.get('env') === 'development') {
     app.use(function (req, res, next) {
@@ -115,6 +124,26 @@ passport.use(new LocalStrategy(function(username, password, done) {
     });
   }
 ));
+
+//tracking middleware
+app.use(function(req, res, next) {
+  //if no user token has been generated, create one and set it on the session cookie
+  if (!req.session.user_token) {
+    req.session.user_token = utils.generateToken();
+  }
+    
+  if(!req.session.first_visit) {//this is the user's first visit, send it to the tracking url
+    req.session.first_visit = new Date().getTime();
+      
+    tracking.track({
+        user_id : req.session.user_token,
+        user_joined_at : req.session.first_visit,
+        event : 'landing',
+        via : 'web'
+    });
+  }
+  next();
+});
 
 app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
@@ -326,6 +355,13 @@ app.get('/thanks', function(req, res, next) {
   if(!req.user){
         return res.redirect('/');
   }
+    
+  tracking.track({
+                user_id : req.session.user_token,
+                user_joined_at : req.session.first_visit,
+                event : 'register',
+                via : 'web'
+            });
 	
   res.render('thanks', { 
 	  title: 'Thanks!!!',
@@ -538,6 +574,13 @@ app.post('/upgrade', function(req, res, next){
         }
         
         req.user = user || req.user;//replace logged in user with one containing new plan
+        
+        tracking.track({
+                user_id : req.session.user_token,
+                user_joined_at : req.session.first_visit,
+                event : 'upgrade',
+                via : 'web'
+            });
         
         res.render('home', { 
                         title: '(1) Cron Dashboard',
