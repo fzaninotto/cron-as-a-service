@@ -129,6 +129,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
 app.use(function(req, res, next) {
   //check the user-agent isn't a bot or openshift
   var userAgent = req.get('User-Agent');
+    console.log(userAgent);
   if(userAgent && userAgent.match(/bot|openshift/g)){
       next();
   }
