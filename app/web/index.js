@@ -128,7 +128,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
 //tracking middleware
 app.use(function(req, res, next) {
   //check the user-agent isn't a bot (or actually exists at all)
-  var userAgent = req.get('User-Agent');
+  var userAgent = req.headers['user-agent'];
   if(!userAgent || userAgent.match(/bot|openshift/g)){
       return next();
   }
