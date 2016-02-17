@@ -130,7 +130,7 @@ app.use(function(req, res, next) {
   //check the user-agent isn't a bot (or actually exists at all)
   var userAgent = req.get('User-Agent');
   if(!userAgent || userAgent.match(/bot|openshift/g)){
-      next();
+      return next();
   }
     
   //if no user token has been generated, create one and set it on the session cookie
