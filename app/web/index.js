@@ -129,7 +129,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
 app.use(function(req, res, next) {
   //check the user-agent isn't a bot (or actually exists at all)
   var userAgent = req.headers['user-agent'];
-  if(!userAgent || userAgent.match(/bot|openshift/g)){
+  if(!userAgent || userAgent.match(/bot|index|spider|crawl|wget|slurp|Mediapartners-Google/i)){
       return next();
   }
     
@@ -361,13 +361,6 @@ app.get('/thanks', function(req, res, next) {
   if(!req.user){
         return res.redirect('/');
   }
-    
-  tracking.track({
-                user_id : req.session.user_token,
-                user_joined_at : req.session.first_visit,
-                event : 'register',
-                via : 'web'
-            });
 	
   res.render('thanks', { 
 	  title: 'Thanks!!!',
