@@ -13,7 +13,7 @@ app.use(logger('dev'));
 
 
 app.post('/stripe/webhook', function(req, res) {
-    var event = JSON.parse(req.body);
+    var event = req.body;
     
     console.log(JSON.stringify(event))
     
