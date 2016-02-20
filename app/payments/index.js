@@ -17,7 +17,7 @@ app.post('/stripe/webhook', function(req, res) {
     
     console.log(JSON.stringify(event))
     
-    res.send(200);
+    res.sendStatus(200);
 });
 
 if (!module.parent) {
