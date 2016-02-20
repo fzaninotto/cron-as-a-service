@@ -515,6 +515,11 @@ app.post('/user/update', function(req, res, next) {
             if(data.password){
                 user.password = data.password;
             }
+            if(data.invoice_email){
+                if(!user.info) user.info = {};
+                
+                user.info.invoice_email = data.invoice_email;
+            }
             user.save(function(err,user){
                 req.logIn(user,function(){
                         res.json({succes:true}); 

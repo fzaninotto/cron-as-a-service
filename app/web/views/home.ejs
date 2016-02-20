@@ -21,6 +21,7 @@
     app.constant('apiKey', '<%=apikey%>');
     app.constant('email', '<%=user.email%>');
     app.constant('name', '<%=user.name%>');
+    app.constant('invoice_email', '<%=user.info ? user.info.invoice_email : ''%>');
     app.constant('plan', '<%= user.stripe.plan ? user.stripe.plan : 'free' %>');
     app.constant('price_month', '<%= __("price_month") %>');
     app.constant('price_year', '<%= __("price_year") %>');               

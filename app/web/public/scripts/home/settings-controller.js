@@ -1,11 +1,12 @@
 angular.module('CronAsAService.controllers')
-    .controller('SettingsController', function($scope, $routeParams,apiService,apiKey,email,name) {
+    .controller('SettingsController', function($scope, $routeParams,apiService,apiKey,email,name,invoice_email) {
         $scope.params = $routeParams;
         $scope.apiKey = apiKey;
         $scope.email = email;
         $scope.userAlerts = [];
         $scope.user = {
-            name: name
+            name: name,
+            invoice_email: invoice_email
         };
     
         $scope.updateUser = function(){
@@ -16,11 +17,13 @@ angular.module('CronAsAService.controllers')
                 return;
             }
             
-            apiService.updateUser({user:$scope.user})
+            apiService.updateUser({
+                                    user:$scope.user
+                                  })
             .success(function(data) {
                 $scope.userAlerts.push({class:'alert alert-success' , msg: 'Your account has been updated'}); 
             }).error(function(data, status, headers, config) {
-                $scope.userAlerts.push({class:'alert alert-danger' , msg: data.substr(0 , data.indexOf('<br>'))});    
+                $scope.userAlerts.push({class:'alert alert-danger' , msg: data ? data.substr(0 , data.indexOf('<br>')) : 'Something went wrong updating your account.'});    
             });
         };
     });

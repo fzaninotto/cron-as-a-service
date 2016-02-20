@@ -88,6 +88,7 @@ process.on('exit', function () {
 
 // Routes
 app.use('/api', require('./app/api'));
+app.use('/payments', require('./app/payments'));
 app.use('/', require('./app/web'));
 
 // load plugins
