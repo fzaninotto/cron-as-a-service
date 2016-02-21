@@ -5,3 +5,7 @@ Adora Cheung (of now defunct HomeJoy) talks about techniques for building and gr
 >Talk to your customers. Where ever they hang out, go there.
 
 <iframe src="https://clip.mn/embed/yt-yP176MBG9Tk&pid=1448189585" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
+
+<hr/>
+
+<a href="how-to-launch-a-startup-part-3.html">Part 3: Paul Graham</a>

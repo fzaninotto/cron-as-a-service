@@ -9,3 +9,4 @@ Paul Graham gives a brilliant and funny guest lecture. Paul discusses what happe
 <hr/>
 
 <a href="how-to-launch-a-startup-part-2.html">Part 2: Building a Team</a>
+<a href="how-to-launch-a-startup-part-4.html">Part 4: Building the Product</a>
