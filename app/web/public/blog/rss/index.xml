@@ -4,7 +4,7 @@
     <title>Cron As A Service</title>
     <link>https://www.cronasaservice.com</link>
     <description>Hosted crontab api for your webapp</description>
-    <atom:link href="how-to-launch-a-startup-part-3/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="how-to-launch-a-startup-part-4/feed.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
@@ -17,7 +17,7 @@
 <p><a href="https://www.cronasaservice.com/">Get started</a> by setting up your first alarm now and you truly never have to worry about your cron jobs again.</p>
 <p><img src="https://s3.amazonaws.com/cronasaservice/Screen+Shot+2015-03-31+at+18.45.20.png" alt="pricing"></p>
 ]]></description>
-        <pubDate>Sun Feb 07 2016 16:53:13 GMT+0000 (GMT)</pubDate>
+        <pubDate>Sun Feb 21 2016 21:34:57 GMT+0000 (GMT)</pubDate>
         <link>https://www.cronasaservice.comintroducing-alarms</link>
         <guid isPermaLink="true">https://www.cronasaservice.comintroducing-alarms</guid>
       </item>
@@ -45,7 +45,7 @@
 <p>This blog was originally posted on <a href="http://jacquesmattheij.com/retention-is-the-key">Jacques Mattheij&#39;s</a> blog.</p>
 </blockquote>
 ]]></description>
-        <pubDate>Sun Feb 07 2016 16:53:13 GMT+0000 (GMT)</pubDate>
+        <pubDate>Sun Feb 21 2016 21:34:57 GMT+0000 (GMT)</pubDate>
         <link>https://www.cronasaservice.comretention-is-the-key-to-a-successful-startup</link>
         <guid isPermaLink="true">https://www.cronasaservice.comretention-is-the-key-to-a-successful-startup</guid>
       </item>
@@ -66,7 +66,7 @@ Sam Altman</p>
 
 <p><a href="how-to-launch-a-startup-part-2.html">Part 2: Building a Team</a></p>
 ]]></description>
-        <pubDate>Sun Feb 07 2016 16:53:13 GMT+0000 (GMT)</pubDate>
+        <pubDate>Sun Feb 21 2016 21:34:57 GMT+0000 (GMT)</pubDate>
         <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-1</link>
         <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-1</guid>
       </item>
@@ -86,7 +86,7 @@ Sam Altman</p>
 <p><a href="how-to-launch-a-startup-part-1.html">Part 1: Starting a Startup</a>
 <a href="how-to-launch-a-startup-part-3.html">Part 3: Before the Startup - Paul Graham</a></p>
 ]]></description>
-        <pubDate>Sun Feb 07 2016 16:53:13 GMT+0000 (GMT)</pubDate>
+        <pubDate>Sun Feb 21 2016 21:34:57 GMT+0000 (GMT)</pubDate>
         <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-2</link>
         <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-2</guid>
       </item>
@@ -104,9 +104,22 @@ Sam Altman</p>
 
 <p><a href="how-to-launch-a-startup-part-2.html">Part 2: Building a Team</a></p>
 ]]></description>
-        <pubDate>Sun Feb 07 2016 16:53:13 GMT+0000 (GMT)</pubDate>
+        <pubDate>Sun Feb 21 2016 21:34:57 GMT+0000 (GMT)</pubDate>
         <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-3</link>
         <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-3</guid>
+      </item>
+    
+    
+      <item>
+        <title>How to Launch a Startup - Part 4</title>
+        <description><![CDATA[<h3>Fourth lecture in the series, Adora Cheung guest lectures on building a product.</h3><p>Adora Cheung (of now defunct HomeJoy) talks about techniques for building and growing a product. Readers of The Lean Startup will be familiar with most of these techniques but there are some valuable lessons listed here.</p>
+<blockquote>
+<p>Talk to your customers. Where ever they hang out, go there.</p>
+</blockquote>
+<iframe src="https://clip.mn/embed/yt-yP176MBG9Tk&pid=1448189585" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>]]></description>
+        <pubDate>Sun Feb 21 2016 21:34:57 GMT+0000 (GMT)</pubDate>
+        <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-4</link>
+        <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-4</guid>
       </item>
     
   </channel>

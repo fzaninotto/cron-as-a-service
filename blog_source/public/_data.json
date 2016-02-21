@@ -85,5 +85,23 @@
     "tags": [
       "startups"
     ]
+  },
+  "how-to-launch-a-startup-part-4": {
+    "ID": 6,
+    "author": {
+      "name": "Matt",
+      "email": "cronasaservice@gmail.com",
+      "bio": "Creator of cron as a service. Loves food and good coffee."
+    },
+    "date": 1456090336752,
+    "ptype": "post",
+    "description": "Fourth lecture in the series, Adora Cheung guest lectures on building a product.",
+    "slug": "how-to-launch-a-startup-part-4",
+    "status": "publish",
+    "title": "How to Launch a Startup - Part 4",
+    "FBImage": "https://s3.amazonaws.com/cronasaservice/start-a-startup.jpeg",
+    "tags": [
+      "startups"
+    ]
   }
 }
