@@ -10,6 +10,7 @@ var Job = new Schema({
   method:      String,
   params:      {},
   requestBody: String,
+  responseEmail:String,
   headers:     {},
   responses:   [],
   alarms:      [{

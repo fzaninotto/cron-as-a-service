@@ -23,7 +23,7 @@
             <div class="form-group">
               <label class="control-label">Url <span class="required">*</span></label>
               <div class="controls">
-               <input type="text" class="form-control" placeholder="http://myawsomewebbyapp.com" required ng-model="formData.url">
+               <input type="text" class="form-control" placeholder="http://yourwebapp.com" required ng-model="formData.url">
               </div>
               <span class="help-block">Enter the full url to send an HTTP request to</span>
             </div>
@@ -31,7 +31,7 @@
             <div class="form-group">
               <label class="control-label">HTTP Method</label>
               <div class="controls">
-               <select type="text" class="form-control" placeholder="http://myawsomewebbyapp.com" required ng-model="formData.method">
+               <select type="text" class="form-control" placeholder="http://yourwebapp.com" required ng-model="formData.method">
                    <option value="get">GET</option>
                    <option value="post">POST</option>
                    <option value="put">PUT</option>
@@ -89,6 +89,20 @@
                         </button>
                     </div>
                 </div>
+            </div>
+            
+            <hr/>
+            <button class="btn" ng-click="showAdvanced = !showAdvanced">Advanced</button> (optional)
+            
+            <div class="form-group">
+              <div ng-if="showAdvanced">
+                  <label class="control-label">Email Results</label>
+                  <div class="controls">
+                   <input type="email" class="form-control" placeholder="Your work email" required ng-model="formData.responseEmail">
+                  </div>
+                  <span class="help-block">If you want to receive an email with the result of each run of your cron, enter your email here.<br/>
+                  <strong>Note: you may get a lot of emails if your job runs frequently.</strong></span>
+              </div>
             </div>
 
             <div class="form-actions right todo-form-actions">

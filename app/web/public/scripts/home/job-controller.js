@@ -17,6 +17,7 @@ angular.module('CronAsAService.controllers')
             $scope.jobAlerts = [];
             $scope.plan = plan;
             $scope.email = email;
+            $scope.showAdvanced = false;
     
             $scope.$watch('formData.requestBody', function () {
                         try {

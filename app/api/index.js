@@ -129,6 +129,7 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   job.params = req.body.params!=null ? req.body.params : null;
   job.requestBody = req.body.requestBody !=null ? req.body.requestBody : null;
   job.headers = req.body.headers!=null ? req.body.headers : null;
+  job.responseEmail = req.body.responseEmail!=null ? req.body.responseEmail : null;
 
   Job.where({ 'user': req.user._id }).count(function(err,userJobCount){
 	if(!req.user.stripe || req.user.stripe.plan==='free'){
@@ -259,6 +260,7 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
     job.params = req.body.params;
     job.requestBody = req.body.requestBody;
     job.headers = req.body.headers;
+    job.responseEmail = req.body.responseEmail!=null ? req.body.responseEmail : null;
     job.save(function(err2) {
       if (err2) return next(err2);
       if (CronTab.update(job)) {
