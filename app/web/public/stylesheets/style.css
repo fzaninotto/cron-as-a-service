@@ -132,6 +132,10 @@ footer{
     padding-top: 7%;
 }
 
+.panel p{
+    color: #000;
+}
+
 .social-icons a i{
     font-size: 39pt;
     padding: 10px;
