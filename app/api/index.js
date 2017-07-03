@@ -120,16 +120,6 @@ app.get('/jobs', ensureAuthenticated, function(req, res, next) {
  */
 app.post('/jobs', ensureAuthenticated, function(req, res, next) {
   if (!req.body.expression || !req.body.url) return res.json({'error':'You must provide an expression and an url as POST parameters'});
-	
-  var job = new Job();
-  job.expression = req.body.expression;
-  job.url = req.body.url;
-  job.user = req.user._id;
-  job.method = req.body.method ? req.body.method : 'get';
-  job.params = req.body.params!=null ? req.body.params : null;
-  job.requestBody = req.body.requestBody !=null ? req.body.requestBody : null;
-  job.headers = req.body.headers!=null ? req.body.headers : null;
-  job.responseEmail = req.body.responseEmail!=null ? req.body.responseEmail : null;
 
   Job.where({ 'user': req.user._id }).count(function(err,userJobCount){
 	if(!req.user.stripe || req.user.stripe.plan==='free'){
@@ -138,11 +128,26 @@ app.post('/jobs', ensureAuthenticated, function(req, res, next) {
             return res.json({'error':'Free users may only create 1 job. Please upgrade to a paid plan.'});
         }
         
-        if(job.expression.trim().indexOf('* * * * *') > -1){//Free users can't schedule jobs every minute
+        if(req.body.expression.trim().indexOf('* * * * *') > -1){//Free users can't schedule jobs every minute
             res.status(400);
             return res.json({'error':'Free users cannot schedule a job so frequently. Please upgrade to a paid plan.'});
         }
+        
+        if(req.body.responseEmail != null){
+            res.status(400);
+            return res.json({'error':'Alerts are allowed on the paid plan only. Please upgrade to a paid plan.'});
+        }
   	}
+      
+      var job = new Job();
+      job.expression = req.body.expression.trim();
+      job.url = req.body.url;
+      job.user = req.user._id;
+      job.method = req.body.method ? req.body.method : 'get';
+      job.params = req.body.params!=null ? req.body.params : null;
+      job.requestBody = req.body.requestBody !=null ? req.body.requestBody : null;
+      job.headers = req.body.headers!=null ? req.body.headers : null;
+      job.responseEmail = req.body.responseEmail!=null ? req.body.responseEmail : null;
 	  
   	job.save(function(err) {
 		if (err) return next(err);
