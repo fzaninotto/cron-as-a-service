@@ -45,7 +45,7 @@
         _cio.identify({
             id: '<%- user._id%>',
             email: '<%- user.email %>',
-            created_at: new Date('<%- user.created_at %>').getTime()
+            created_at: Math.round((new Date('<%- user.created_at %>').getTime() / 1000)
         });
     </script>
     <% } %>
