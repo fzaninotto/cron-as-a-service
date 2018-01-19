@@ -11,12 +11,6 @@ var fs = require('fs'),
 	express = require('express'),
 	logger = require('morgan');
 
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || '8080';
-var ipaddr = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
-if (app.get('env') === 'development') {
-	ipaddr = '127.0.0.1';
-}
-
 var raven = require('raven');
 var client = new raven.Client('https://3c0011112cdf488cbcaaea6a9fbbb92d:ea784073d6cc4872910fa984d6b23fd7@app.getsentry.com/43811');
 
@@ -25,7 +19,13 @@ var Job = require('./models/job');
 
 var app = module.exports = express();
 
-if (app.get('env') != 'development') {
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || '8080';
+var ipaddr;
+
+if (app.get('env') === 'development') {
+	ipaddr = '127.0.0.1';
+} else {
+	ipaddr = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 	client.patchGlobal();
 }
 
