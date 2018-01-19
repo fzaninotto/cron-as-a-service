@@ -36,7 +36,7 @@ if (app.get('env') === 'development') {
 } else {
 	mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 
-	if (mongoURL == null) {
+	if (process.env.APP_CONFIG) {
 		var config = JSON.parse(process.env.APP_CONFIG);
 
 		mongoURL = "mongodb://" + config.mongo.user + ":" + encodeURIComponent(process.env.MONGODB_PASSWORD) + "@" +
