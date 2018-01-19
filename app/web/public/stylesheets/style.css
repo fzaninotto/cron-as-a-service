@@ -17,6 +17,7 @@ h1 , .lead , .example h3{
 
 .wrapper{
     min-height: 800px;
+    height: 98vh;
 }
 
 .navbar-default{
