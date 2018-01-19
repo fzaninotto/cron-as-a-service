@@ -11,8 +11,8 @@ var fs = require('fs'),
 	express = require('express'),
 	logger = require('morgan'),
 
-	port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || '8080',
-	ipaddr = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+	port = process.env.OPENSHIFT_NODEJS_PORT || '9090',
+	ipaddr = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 var raven = require('raven');
 var client = new raven.Client('https://3c0011112cdf488cbcaaea6a9fbbb92d:ea784073d6cc4872910fa984d6b23fd7@app.getsentry.com/43811');
@@ -27,14 +27,34 @@ if (app.get('env') != 'development') {
 }
 
 // configure mongodb
-var dbUrl;
+var mongoURL;
 if (app.get('env') === 'development') {
-	dbUrl = 'mongodb://localhost/cron';
+	mongoURL = 'mongodb://localhost/cron';
 } else {
-	dbUrl = 'mongodb://' + process.env.MONGODB_USER + ':' + process.env.MONGODB_PASSWORD + '@localhost/' + process.env.MONGODB_DATABASE;
+	mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
+
+	if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
+		var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
+			mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
+			mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
+			mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
+			mongoPassword = process.env[mongoServiceName + '_PASSWORD']
+		mongoUser = process.env[mongoServiceName + '_USER'];
+
+		if (mongoHost && mongoPort && mongoDatabase) {
+			mongoURLLabel = mongoURL = 'mongodb://';
+			if (mongoUser && mongoPassword) {
+				mongoURL += mongoUser + ':' + mongoPassword + '@';
+			}
+			// Provide UI label that excludes user id and pw
+			mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
+			mongoURL += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
+
+		}
+	}
 }
 
-mongoose.connect(dbUrl, function (err) {
+mongoose.connect(mongoURL, function (err) {
 	if (err) {
 		console.log("MongoDB error:" + err);
 		process.exit();
