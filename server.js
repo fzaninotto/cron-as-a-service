@@ -11,7 +11,7 @@ var fs = require('fs'),
 	express = require('express'),
 	logger = require('morgan'),
 
-	port = process.env.OPENSHIFT_NODEJS_PORT || '9090',
+	port = process.env.OPENSHIFT_NODEJS_PORT || '8080',
 	ipaddr = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 var raven = require('raven');
@@ -109,6 +109,9 @@ process.on('exit', function () {
 // Routes
 app.use('/api', require('./app/api'));
 app.use('/payments', require('./app/payments'));
+app.get('/pagecount', function (req, res) {
+	res.send('ok');
+});
 app.use('/', require('./app/web'));
 
 // load plugins
