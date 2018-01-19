@@ -9,10 +9,10 @@ var fs = require('fs'),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
 	express = require('express'),
-	logger = require('morgan'),
+	logger = require('morgan');
 
-	port = process.env.OPENSHIFT_NODEJS_PORT || '8080',
-	ipaddr = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || '9090';
+var ipaddr = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 var raven = require('raven');
 var client = new raven.Client('https://3c0011112cdf488cbcaaea6a9fbbb92d:ea784073d6cc4872910fa984d6b23fd7@app.getsentry.com/43811');
