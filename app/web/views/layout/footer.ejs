@@ -40,7 +40,7 @@
         s.parentNode.insertBefore(t, s);
     })();
 </script>
-<%if (locals.user && locals.user.email) { %>
+<%if (locals.user && locals.user.email && local.user.email.indexOf('@')>-1) { %>
     <script type="text/javascript">
         _cio.identify({
             id: '<%- user._id%>',
