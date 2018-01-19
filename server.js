@@ -29,7 +29,7 @@ if (app.get('env') != 'development') {
 // configure mongodb
 var mongoURL;
 if (app.get('env') === 'development') {
-	mongoURL = 'mongodb://localhost/cron';
+	mongoURL = 'mongodb://matthewreid:password@127.0.0.1/cron?authSource=admin';
 } else {
 	mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 

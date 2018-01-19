@@ -7,45 +7,51 @@
     <div class="portlet-body">
         <form class="form form-vertical" ng-submit="newJob()">
             <div ng-repeat="alert in newJobAlerts" class="alert alert-danger" role="alert">
-              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-              <span class="sr-only">Error:</span>
-              {{alert.msg}}
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                {{alert.msg}}
             </div>
-            
-            <div class="form-group">
-              <label class="control-label">Expression <span class="required">*</span></label>
-              <div class="controls">
-                <input type="text" class="form-control" placeholder="e.g * * * * *" required autofocus ng-model="formData.expression">
-              </div>
-              <span class="help-block">Enter a cron expression defining how often to send the request. Requests are run in <strong>UTC</strong></span>
-            </div> 
 
             <div class="form-group">
-              <label class="control-label">Url <span class="required">*</span></label>
-              <div class="controls">
-               <input type="text" class="form-control" placeholder="http://yourwebapp.com" required ng-model="formData.url">
-              </div>
-              <span class="help-block">Enter the full url to send an HTTP request to</span>
+                <label class="control-label">Expression
+                    <span class="required">*</span>
+                </label>
+                <div class="controls">
+                    <cron-selection ng-model="formData.expression"></cron-selection>
+                </div>
+                <span class="help-block">Enter a cron expression defining how often to send the request. Requests are run in
+                    <strong>UTC</strong>
+                </span>
             </div>
-            
+
             <div class="form-group">
-              <label class="control-label">HTTP Method</label>
-              <div class="controls">
-               <select type="text" class="form-control" placeholder="http://yourwebapp.com" required ng-model="formData.method">
-                   <option value="get">GET</option>
-                   <option value="post">POST</option>
-                   <option value="put">PUT</option>
-                </select>
-              </div>
-              <span class="help-block">Enter the full url to send an HTTP request to</span>
+                <label class="control-label">Url
+                    <span class="required">*</span>
+                </label>
+                <div class="controls">
+                    <input type="text" class="form-control" placeholder="http://yourwebapp.com" required ng-model="formData.url">
+                </div>
+                <span class="help-block">Enter the full url to send an HTTP request to</span>
             </div>
-            
+
             <div class="form-group">
-              <label class="control-label">Request Body (Optional)</label>
-              <div class="controls">
-                  <textarea class="form-control" ng-model="formData.requestBody"></textarea>
-              </div>
-            </div> 
+                <label class="control-label">HTTP Method</label>
+                <div class="controls">
+                    <select type="text" class="form-control" placeholder="http://yourwebapp.com" required ng-model="formData.method">
+                        <option value="get">GET</option>
+                        <option value="post">POST</option>
+                        <option value="put">PUT</option>
+                    </select>
+                </div>
+                <span class="help-block">Enter the full url to send an HTTP request to</span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Request Body (Optional)</label>
+                <div class="controls">
+                    <textarea class="form-control" ng-model="formData.requestBody"></textarea>
+                </div>
+            </div>
 
             <div class="form-group">
                 <label class="control-label">Headers</label>
@@ -63,7 +69,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button type="button" class="btn btn-circle btn-sm green-haze" ng-click="addHeader()">
-                          Add Header
+                            Add Header
                         </button>
                     </div>
                 </div>
@@ -85,31 +91,33 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button type="button" class="btn btn-circle btn-sm green-haze" ng-click="addParam()">
-                          Add Parameter
+                            Add Parameter
                         </button>
                     </div>
                 </div>
             </div>
-            
+
             <hr/>
             <button class="btn" ng-click="showAdvanced = !showAdvanced">Advanced</button> (optional)
-            
+
             <div class="form-group">
-              <div ng-if="showAdvanced">
-                  <label class="control-label">Email Results</label>
-                  <div class="controls">
-                   <input type="email" class="form-control" placeholder="Your work email" required ng-model="formData.responseEmail">
-                  </div>
-                  <span class="help-block">If you want to receive an email with the result of each run of your cron, enter your email here.<br/>
-                  <strong>Note: you may get a lot of emails if your job runs frequently.</strong></span>
-              </div>
+                <div ng-if="showAdvanced">
+                    <label class="control-label">Email Results</label>
+                    <div class="controls">
+                        <input type="email" class="form-control" placeholder="Your work email" required ng-model="formData.responseEmail">
+                    </div>
+                    <span class="help-block">If you want to receive an email with the result of each run of your cron, enter your email here.
+                        <br/>
+                        <strong>Note: you may get a lot of emails if your job runs frequently.</strong>
+                    </span>
+                </div>
             </div>
 
             <div class="form-actions right todo-form-actions">
                 <a href="#/jobs" class="btn btn-circle btn-sm btn-default">Cancel</a>
                 <button class="btn btn-circle btn-sm green-haze" type="submit">Save Changes</button>
-            </div>   
+            </div>
 
-          </form>
+        </form>
     </div>
 </div>
