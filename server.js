@@ -41,6 +41,7 @@ if (app.get('env') === 'development') {
 
 		mongoURL = "mongodb://" + config.mongo.user + ":" + encodeURIComponent(process.env.MONGODB_PASSWORD) + "@" +
 			config.mongo.hostString;
+		console.log(`mongoUrl ${mongoURL}`);
 	}
 }
 
