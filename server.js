@@ -11,7 +11,7 @@ var fs = require('fs'),
 	express = require('express'),
 	logger = require('morgan'),
 
-	port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || '9090',
+	port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || '8080',
 	ipaddr = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 var raven = require('raven');
