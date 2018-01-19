@@ -20,12 +20,9 @@ var Job = require('./models/job');
 var app = module.exports = express();
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || '8080';
-var ipaddr;
+var ipaddr = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
-if (app.get('env') === 'development') {
-	ipaddr = '127.0.0.1';
-} else {
-	ipaddr = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+if (app.get('env') != 'development') {
 	client.patchGlobal();
 }
 
