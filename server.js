@@ -108,6 +108,12 @@ fs.exists('./plugins/index.js', function (exists) {
 	};
 });
 
-app.listen(port, ipaddr, function () {
-	console.log('%s: Node server started on %s:%d ...', Date(Date.now()), ipaddr, port);
-});
+if (app.get('env') === 'development' || process.env.IP || process.env.OPENSHIFT_NODEJS_IP) {
+	app.listen(port, ipaddr, function () {
+		console.log('%s: Node server started on %s:%d ...', Date(Date.now()), ipaddr, port);
+	});
+} else {
+	app.listen(port, function () {
+		console.log('%s: Node server started on %d ...', Date(Date.now()), port);
+	});
+}
