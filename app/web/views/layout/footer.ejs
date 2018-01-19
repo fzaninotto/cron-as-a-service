@@ -21,26 +21,26 @@
     ga('send', 'pageview');
 
 </script>
-<script type="text/javascript">
-    var _cio = _cio || [];
-    (function () {
-        var a, b, c; a = function (f) {
-            return function () {
-                _cio.push([f].
-                    concat(Array.prototype.slice.call(arguments, 0)))
-            }
-        }; b = ["load", "identify",
-            "sidentify", "track", "page", "cookie"]; for (c = 0; c < b.length; c++) { _cio[b[c]] = a(b[c]) };
-        var t = document.createElement('script'),
-            s = document.getElementsByTagName('script')[0];
-        t.async = true;
-        t.id = 'cio-tracker';
-        t.setAttribute('data-site-id', '<%- process.env.CUSTOMERIO_KEY || 'f138f48dcee884404b51' %>');
-        t.src = 'https://assets.customer.io/assets/track.js';
-        s.parentNode.insertBefore(t, s);
-    })();
-</script>
-<%if (locals.user && locals.user.email && local.user.email.indexOf('@')>-1) { %>
+<%if (locals.user && locals.user.email) { %>
+    <script type="text/javascript">
+        var _cio = _cio || [];
+        (function () {
+            var a, b, c; a = function (f) {
+                return function () {
+                    _cio.push([f].
+                        concat(Array.prototype.slice.call(arguments, 0)))
+                }
+            }; b = ["load", "identify",
+                "sidentify", "track", "page", "cookie"]; for (c = 0; c < b.length; c++) { _cio[b[c]] = a(b[c]) };
+            var t = document.createElement('script'),
+                s = document.getElementsByTagName('script')[0];
+            t.async = true;
+            t.id = 'cio-tracker';
+            t.setAttribute('data-site-id', '<%- process.env.CUSTOMERIO_KEY || 'f138f48dcee884404b51' %>');
+            t.src = 'https://assets.customer.io/assets/track.js';
+            s.parentNode.insertBefore(t, s);
+        })();
+    </script>
     <script type="text/javascript">
         _cio.identify({
             id: '<%- user._id%>',
