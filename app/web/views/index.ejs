@@ -1,13 +1,13 @@
 <style>
-    .container-full{
-        background-image: url(/images/<%- test.background %>);
-    }
+	.container-full {
+		background-image: url(/images/<%- test.background %>);
+	}
 </style>
 <div class="container-full">
 	<div class="gradient"></div>
-	
+
 	<div class="row" itemscope itemtype="http://schema.org/Product">
-		
+
 		<div id="itemscope">
 			<span itemprop="name">Cron As A Service</span>
 
@@ -19,125 +19,145 @@
 
 		<div class="col-lg-12 text-center v-center">
 			<h1>
-				<a itemprop="url" href="/"><img src="images/logo.png" alt="Cron As A Service"></a>
-			   	<span itemprop="description"><%- test.title %></span>
+				<a itemprop="url" href="/">
+					<img src="images/logo.png" alt="Cron As A Service">
+				</a>
+				<span itemprop="description">
+					<%- test.title %>
+				</span>
 			</h1>
-			
-			<p class="lead">Sign up for your unlimited <span class="green">free</span> trial. No Credit Card required.</p>
-			
+
+			<p class="lead">Sign up for your unlimited
+				<span class="green">free</span> trial. No Credit Card required.</p>
+
 			<%if (locals.errors) { %>
 				<div class="alert alert-danger" role="alert">
-				  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-				  <span class="sr-only">Error:</span>
-				  	<% errors.forEach(function(error){%>
-					   <%= error.msg %>
-					<% }); %>
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only">Error:</span>
+					<% errors.forEach(function(error){%>
+						<%= error.msg %>
+							<% }); %>
 				</div>
-			<%} %>
-			
-			<form action="/register" method="post" class="col-lg-12">
-				<div class="input-group">
-					<input class="form-control input-lg" title="Don't worry. We hate spam, and will not share your email with anyone." placeholder="Enter your work email address" type="email" name="email" required>
+				<%} %>
 
-				  <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">OK</button></span>
-				</div>
-			</form>
+					<form action="/register" method="post" class="col-lg-12">
+						<div class="input-group">
+							<input class="form-control input-lg" title="Don't worry. We hate spam, and will not share your email with anyone." placeholder="Enter your work email address"
+							 type="email" name="email" required>
+
+							<span class="input-group-btn">
+								<button class="btn btn-lg btn-primary" type="submit">Get Started</button>
+							</span>
+						</div>
+					</form>
 		</div>
 
-	  </div> <!-- /row -->
-	
+	</div>
+	<!-- /row -->
+
 	<div class="row">
 
 		<div class="col-lg-12 text-center v-center example">
-            <img src="/images/laptop_cron.png" class="img-responsive center-block" alt="Cron As A Service">
+			<img src="/images/laptop_cron.png" class="img-responsive center-block" alt="Cron As A Service">
 		</div>
 
-	  </div>
-    
-    <div class="row">
-        <div class="col-md-4 text-center">
-          <img src="/images/dashboard.png" class="img-responsive center-block" width="100" alt="Online cron dashboard">
-          <h2>Simple Dashboard</h2>
-          <p>Our easy to use web console makes it simple to set up and monitor your cron jobs where ever you are. On your phone or on your laptop, you are in control.</p>
-       </div>
-        <div class="col-md-4 text-center">
-          <img src="/images/cloud.png" class="img-responsive center-block" width="100" alt="Easy cron REST API">
-          <h2>Build cron into your app</h2>
-          <p>Our REST api makes it so easy to build scheduled tasks into your application. Want to schedule Stripe billing for a new customer? Call the API to set up a new monthly job.</p>
-        </div>
-        <div class="col-md-4 text-center">
-          <img src="/images/alarm.png" class="img-responsive center-block" width="100" alt="Online cron job alarms">
-          <h2>Cron Alarms</h2>
-          <p>We'll alert you when one of your cron jobs doesn't return the response you expect. It's all part of the service!</p>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4 text-center v-center panel panel-default">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-4 col-sm-offset-4">
-                        <img src="/images/bigdog-agency-logo.jpg" class="img-responsive">
-                    </div>
-                </div>
-                <blockquote>
-                  <p>Loving the service!</p>
-                  <footer>Ben Sturgess - Creative Technology Director, BigDog</footer>
-                </blockquote>
-            </div>
-        </div>
-    </div>
-	
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 text-center">
+			<img src="/images/dashboard.png" class="img-responsive center-block" width="100" alt="Online cron dashboard">
+			<h2>Simple Dashboard</h2>
+			<p>Our easy to use web console makes it simple to set up and monitor your cron jobs where ever you are. On your phone or
+				on your laptop, you are in control.</p>
+		</div>
+		<div class="col-md-4 text-center">
+			<img src="/images/cloud.png" class="img-responsive center-block" width="100" alt="Easy cron REST API">
+			<h2>Build cron into your app</h2>
+			<p>Our REST api makes it so easy to build scheduled tasks into your application. Want to schedule Stripe billing for a new
+				customer? Call the API to set up a new monthly job.</p>
+		</div>
+		<div class="col-md-4 text-center">
+			<img src="/images/alarm.png" class="img-responsive center-block" width="100" alt="Online cron job alarms">
+			<h2>Cron Alarms</h2>
+			<p>We'll alert you when one of your cron jobs doesn't return the response you expect. It's all part of the service!</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 text-center v-center panel panel-default semi-transparent">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-sm-4 col-sm-offset-4">
+						<img src="/images/bigdog-agency-logo.jpg" class="img-responsive">
+					</div>
+				</div>
+				<blockquote>
+					<p>Loving the service!</p>
+					<footer>Ben Sturgess - Creative Technology Director, BigDog</footer>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+
 	<div class="row">
 		<div class="col-lg-12 text-center v-center">
-            <h3>
-				Get started in 29 seconds
+			<h3>
+				Create a cron job in 30 seconds
 			</h3>
-            <br/>
+			<br/>
 			<form action="/register" method="post" class="col-lg-12">
 				<div class="input-group">
-					<input class="form-control input-lg" title="Don't worry. We hate spam, and will not share your email with anyone." placeholder="Enter your work email address" type="email" name="email" required>
+					<input class="form-control input-lg" title="Don't worry. We hate spam, and will not share your email with anyone." placeholder="Enter your work email address"
+					 type="email" name="email" required>
 
-				  <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">OK</button></span>
+					<span class="input-group-btn">
+						<button class="btn btn-lg btn-primary" type="submit">Get Started</button>
+					</span>
 				</div>
 			</form>
-            <br/>
-            <p>
-				 We've processed <span class="counter" data-count="97000">50000</span> api calls and counting. Leaving you free to build your app.
+			<br/>
+			<p>
+				We've processed
+				<span class="counter" data-count="97000">50000</span> api calls and counting. Leaving you free to build your app.
 			</p>
 		</div>
 	</div>
 
-	  <div class="row">
+	<div class="row">
 
 		<div class="col-lg-12 text-center v-center social-icons">
-			<a href="https://twitter.com/cronasaservice"><i class="icon-twitter"></i></a> 
-			<a href="https://github.com/drei01/cron-as-a-service"><i class="icon-github"></i></a>
+			<a href="https://twitter.com/cronasaservice">
+				<i class="icon-twitter"></i>
+			</a>
+			<a href="https://github.com/drei01/cron-as-a-service">
+				<i class="icon-github"></i>
+			</a>
 		</div>
 
-	  </div>
+	</div>
 
-</div> <!-- /container full -->
+</div>
+<!-- /container full -->
 <script src="/scripts/jquery.min.js"></script>
 <script>
-    $(document).ready(function(){
-    $('.counter').each(function() {
-				  var $this = $(this),
-					  countTo = $this.attr('data-count');
+	$(document).ready(function () {
+		$('.counter').each(function () {
+			var $this = $(this),
+				countTo = $this.attr('data-count');
 
-				  $({ countNum: $this.text()}).animate({
-					countNum: countTo
-				  },
-				  {
+			$({ countNum: $this.text() }).animate({
+				countNum: countTo
+			},
+				{
 					duration: 8000,
-					easing:'linear',
-					step: function() {
-					  $this.text(Math.floor(this.countNum).toLocaleString());
+					easing: 'linear',
+					step: function () {
+						$this.text(Math.floor(this.countNum).toLocaleString());
 					},
-					complete: function() {
-					  $this.text(Math.floor(this.countNum).toLocaleString());
+					complete: function () {
+						$this.text(Math.floor(this.countNum).toLocaleString());
 					}
-				  });  
 				});
-    });
+		});
+	});
 </script>
