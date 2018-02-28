@@ -17,7 +17,7 @@
             <div class="col-md-3">
                 <div class="pricing hover-effect">
                     <div class="pricing-head">
-                        <h3>Free 
+                        <h3>Free
                             <span>Let's get to know each other...</span>
                         </h3>
                         <h4>
@@ -48,16 +48,18 @@
                 <div class="pricing hover-effect pricing-active">
                     <div class="pricing-head pricing-head-active">
                         <h3>
-                            Pro <span> Let's date... </span>
+                            Pro
+                            <span> Let's date... </span>
                         </h3>
                         <h4>
-                            <i>{{price_month}}</i>
+                            <i>{{currency_symbol}}{{price_month}}</i>
                             <span> Per Month </span>
                         </h4>
                     </div>
                     <ul class="pricing-content list-unstyled">
                         <li>
-                            <i class="icon-check"></i> <b>Unlimited</b> Jobs
+                            <i class="icon-check"></i>
+                            <b>Unlimited</b> Jobs
                         </li>
                         <li>
                             <i class="icon-check"></i> Unlimited Alarms
@@ -72,7 +74,8 @@
                             Paid monthly by credit card, plus a full refund if you aren't completely satified.
                         </p>
                         <button ng-click="upgrade('monthly')" class="btn yellow-crusta">
-                        Sign Up <i class="icon-ok m-icon-white"></i>
+                            Sign Up
+                            <i class="icon-ok m-icon-white"></i>
                         </button>
                     </div>
                 </div>
@@ -81,17 +84,18 @@
                 <div class="pricing hover-effect">
                     <div class="pricing-head">
                         <h3>
-                            Pro Rata 
+                            Pro Rata
                             <span> Let's commit to one another... </span>
                         </h3>
                         <h4>
-                            <i>{{price_year}}</i>
+                            <i>{{currency_symbol}}{{price_year}}</i>
                             <span> Per Year </span>
                         </h4>
                     </div>
                     <ul class="pricing-content list-unstyled">
                         <li>
-                            <i class="icon-check"></i> <b>Unlimited</b> Jobs
+                            <i class="icon-check"></i>
+                            <b>Unlimited</b> Jobs
                         </li>
                         <li>
                             <i class="icon-check"></i> Unlimited Alarms
@@ -109,12 +113,31 @@
                             Paid yearly by credit card. You'll get a full refund if you aren't completely satisfied.
                         </p>
                         <button ng-click="upgrade('yearly')" class="btn yellow-crusta">
-                        Sign Up <i class="icon-ok m-icon-white"></i>
+                            Sign Up
+                            <i class="icon-ok m-icon-white"></i>
                         </button>
                     </div>
                 </div>
             </div>
             <!--//End Pricing -->
+        </div>
+        <div class="row">
+            <div class="form-inline form-coupon">
+                <div class="form-group">
+                    <label for="coupon">Have a coupon? Enter it here.</label>
+                    <input type="text" class="form-control" name="coupon" ng-model="coupon">
+                    <span ng-if="coupon=='WELCOME10'">
+                        <i class="icon-check"></i>
+                        <button ng-click="upgrade('monthly')" class="btn yellow-crusta">
+                            Pay Monthly
+                        </button>
+                        or
+                        <button ng-click="upgrade('yearly')" class="btn yellow-crusta">
+                            Pay Yearly
+                        </button>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -123,4 +146,5 @@
 <form id="plan-form" action="/upgrade" method="post" autocomplete="off" style="display:none;">
     <input type="hidden" name="token" value="" id="plan-token">
     <input type="hidden" name="plan" ng-value="upgrade_plan">
+    <input type="hidden" name="coupon" ng-value="coupon">
 </form>

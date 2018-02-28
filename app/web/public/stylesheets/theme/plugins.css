@@ -121,3 +121,11 @@ Pricing table
   font-size: 80px;
   transition: color 0.5s ease-in-out;
 }
+
+.form-coupon input.form-control {
+  width: auto;
+}
+
+.form-coupon i {
+  color: #36d7ac; 
+}

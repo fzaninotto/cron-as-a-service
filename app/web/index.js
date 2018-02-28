@@ -567,8 +567,14 @@ app.post('/upgrade', function (req, res, next) {
   } else {
     var token = req.body.token;
     var plan = req.body.plan;
+    var coupon = req.body.coupon;
 
-    utils.createPlan(req.user, token, (plan + '_' + res.__("currency")).toLowerCase(), function (err, user) {
+    utils.createPlan({
+      user: req.user,
+      token: token,
+      plan: (plan + '_' + res.__("currency")).toLowerCase(),
+      coupon: coupon
+    }, function (err, user) {
       var messages = [];
 
       if (err || !user) {
