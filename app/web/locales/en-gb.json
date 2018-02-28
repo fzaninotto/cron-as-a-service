@@ -1,8 +1,9 @@
 {
-	"price": "9.99",
-	"currency": "GBP",
-	"currency_symbol": "£",
-	"price_num": "999",
-	"price_month": "9.99",
-	"price_year": "104.99"
+    "price": "9.99",
+    "currency": "GBP",
+    "currency_symbol": "£",
+    "price_num": "999",
+    "price_month": "9.99",
+    "price_year": "104.99",
+    "price_year_per_month": "8.75"
 }
