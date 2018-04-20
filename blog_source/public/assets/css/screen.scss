@@ -22,9 +22,8 @@
    0. Includes - Ground zero
    ========================================================================== */
 
-@import "normalize";
-@import "_bourbon/scss/bourbon";
-
+@import 'normalize';
+@import '_bourbon/scss/bourbon';
 
 /* ==========================================================================
    1. Icons - Sets up the icon font and respective classes
@@ -34,10 +33,10 @@
 @include font-face(icons, '../fonts/icons');
 
 /* Apply these base styles to all icons */
-.icon-ghost:before, 
-.icon-feed:before, 
-.icon-twitter:before, 
-.icon-google-plus:before, 
+.icon-ghost:before,
+.icon-feed:before,
+.icon-twitter:before,
+.icon-google-plus:before,
 .icon-facebook:before {
     font-family: 'icons';
     speak: none;
@@ -53,22 +52,21 @@
 /* Each icon is created by inserting the corret character into the 
    content of the :before pseudo element. Like a boss. */
 .icon-ghost:before {
-    content: "\e000";
+    content: '\e000';
 }
 .icon-feed:before {
-    content: "\e001";
+    content: '\e001';
 }
 .icon-twitter:before {
-    content: "\e002";
+    content: '\e002';
     font-size: 1.1em;
 }
 .icon-google-plus:before {
-    content: "\e003";
+    content: '\e003';
 }
 .icon-facebook:before {
-    content: "\e004";
+    content: '\e004';
 }
-
 
 /* ==========================================================================
    2. General - Setting up some base styles
@@ -78,41 +76,44 @@ html {
     height: 100%;
     max-height: 100%;
     font-size: 62.5%;
-    background: #F7FAFB;
-
+    background: #f7fafb;
 }
 
 body {
     height: 100%;
     max-height: 100%;
     font-family: 'Noto Serif', serif;
-    font-size: 2.0rem;
+    font-size: 2rem;
     line-height: 1.6em;
-    color: #3A4145;
+    color: #3a4145;
 }
 
 main.content {
     display: block;
     padding-top: 5rem;
     padding-bottom: 8rem;
-    background: #FFF;
+    background: #fff;
     outline: 1px solid red;
 }
 
 ::-moz-selection {
     color: #222;
-    background: #D6EDFF;
+    background: #d6edff;
     text-shadow: none;
 }
 
 ::selection {
     color: #222;
-    background: #D6EDFF;
+    background: #d6edff;
     text-shadow: none;
 }
 
-h1, h2, h3,
-h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     text-rendering: optimizeLegibility;
     line-height: 1;
     margin-top: 0;
@@ -155,21 +156,29 @@ a {
 }
 
 a:hover {
-    color: #57A3E8;
+    color: #57a3e8;
 }
 
-h1 a, h2 a, h3 a,
-h4 a, h5 a, h6 a {
-    color: #50585D;
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    color: #50585d;
 }
 
-
-p, ul, ol, dl {
+p,
+ul,
+ol,
+dl {
     margin: 1.6em 0;
 }
 
-ol ol, ul ul,
-ul ol, ol ul {
+ol ol,
+ul ul,
+ul ol,
+ol ul {
     margin: 0.4em 0;
 }
 
@@ -182,12 +191,12 @@ dl dt {
     text-overflow: ellipsis;
     white-space: nowrap;
     font-weight: bold;
-    margin-bottom: 1em
+    margin-bottom: 1em;
 }
 
 dl dd {
     margin-left: 200px;
-    margin-bottom: 1em
+    margin-bottom: 1em;
 }
 
 hr {
@@ -200,7 +209,7 @@ hr {
 }
 
 blockquote {
-    @include box-sizing("border-box");
+    @include box-sizing('border-box');
     margin: 1.6em 0 1.6em -2.2em;
     padding: 0 0 0 1.6em;
     border-left: #4a4a4a 0.4em solid;
@@ -214,47 +223,53 @@ blockquote p {
 blockquote small {
     display: inline-block;
     margin: 0.8em 0 0.8em 1.5em;
-    font-size:0.9em;
+    font-size: 0.9em;
     color: #ccc;
 }
 
-blockquote small:before { content: '\2014 \00A0'; }
-
-blockquote cite {
-    font-weight:bold;
+blockquote small:before {
+    content: '\2018 \00A0';
 }
 
-blockquote cite a { font-weight: normal; }
+blockquote cite {
+    font-weight: bold;
+}
+
+blockquote cite a {
+    font-weight: normal;
+}
 
 mark {
     background-color: #ffc336;
 }
 
-code, tt {
+code,
+tt {
     padding: 1px 3px;
     font-family: Inconsolata, monospace, sans-serif;
     font-size: 0.85em;
     white-space: pre-wrap;
-    border: 1px solid #E3EDF3;
-    background: #F7FAFB;
+    border: 1px solid #e3edf3;
+    background: #f7fafb;
     border-radius: 2px;
 }
 
 pre {
-    @include box-sizing("border-box");
+    @include box-sizing('border-box');
     margin: 1.6em 0;
-    border: 1px solid #E3EDF3;
+    border: 1px solid #e3edf3;
     width: 100%;
     padding: 10px;
     font-family: Inconsolata, monospace, sans-serif;
     font-size: 0.9em;
     white-space: pre;
     overflow: auto;
-    background: #F7FAFB;
+    background: #f7fafb;
     border-radius: 3px;
 }
 
-pre code, tt {
+pre code,
+tt {
     font-size: inherit;
     white-space: -moz-pre-wrap;
     white-space: pre-wrap;
@@ -274,15 +289,13 @@ kbd {
     font-weight: bold;
     background: #f4f4f4;
     border-radius: 4px;
-    box-shadow: 
-        0 1px 0 rgba(0, 0, 0, 0.2), 
-        0 1px 0 0 #fff inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 #fff inset;
 }
 
 table {
-    @include box-sizing("border-box");
+    @include box-sizing('border-box');
     margin: 1.6em 0;
-    width:100%;
+    width: 100%;
     max-width: 100%;
     background-color: transparent;
 }
@@ -296,7 +309,9 @@ table td {
     border-top: 1px solid #efefef;
 }
 
-table th { color: #000; }
+table th {
+    color: #000;
+}
 
 table caption + thead tr:first-child th,
 table caption + thead tr:first-child td,
@@ -307,9 +322,13 @@ table thead:first-child tr:first-child td {
     border-top: 0;
 }
 
-table tbody + tbody { border-top: 2px solid #efefef; }
+table tbody + tbody {
+    border-top: 2px solid #efefef;
+}
 
-table table table { background-color: #fff; }
+table table table {
+    background-color: #fff;
+}
 
 table tbody > tr:nth-child(odd) > td,
 table tbody > tr:nth-child(odd) > th {
@@ -318,10 +337,11 @@ table tbody > tr:nth-child(odd) > th {
 
 table.plain tbody > tr:nth-child(odd) > td,
 table.plain tbody > tr:nth-child(odd) > th {
-   background: transparent;
+    background: transparent;
 }
 
-iframe, .fluid-width-video-wrapper {
+iframe,
+.fluid-width-video-wrapper {
     display: block;
     margin: 1.6em 0;
 }
@@ -331,7 +351,6 @@ margin on the iframe, cause it breaks stuff. */
 .fluid-width-video-wrapper iframe {
     margin: 0;
 }
-
 
 /* ==========================================================================
    3. Utilities - These things get used a lot
@@ -358,7 +377,6 @@ margin on the iframe, cause it breaks stuff. */
     vertical-align: middle;
 }
 
-
 /* ==========================================================================
    4. General - The main styles for the the theme
    ========================================================================== */
@@ -378,7 +396,7 @@ margin on the iframe, cause it breaks stuff. */
     background-image: url(/images/fun.jpg);
 }
 
-.site-head .post-meta a{
+.site-head .post-meta a {
     color: cornflowerblue;
 }
 
@@ -402,7 +420,7 @@ margin on the iframe, cause it breaks stuff. */
     letter-spacing: -1px;
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
 
 .blog-description {
@@ -412,17 +430,17 @@ margin on the iframe, cause it breaks stuff. */
     font-weight: 300;
     font-family: 'Noto Serif', serif;
     letter-spacing: 0;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 /* Every post, on every page, gets this style on its <article> tag */
 .post {
     position: relative;
-    width:80%;
+    width: 80%;
     max-width: 700px;
     margin: 4rem auto;
     padding-bottom: 4rem;
-    border-bottom: #EBF2F6 1px solid;
+    border-bottom: #ebf2f6 1px solid;
     word-break: break-word;
     hyphens: auto;
 }
@@ -431,10 +449,10 @@ margin on the iframe, cause it breaks stuff. */
    just for the lolz and stylepoints. */
 .post:after {
     display: block;
-    content: "";
+    content: '';
     width: 7px;
     height: 7px;
-    border: #E7EEF2 1px solid;
+    border: #e7eef2 1px solid;
     position: absolute;
     bottom: -5px;
     left: 50%;
@@ -447,7 +465,7 @@ margin on the iframe, cause it breaks stuff. */
 }
 
 .post-title {
-    margin:0;
+    margin: 0;
 }
 
 .post-title a {
@@ -465,11 +483,11 @@ margin on the iframe, cause it breaks stuff. */
     margin: 0 0 5px 0;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.5rem;
-    color: #9EABB3;
+    color: #9eabb3;
 }
 
 .post-meta a {
-    color: #9EABB3;
+    color: #9eabb3;
     text-decoration: none;
 }
 
@@ -560,7 +578,7 @@ margin on the iframe, cause it breaks stuff. */
     position: relative;
     margin: 4rem 0 0 0;
     padding: 4rem 0 0 0;
-    border-top: #EBF2F6 1px solid;
+    border-top: #ebf2f6 1px solid;
 }
 
 .post-footer h4 {
@@ -594,14 +612,13 @@ margin on the iframe, cause it breaks stuff. */
     font-size: 1.8rem;
     display: inline-block;
     margin: 1.4rem 1.6rem 1.6rem 0;
-    color: #BBC7CC;
+    color: #bbc7cc;
     text-decoration: none;
 }
 
 .post-footer .share a:hover {
-    color: #50585D;
+    color: #50585d;
 }
-
 
 /* ==========================================================================
    6. Third Party Elements - Embeds from other services
@@ -619,7 +636,6 @@ margin on the iframe, cause it breaks stuff. */
     font-size: 1.1rem;
 }
 
-
 /* ==========================================================================
    7. Pagination - Tools to let you flick between pages
    ========================================================================== */
@@ -632,12 +648,12 @@ margin on the iframe, cause it breaks stuff. */
     margin: 4rem auto;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.3rem;
-    color: #9EABB3;
+    color: #9eabb3;
     text-align: center;
 }
 
 .pagination a {
-    color: #9EABB3;
+    color: #9eabb3;
 }
 
 /* Push the previous/next links out to the left/right */
@@ -646,7 +662,7 @@ margin on the iframe, cause it breaks stuff. */
     position: absolute;
     display: inline-block;
     padding: 0 15px;
-    border: #EBF2F6 2px solid;
+    border: #ebf2f6 2px solid;
     text-decoration: none;
     border-radius: 30px;
     transition: border ease 0.3s;
@@ -667,9 +683,8 @@ margin on the iframe, cause it breaks stuff. */
 
 .older-posts:hover,
 .newer-posts:hover {
-    border-color: #9EABB3;
+    border-color: #9eabb3;
 }
-
 
 /* ==========================================================================
    8. Footer - The bottom of every page
@@ -679,22 +694,22 @@ margin on the iframe, cause it breaks stuff. */
     position: relative;
     margin: 0;
     padding: 4rem 0;
-    border-top: #EBF2F6 1px solid;
+    border-top: #ebf2f6 1px solid;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.3rem;
     line-height: 1.7em;
-    color: #BBC7CC;
+    color: #bbc7cc;
     text-align: center;
-    background: #F7FAFB;
+    background: #f7fafb;
 }
 
 .site-footer a {
-    color: #BBC7CC;
+    color: #bbc7cc;
     text-decoration: underline;
 }
 
 .site-footer a:hover {
-    color: #50585D;
+    color: #50585d;
 }
 
 .poweredby .icon-ghost {
@@ -713,153 +728,150 @@ margin on the iframe, cause it breaks stuff. */
 
 /* CSS tooltip saying "Subscribe!" - initially hidden */
 .tooltip {
-    opacity:0;
+    opacity: 0;
     display: inline-block;
     padding: 4px 8px 5px 8px;
-    position:absolute;
+    position: absolute;
     top: -23px;
     left: -21px;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1.1rem;
     line-height: 1em;
     text-align: center;
-    background: #50585D;
-    border-radius:20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    background: #50585d;
+    border-radius: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     transition: opacity 0.3s ease, top 0.3s ease;
 }
 
 /* The little chiclet arrow under the tooltip, pointing down */
 .tooltip:after {
-    content:"";
-    border-width:5px 5px 0 5px;
-    border-style:solid;
-    border-color: #50585D transparent;
-    display:block;
-    position:absolute;
-    bottom:-4px;
-    left:50%;
-    margin-left:-5px;
+    content: '';
+    border-width: 5px 5px 0 5px;
+    border-style: solid;
+    border-color: #50585d transparent;
+    display: block;
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    margin-left: -5px;
     z-index: 220;
-    width:0;
+    width: 0;
 }
 
 .subscribe {
-  margin: 80px auto;
-  padding: 20px 0;
-  width: 100%;
-  background: white;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    margin: 80px auto;
+    padding: 20px 0;
+    width: 100%;
+    background: white;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
 .subscribe-pitch {
-  padding-left: 120px;
-  background: url("/images/clock.png") 10px center no-repeat;
-  background-size:  10% auto;
+    padding-left: 120px;
+    background: url('/images/clock.png') 10px center no-repeat;
+    background-size: 10% auto;
 }
 .subscribe-pitch > h3 {
-  margin: 0 0 12px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #222;
-  text-transform: uppercase;
+    margin: 0 0 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #222;
+    text-transform: uppercase;
 }
 .subscribe-pitch > p {
-  line-height: 22px;
-  color: #484848;
+    line-height: 22px;
+    color: #484848;
 }
 
 .subscribe-form {
-  position: relative;
-  margin: 20px 0 -20px;
-  padding: 15px;
-  background: #fafafa;
-  border-top: 1px solid #ccc;
-  border-radius: 0 0 6px 6px;
-  background-image: -webkit-linear-gradient(top, #fafafa, #eaeaea 50%, #e1e1e1 51%, #f2f2f2);
-  background-image: -moz-linear-gradient(top, #fafafa, #eaeaea 50%, #e1e1e1 51%, #f2f2f2);
-  background-image: -o-linear-gradient(top, #fafafa, #eaeaea 50%, #e1e1e1 51%, #f2f2f2);
-  background-image: linear-gradient(to bottom, #fafafa, #eaeaea 50%, #e1e1e1 51%, #f2f2f2);
-  -webkit-box-shadow: inset 0 1px white;
-  box-shadow: inset 0 1px white;
+    position: relative;
+    margin: 20px 0 -20px;
+    padding: 15px;
+    background: #fafafa;
+    border-top: 1px solid #ccc;
+    border-radius: 0 0 6px 6px;
+    background-image: -webkit-linear-gradient(top, #fafafa, #eaeaea 50%, #e1e1e1 51%, #f2f2f2);
+    background-image: -moz-linear-gradient(top, #fafafa, #eaeaea 50%, #e1e1e1 51%, #f2f2f2);
+    background-image: -o-linear-gradient(top, #fafafa, #eaeaea 50%, #e1e1e1 51%, #f2f2f2);
+    background-image: linear-gradient(to bottom, #fafafa, #eaeaea 50%, #e1e1e1 51%, #f2f2f2);
+    -webkit-box-shadow: inset 0 1px white;
+    box-shadow: inset 0 1px white;
 }
 
 .subscribe-input {
-  padding: 0 16px;
-  width: 90%;
-  height: 35px;
-  font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
-  font-size: 15px;
-  color: #444;
-  background: #fefefe;
-  background-clip: padding-box;
-  border: 1px solid;
-  border-color: #999 #aaa #aaa;
-  border-radius: 20px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px #f8f8f8;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px #f8f8f8;
+    padding: 0 16px;
+    width: 90%;
+    height: 35px;
+    font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
+    font-size: 15px;
+    color: #444;
+    background: #fefefe;
+    background-clip: padding-box;
+    border: 1px solid;
+    border-color: #999 #aaa #aaa;
+    border-radius: 20px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px #f8f8f8;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px #f8f8f8;
 }
 .subscribe-input:focus {
-  outline: 0;
+    outline: 0;
 }
 
 .subscribe-submit {
-  display: block;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  padding-left: 15px;
-  height: 37px;
-  width: 60px;
-  background: #60e160;
-  border: 1px solid;
-  border-color: #4c9d50 #4c9d50 #4c9d50 #55af5a;
-  border-radius: 0 20px 20px 0;
-  cursor: pointer;
-  font: 0/0 serif;
-  text-shadow: none;
-  color: transparent;
-  background-image: -webkit-linear-gradient(top, #84f087, #4cd94a);
-  background-image: -moz-linear-gradient(top, #84f087, #4cd94a);
-  background-image: -o-linear-gradient(top, #84f087, #4cd94a);
-  background-image: linear-gradient(to bottom, #84f087, #4cd94a);
-  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.4);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.4);
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding-left: 15px;
+    height: 37px;
+    width: 60px;
+    background: #60e160;
+    border: 1px solid;
+    border-color: #4c9d50 #4c9d50 #4c9d50 #55af5a;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    font: 0/0 serif;
+    text-shadow: none;
+    color: transparent;
+    background-image: -webkit-linear-gradient(top, #84f087, #4cd94a);
+    background-image: -moz-linear-gradient(top, #84f087, #4cd94a);
+    background-image: -o-linear-gradient(top, #84f087, #4cd94a);
+    background-image: linear-gradient(to bottom, #84f087, #4cd94a);
+    -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.4);
 }
 .subscribe-submit:active {
-  background: #4cdf4d;
-  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+    background: #4cdf4d;
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
 }
 .subscribe-submit:before {
-  content: '';
-  display: block;
-  margin-top: 1px;
-  width: 25px;
-  height: 19px;
-  background: url("/images/tick.png");
+    content: '';
+    display: block;
+    margin-top: 1px;
+    width: 25px;
+    height: 19px;
+    background: url('/images/tick.png');
 }
 
 .lt-ie9 .subscribe-input {
-  line-height: 33px;
+    line-height: 33px;
 }
-
-
 
 /* ==========================================================================
    9. Media Queries - Smaller than 900px
    ========================================================================== */
 
 @media only screen and (max-width: 900px) {
-
     blockquote {
         margin-left: 0;
     }
 
     .site-head {
-        @include box-sizing("border-box"); 
+        @include box-sizing('border-box');
         height: auto;
         min-height: 240px;
         padding: 15% 0;
@@ -904,21 +916,18 @@ margin on the iframe, cause it breaks stuff. */
     h4 {
         font-size: 2.8rem;
     }
-
 }
 
 /* ==========================================================================
    10. Media Queries - Smaller than 500px
    ========================================================================== */
 
-
 @media only screen and (max-width: 500px) {
-
     .blog-logo img {
         max-height: 80px;
     }
 
-    .inner, 
+    .inner,
     .pagination {
         width: auto;
         margin-left: 16px;
@@ -926,7 +935,7 @@ margin on the iframe, cause it breaks stuff. */
     }
 
     .post {
-        width:auto;
+        width: auto;
         margin-left: 16px;
         margin-right: 16px;
         font-size: 0.8em;
@@ -945,8 +954,8 @@ margin on the iframe, cause it breaks stuff. */
         font-size: 1.5rem;
     }
 
-
-    h1, h2 {
+    h1,
+    h2 {
         font-size: 3rem;
         line-height: 1.1em;
         letter-spacing: -1px;
@@ -980,7 +989,7 @@ margin on the iframe, cause it breaks stuff. */
     .post-footer .author {
         margin: 0 0 2rem 0;
         padding: 0 0 1.6rem 0;
-        border-bottom: #EBF2F6 1px dashed;
+        border-bottom: #ebf2f6 1px dashed;
     }
 
     .post-footer .share {
@@ -1006,7 +1015,6 @@ margin on the iframe, cause it breaks stuff. */
         margin-top: 6rem;
         font-size: 1.1rem;
     }
-
 }
 
 /* ==========================================================================
