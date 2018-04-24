@@ -3,6 +3,9 @@
   "description": "Cron As A Service",
   "version": "0.9.0",
   "author": "Matthew Reid",
+  "scripts": {
+    "build-blog": "harp compile blog_source app/web/public/blog"
+  },  
   "apidoc": {
     "title": "Cron As A Service API",
     "url": "https://www.cronasaservice.com/api"

@@ -4,22 +4,97 @@
     <title>Cron As A Service</title>
     <link>https://www.cronasaservice.com</link>
     <description>Online cron jobs for your webapp</description>
-    <atom:link href="how-to-launch-a-startup-part-4/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="introducing-alarms/feed.xml" rel="self" type="application/rss+xml" />
     
     
       <item>
-        <title>Introducing Alarms</title>
-        <description><![CDATA[<h1>Introducing Cron Alarms</h1><p>We just launched a brand new feature, <a href="https://www.cronasaservice.com/">cron alarms</a> and they are pretty freaking awesome.</p>
-<h2>Free cron monitoring, all thanks to you.</h2><p>We get some great feedback here at <a href="https://www.cronasaservice.com/">cronasaservice.com</a>, several users have asked us to add an alarm feature to monitor their jobs. Well here it is, we will email you when the http request from your cron job doesn&#39;t return the status code you expect. If you are feeling really awesome, you can set up an alarm to parse a JSON response looking for a value (using jsonPath).</p>
-<p>Alarms are so simple to add to your existing cron jobs, just check out the demo below.</p>
-<p><img src="http://giant.gfycat.com/UnrulyCleverAsianwaterbuffalo.gif" alt="cron alarms demo"></p>
-<h2>Your first alarm is on us.</h2><p>You get 1 alarm completely free with your trial plan. If you need more, you can upgrade to a paid plan for as little as £9.99 a month. Trust us, this awesomeness is worth it.</p>
-<p><a href="https://www.cronasaservice.com/">Get started</a> by setting up your first alarm now and you truly never have to worry about your cron jobs again.</p>
-<p><img src="https://s3.amazonaws.com/cronasaservice/Screen+Shot+2015-03-31+at+18.45.20.png" alt="pricing"></p>
+        <title>Introducing Schedule Picker</title>
+        <description><![CDATA[<h1>Never have to remember cron syntax again with our new Schedule Picker</h1><p>We recently revamped our schedule picking. After lots of feedback from users, we decided to simplify how you pick a schedule for your cron job. Originally we used the linux cron syntax (and we still do in the backend) but we&#39;ve decided to simplify it from a user perspective. Check it out below.</p>
+<p>![cron as a service schedule picker][<a href="https://s3.amazonaws.com/cronasaservice/cron-schedule-picker.gif">https://s3.amazonaws.com/cronasaservice/cron-schedule-picker.gif</a>]</p>
+<p>I&#39;m sure you&#39;ll agree it&#39;s much nicer than having to Google what &quot;every day at 10am&quot; is in cron syntax or even using our handy <a href="https://www.cronasaservice.com/cron-builder/">cron builder</a>.</p>
+<p>If you haven&#39;t signed up for an account yet, now is the time. We&#39;re working really hard on bringing great new features to you as soon as possible.</p>
 ]]></description>
-        <pubDate>Sun Feb 21 2016 21:39:59 GMT+0000 (GMT)</pubDate>
-        <link>https://www.cronasaservice.comintroducing-alarms</link>
-        <guid isPermaLink="true">https://www.cronasaservice.comintroducing-alarms</guid>
+        <pubDate>Tue Apr 24 2018 15:19:00 GMT+0200 (CEST)</pubDate>
+        <link>https://www.cronasaservice.comintroducing-schedule-picker</link>
+        <guid isPermaLink="true">https://www.cronasaservice.comintroducing-schedule-picker</guid>
+      </item>
+    
+    
+      <item>
+        <title>How to Launch a Startup - Part 4</title>
+        <description><![CDATA[<h3>Fourth lecture in the series, Adora Cheung guest lectures on building a product.</h3><p>Adora Cheung (of now defunct HomeJoy) talks about techniques for building and growing a product. Readers of The Lean Startup will be familiar with most of these techniques but there are some valuable lessons listed here.</p>
+<blockquote>
+<p>Talk to your customers. Where ever they hang out, go there.</p>
+</blockquote>
+<iframe src="https://clip.mn/embed/yt-yP176MBG9Tk&pid=1448189585" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
+
+<hr/>
+
+<p><a href="how-to-launch-a-startup-part-3.html">Part 3: Paul Graham</a></p>
+]]></description>
+        <pubDate>Tue Apr 24 2018 15:19:00 GMT+0200 (CEST)</pubDate>
+        <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-4</link>
+        <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-4</guid>
+      </item>
+    
+    
+      <item>
+        <title>How to Launch a Startup - Part 3</title>
+        <description><![CDATA[<h3>Third lecure in the series with guest host Paul Graham, co-founder of YCombinator</h3><p>Paul Graham gives a brilliant and funny guest lecture. Paul discusses what happens before a startup. How do you come up with ideas? What should you study at college and who should you hire? Paul answers all these questions and gives very important advice to founders you and old.</p>
+<blockquote>
+<p>What you need to succeed in a startup is NOT expertise in startups. You will learn as you go along instead of &quot;playing house&quot;.</p>
+</blockquote>
+<iframe src="https://www.youtube.com/embed/ii1jcLg-eIQ" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
+
+<hr/>
+
+<p><a href="how-to-launch-a-startup-part-2.html">Part 2: Building a Team</a>
+<a href="how-to-launch-a-startup-part-4.html">Part 4: Building the Product</a></p>
+]]></description>
+        <pubDate>Tue Apr 24 2018 15:19:00 GMT+0200 (CEST)</pubDate>
+        <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-3</link>
+        <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-3</guid>
+      </item>
+    
+    
+      <item>
+        <title>How to Launch a Startup - Part 2</title>
+        <description><![CDATA[<h3>Second lecture by Sam Altman from YCombinator on launching a startup</h3><p>This lecture discusses choosing a co-founder, how important it is to choose wisely and why co-founders should be like James Bond. Sam also discusses how <b>not</b> to hire employees despite how tempting it seems.</p>
+<blockquote>
+<p>The cost of getting an early hire wrong is disastrous
+Sam Altman</p>
+</blockquote>
+<iframe src="https://clip.mn/embed/yt-CVfnkM44Urs&pid=1448189585" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
+
+<hr/>
+
+<p><a href="how-to-launch-a-startup-part-1.html">Part 1: Starting a Startup</a>
+<a href="how-to-launch-a-startup-part-3.html">Part 3: Before the Startup - Paul Graham</a></p>
+]]></description>
+        <pubDate>Tue Apr 24 2018 15:19:00 GMT+0200 (CEST)</pubDate>
+        <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-2</link>
+        <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-2</guid>
+      </item>
+    
+    
+      <item>
+        <title>How to Launch a Startup - Part 1</title>
+        <description><![CDATA[<h3>Lecture by Sam Altman from YCombinator</h3><p>Starting your own Startup is a daunting but exciting task. Luckily, there are plenty of people before you who&#39;ve done it all and build <strong>billion dollar</strong> businesses in the process. Sam Altman is one of those guys, he quit college to start his own company and then launched YCombinator, one of the worlds best known accelerators of the back of it.</p>
+<p>Sam recently taught a course at <em>Stanford University</em> on launching a Startup. It&#39;s fantastic viewing and we thoroughly recommend it. We&#39;ve learnt so much from Sam and over the next few blog posts we hope you will too.</p>
+<blockquote>
+<p>Move fast. Speed is one of your main advantages over large companies.
+Sam Altman</p>
+</blockquote>
+<p>Without further ado, let me introduce Sam Altman and Startup Lesson One.</p>
+<iframe src="https://clip.mn/embed/yt-CBYhVcO4WgI&pid=1448189585" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
+
+<hr/>
+
+<p><a href="how-to-launch-a-startup-part-2.html">Part 2: Building a Team</a></p>
+]]></description>
+        <pubDate>Tue Apr 24 2018 15:19:00 GMT+0200 (CEST)</pubDate>
+        <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-1</link>
+        <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-1</guid>
       </item>
     
     
@@ -45,87 +120,25 @@
 <p>This blog was originally posted on <a href="http://jacquesmattheij.com/retention-is-the-key">Jacques Mattheij&#39;s</a> blog.</p>
 </blockquote>
 ]]></description>
-        <pubDate>Sun Feb 21 2016 21:39:59 GMT+0000 (GMT)</pubDate>
+        <pubDate>Tue Apr 24 2018 15:19:00 GMT+0200 (CEST)</pubDate>
         <link>https://www.cronasaservice.comretention-is-the-key-to-a-successful-startup</link>
         <guid isPermaLink="true">https://www.cronasaservice.comretention-is-the-key-to-a-successful-startup</guid>
       </item>
     
     
       <item>
-        <title>How to Launch a Startup - Part 1</title>
-        <description><![CDATA[<h3>Lecture by Sam Altman from YCombinator</h3><p>Starting your own Startup is a daunting but exciting task. Luckily, there are plenty of people before you who&#39;ve done it all and build <strong>billion dollar</strong> businesses in the process. Sam Altman is one of those guys, he quit college to start his own company and then launched YCombinator, one of the worlds best known accelerators of the back of it.</p>
-<p>Sam recently taught a course at <em>Stanford University</em> on launching a Startup. It&#39;s fantastic viewing and we thoroughly recommend it. We&#39;ve learnt so much from Sam and over the next few blog posts we hope you will too.</p>
-<blockquote>
-<p>Move fast. Speed is one of your main advantages over large companies.
-Sam Altman</p>
-</blockquote>
-<p>Without further ado, let me introduce Sam Altman and Startup Lesson One.</p>
-<iframe src="https://clip.mn/embed/yt-CBYhVcO4WgI&pid=1448189585" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
-
-<hr/>
-
-<p><a href="how-to-launch-a-startup-part-2.html">Part 2: Building a Team</a></p>
+        <title>Introducing Alarms</title>
+        <description><![CDATA[<h1>Introducing Cron Alarms</h1><p>We just launched a brand new feature, <a href="https://www.cronasaservice.com/">cron alarms</a> and they are pretty freaking awesome.</p>
+<h2>Free cron monitoring, all thanks to you.</h2><p>We get some great feedback here at <a href="https://www.cronasaservice.com/">cronasaservice.com</a>, several users have asked us to add an alarm feature to monitor their jobs. Well here it is, we will email you when the http request from your cron job doesn&#39;t return the status code you expect. If you are feeling really awesome, you can set up an alarm to parse a JSON response looking for a value (using jsonPath).</p>
+<p>Alarms are so simple to add to your existing cron jobs, just check out the demo below.</p>
+<p><img src="http://giant.gfycat.com/UnrulyCleverAsianwaterbuffalo.gif" alt="cron alarms demo"></p>
+<h2>Your first alarm is on us.</h2><p>You get 1 alarm completely free with your trial plan. If you need more, you can upgrade to a paid plan for as little as £9.99 a month. Trust us, this awesomeness is worth it.</p>
+<p><a href="https://www.cronasaservice.com/">Get started</a> by setting up your first alarm now and you truly never have to worry about your cron jobs again.</p>
+<p><img src="https://s3.amazonaws.com/cronasaservice/Screen+Shot+2015-03-31+at+18.45.20.png" alt="pricing"></p>
 ]]></description>
-        <pubDate>Sun Feb 21 2016 21:39:59 GMT+0000 (GMT)</pubDate>
-        <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-1</link>
-        <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-1</guid>
-      </item>
-    
-    
-      <item>
-        <title>How to Launch a Startup - Part 2</title>
-        <description><![CDATA[<h3>Second lecture by Sam Altman from YCombinator on launching a startup</h3><p>This lecture discusses choosing a co-founder, how important it is to choose wisely and why co-founders should be like James Bond. Sam also discusses how <b>not</b> to hire employees despite how tempting it seems.</p>
-<blockquote>
-<p>The cost of getting an early hire wrong is disastrous
-Sam Altman</p>
-</blockquote>
-<iframe src="https://clip.mn/embed/yt-CVfnkM44Urs&pid=1448189585" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
-
-<hr/>
-
-<p><a href="how-to-launch-a-startup-part-1.html">Part 1: Starting a Startup</a>
-<a href="how-to-launch-a-startup-part-3.html">Part 3: Before the Startup - Paul Graham</a></p>
-]]></description>
-        <pubDate>Sun Feb 21 2016 21:39:59 GMT+0000 (GMT)</pubDate>
-        <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-2</link>
-        <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-2</guid>
-      </item>
-    
-    
-      <item>
-        <title>How to Launch a Startup - Part 3</title>
-        <description><![CDATA[<h3>Third lecure in the series with guest host Paul Graham, co-founder of YCombinator</h3><p>Paul Graham gives a brilliant and funny guest lecture. Paul discusses what happens before a startup. How do you come up with ideas? What should you study at college and who should you hire? Paul answers all these questions and gives very important advice to founders you and old.</p>
-<blockquote>
-<p>What you need to succeed in a startup is NOT expertise in startups. You will learn as you go along instead of &quot;playing house&quot;.</p>
-</blockquote>
-<iframe src="https://www.youtube.com/embed/ii1jcLg-eIQ" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
-
-<hr/>
-
-<p><a href="how-to-launch-a-startup-part-2.html">Part 2: Building a Team</a>
-<a href="how-to-launch-a-startup-part-4.html">Part 4: Building the Product</a></p>
-]]></description>
-        <pubDate>Sun Feb 21 2016 21:39:59 GMT+0000 (GMT)</pubDate>
-        <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-3</link>
-        <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-3</guid>
-      </item>
-    
-    
-      <item>
-        <title>How to Launch a Startup - Part 4</title>
-        <description><![CDATA[<h3>Fourth lecture in the series, Adora Cheung guest lectures on building a product.</h3><p>Adora Cheung (of now defunct HomeJoy) talks about techniques for building and growing a product. Readers of The Lean Startup will be familiar with most of these techniques but there are some valuable lessons listed here.</p>
-<blockquote>
-<p>Talk to your customers. Where ever they hang out, go there.</p>
-</blockquote>
-<iframe src="https://clip.mn/embed/yt-yP176MBG9Tk&pid=1448189585" height="450" width="100%" border="0" allowFullScreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
-
-<hr/>
-
-<p><a href="how-to-launch-a-startup-part-3.html">Part 3: Paul Graham</a></p>
-]]></description>
-        <pubDate>Sun Feb 21 2016 21:39:59 GMT+0000 (GMT)</pubDate>
-        <link>https://www.cronasaservice.comhow-to-launch-a-startup-part-4</link>
-        <guid isPermaLink="true">https://www.cronasaservice.comhow-to-launch-a-startup-part-4</guid>
+        <pubDate>Tue Apr 24 2018 15:19:00 GMT+0200 (CEST)</pubDate>
+        <link>https://www.cronasaservice.comintroducing-alarms</link>
+        <guid isPermaLink="true">https://www.cronasaservice.comintroducing-alarms</guid>
       </item>
     
   </channel>
