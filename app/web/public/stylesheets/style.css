@@ -160,6 +160,9 @@ footer a {
 .nav-bottom {
     font-weight: 300;
     width: 100%;
+    clear: both;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 #itemscope {
