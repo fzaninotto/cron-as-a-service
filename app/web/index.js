@@ -354,7 +354,7 @@ app.get(['/home', '/upgrade'], function(req, res, next) {
 
 app.post('/register', function(req, res, next) {
     req
-        .checkBody('email', 'Oops you left your email out')
+        .checkBody('email', 'Please enter your work email address')
         .notEmpty()
         .nonSpamEmail();
 
