@@ -8,50 +8,34 @@
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="/home">
-			 <img src="images/logo.png" alt="Cron As A Service" width="50" class="logo-default"/>
+             <img src="images/logo.png" alt="Cron As A Service" width="50" class="logo-default"/>
+             Cron As A Service
 			</a>
 		</div>
 		<!-- END LOGO -->
-		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
-		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-		</a>
-		<!-- END PAGE ACTIONS -->
 		<!-- BEGIN PAGE TOP -->
 		<div class="page-top">
 			<!-- BEGIN TOP NAVIGATION MENU -->
 			<div class="top-menu">
-				<ul class="nav navbar-nav pull-right">
-					<li class="separator hide">
-					</li>
-					<!-- BEGIN NOTIFICATION DROPDOWN -->
-					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-					<!--<li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
-						<a href="index.html#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-						<i class="icon-bell"></i>
-						<span class="badge badge-success">
-						7 </span>
-						</a>
-						<ul class="dropdown-menu">
-							<li class="external">
-								<h3><span class="bold">12 pending</span> notifications</h3>
-								<a href="extra_profile.html">view all</a>
-							</li>
-							<li>
-								<ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-									<li>
-										<a href="javascript:;">
-										<span class="time">just now</span>
-										<span class="details">
-										<span class="label label-sm label-icon label-success">
-										<i class="fa fa-plus"></i>
-										</span>
-										New user registered. </span>
-										</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>-->
+				<ul class="nav navbar-nav">
+					<li>
+                        <a href="#/jobs">
+                        <i class="icon-home"></i>
+                        <span class="title">Jobs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/contact">
+                        <i class="icon-envelope-alt"></i>
+                        <span class="title">Contact</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/settings">
+                        <i class="icon-cog"></i>
+                        <span class="title">Settings</span>
+                        </a>
+                    </li>
 				</ul>
 			</div>
 			<!-- END TOP NAVIGATION MENU -->
@@ -73,12 +57,6 @@
         <tour step="currentStep" post-tour="postTour()">
             <div class="page-sidebar navbar-collapse collapse">
                 <!-- BEGIN SIDEBAR MENU -->
-                <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-                <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-                <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-                <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                 <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                     <li class="start" ng-class="{active:location.path()==='/jobs'}" tourtip="Welcome to your cron home screen, your jobs appear here for easy management.<%if (user.features.indexOf('keepalive') > -1 ) { %> You'll see we've added your first job, woohoo! <% } %>" tourtip-placement="right" tourtip-offset="30" tourtip-next-label="Got it!" tourtip-step="0">
                         <a href="#/jobs">

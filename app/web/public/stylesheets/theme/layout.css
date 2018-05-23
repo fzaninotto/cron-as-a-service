@@ -82,13 +82,21 @@ Page Header
   padding-left: 20px;
   padding-right: 20px;
 }
+
 .page-header.navbar .page-logo > .logo-image,
 .page-header.navbar .page-logo > a {
   display: block;
   float: left;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 15px;
 }
 .page-header.navbar .page-logo .logo-default {
-  margin: 15px 10px 0 10px;
+  margin: 0 10px 0 10px;
 }
 .page-header.navbar .page-logo .logo-mini {
   display: none;

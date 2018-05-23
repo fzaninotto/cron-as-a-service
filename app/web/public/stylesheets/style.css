@@ -275,9 +275,14 @@ footer {
     color: green;
 }
 
-@media (max-width: 700px) {
-    .terminal-window {
-        width: 100%;
+.top-menu {
+    display: none;
+}
+
+@media (max-width: 990px) {
+
+    .top-menu {
+        display: block;
     }
 }
 
