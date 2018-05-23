@@ -153,6 +153,10 @@ footer {
     padding: 10px 20px 10px 0;
 }
 
+footer a {
+    text-decoration: underline;
+}
+
 .nav-bottom {
     font-weight: 300;
     width: 100%;
