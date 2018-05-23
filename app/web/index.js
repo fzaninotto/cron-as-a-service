@@ -316,7 +316,7 @@ app.post('/reset/:token', function(req, res) {
                 var mailOptions = {
                     to: user.email,
                     from: 'passwordreset@cronasaservice.com',
-                    subject: 'Your password has been changed',
+                    subject: 'Your password has been changed - Cron As A Service',
                     text:
                         'Hello,\n\n' +
                         'This is a confirmation that the password for your account ' +
