@@ -46,7 +46,7 @@ body {
 	color: #efefef;
 }
 
-footer a .nav-bottom a {
+footer a , .nav-bottom a {
  color: #fff;  
 }
 
