@@ -16,7 +16,7 @@
         
         <%if (locals.errors) { %>
             <div class="alert alert-danger" role="alert">
-              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <i class="icon-exclamation"></i>
               <span class="sr-only">Error:</span>
                 <% errors.forEach(function(error){%>
                    <%= error.msg %>
@@ -30,7 +30,7 @@
 			<input type="text" placeholder="yourapp" id="url" required="" class="form-control">
 			<span class="input-group-addon">.herokuapp.com</span>
 		</div>
-        <a class="btn btn-lg btn-primary btn-block" id="purchase"><i class="glyphicon glyphicon-shopping-cart"></i> Purchase Securely</a>
+        <a class="btn btn-lg btn-primary btn-block" id="purchase"><i class="icon-shopping-cart"></i> Purchase Securely</a>
         
         <input type="hidden" name="url" id="_url"/>
         <input type="hidden" name="token" id="_token"/>

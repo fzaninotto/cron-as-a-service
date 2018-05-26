@@ -14,7 +14,7 @@
     <div class="portlet-body">
         <div ng-repeat="alert in jobAlerts" class="note note-danger note-shadow" role="alert">
             <p>
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <i class="icon-exclamation"></i>
                 <span class="sr-only">Error:</span>
                 {{alert.msg}}
             </p>
@@ -121,7 +121,7 @@
                                             <!-- Tab panes -->
                                             <form autocomplete="off" class="form form-inline" ng-submit="createAlarm(job)">
                                                 <div ng-repeat="alert in job.alarmAlerts" class="alert alert-danger" role="alert">
-                                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                                    <i class="icon-exclamation"></i>
                                                     <span class="sr-only">Error:</span>
                                                     {{alert.msg}}
                                                 </div>

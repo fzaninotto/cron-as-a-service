@@ -102,7 +102,7 @@
                 
                 <%if (locals.errors) { %>
                     <div class="alert alert-danger" role="alert">
-                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <i class="icon-exclamation"></i>
                       <span class="sr-only">Error:</span>
                         <% errors.forEach(function(error){%>
                            <%= error.msg %>
@@ -112,7 +112,7 @@
                 
                 <%if (locals.messages) { %>
                     <div class="alert alert-success" role="alert">
-                      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        <i class="icon-ok"></i>
                       <span class="sr-only">Message:</span>
                         <% messages.forEach(function(messages){%>
                            <%= messages.msg %>
