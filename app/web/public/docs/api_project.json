@@ -1,11 +1,1 @@
-{
-  "name": "cron-as-a-service",
-  "version": "0.9.0",
-  "description": "Cron As A Service",
-  "title": "Cron As A Service API",
-  "url": "https://www.cronasaservice.com/api",
-  "generator": {
-    "version": "0.7.2",
-    "time": "2015-03-28T18:12:34.894Z"
-  }
-}
+{  "title": "Cron As A Service API",  "url": "https://www.cronasaservice.com/api",  "name": "cron-as-a-service",  "version": "0.9.0",  "description": "Cron As A Service",  "sampleUrl": false,  "defaultVersion": "0.0.0",  "apidoc": "0.3.0",  "generator": {    "name": "apidoc",    "time": "2018-06-21T09:09:58.127Z",    "url": "http://apidocjs.com",    "version": "0.17.6"  }}

@@ -21,6 +21,7 @@
       app.constant('apiKey', '<%=apikey%>');
       app.constant('email', '<%=user.email%>');
       app.constant('name', '<%=user.name%>');
+      app.constant('has_password', <%=user.password!=null%>);
       app.constant('invoice_email', '<%=user.info ? user.info.invoice_email : ''%>');
       app.constant('plan', '<%= user.stripe.plan ? user.stripe.plan : 'free' %>');
       app.constant('currency_symbol', '<%= __("currency_symbol") %>');

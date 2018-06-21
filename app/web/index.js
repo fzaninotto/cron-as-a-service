@@ -353,8 +353,7 @@ app.get(['/home', '/upgrade'], function(req, res, next) {
 });
 
 app.post('/register', function(req, res, next) {
-    req
-        .checkBody('email', 'Please enter your work email address')
+    req.checkBody('email', 'Please enter your work email address')
         .notEmpty()
         .nonSpamEmail();
 
@@ -534,7 +533,9 @@ app.post('/tourcomplete', function(req, res, next) {
     } else {
         User.findOne({ _id: req.user._id }, function(err, user) {
             user.features.push('tourcomplete');
+
             user.save(function(err, user) {
+                if (err) console.log(err);
                 req.logIn(user, function() {
                     res.json({ succes: true });
                 });

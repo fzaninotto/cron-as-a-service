@@ -6,7 +6,7 @@ body {
   max-width: 1280px;
 }
 
-body, p, a, div, th, td { 
+body, p, a, div, th, td {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -14,7 +14,7 @@ body, p, a, div, th, td {
 
 td.code {
   font-size: 14px;
-  font-family: "Source Code Pro";
+  font-family: "Source Code Pro", monospace;
   font-style: normal;
   font-weight: 400;
 }
@@ -89,6 +89,14 @@ article h3 {
   margin: 0 0 10px 0;
 }
 
+article h4 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 0 8px 0;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -106,7 +114,7 @@ th {
 
 td {
   vertical-align: top;
-  padding: 2px 8px;
+  padding: 10px 8px 0 8px;
   border: #e0e0e0 1px solid;
 }
 
@@ -118,6 +126,8 @@ td {
 
 .label-optional {
   float: right;
+  background-color: grey;
+  margin-top: 4px;
 }
 
 .open-left {
@@ -162,6 +172,15 @@ pre {
   border-radius: 6px;
   position: relative;
   margin: 10px 0 20px 0;
+  overflow-x: auto;
+}
+
+pre.prettyprint {
+  width: 100%;
+}
+
+code.language-text {
+  word-wrap: break-word;
 }
 
 pre.language-json {
@@ -169,38 +188,35 @@ pre.language-json {
 }
 
 pre.language-html {
-  margin: 40px 0 20px 0;
+  margin: 0 0 20px 0;
 }
 
-pre.language-html:before {
-  content: attr(data-type);
-  position: absolute;
-  top: -30px;
-  left: 0;
+.type {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
   font-size: 15px;
   display: inline-block;
-  padding: 2px 5px;
+  margin: 0 0 5px 0;
+  padding: 4px 5px;
   border-radius: 6px;
   text-transform: uppercase;
   background-color: #3387CC;
   color: #ffffff;
 }
 
-pre.language-html[data-type="get"]:before {
+.type__get {
   background-color: green;
 }
 
-pre.language-html[data-type="put"]:before {
+.type__put {
   background-color: #e5c500;
 }
 
-pre.language-html[data-type="post"]:before {
+.type__post {
   background-color: #4070ec;
 }
 
-pre.language-html[data-type="delete"]:before {
+.type__delete {
   background-color: #ed0039;
 }
 
@@ -216,24 +232,18 @@ pre.language-api .pun {
 pre code {
   display: block;
   font-size: 14px;
-  font-family: "Source Code Pro";
+  font-family: "Source Code Pro", monospace;
   font-style: normal;
   font-weight: 400;
   word-wrap: normal;
   white-space: pre;
 }
 
-/*
-pre.language-json {
-  background: #f5f5f5;
-  border: #e0e0e0 1px solid;
+pre code.sample-request-response-json {
+  white-space: pre-wrap;
+  max-height: 500px;
+  overflow: auto;
 }
-
-pre.language-json .pln,
-pre.language-json .pun {
-  color: #3a3a3a;
-}
-*/
 
 /* ------------------------------------------------------------------------------------------
  * Sidenav
@@ -241,14 +251,15 @@ pre.language-json .pun {
 .sidenav {
   width: 228px;
   margin: 0;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   position: fixed;
-  top: 0;
+  top: 50px;
   left: 0;
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #f5f5f5;
+  z-index: 10;
 }
 
 .sidenav > li > a {
@@ -264,6 +275,11 @@ pre.language-json .pun {
   font-size: 14px;
 }
 
+.sidenav > li.nav-header {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 .sidenav > li.nav-header > a {
   padding: 5px 15px;
   border: 1px solid #e5e5e5;
@@ -274,17 +290,11 @@ pre.language-json .pun {
   background-color: #ffffff;
 }
 
-.sidenav > li.nav-header.active > a {
-  background-color: #0088cc;
-}
-
-.sidenav > .active > a {
-  position: relative;
-  z-index: 2;
-}
-
-.sidenav > li > a:hover {
-  background-color: #ffffff;
+.sidenav > li.active > a {
+    position: relative;
+    z-index: 2;
+    background-color: #0088cc;
+    color: #ffffff;
 }
 
 .sidenav > li.has-modifications a {
@@ -293,6 +303,34 @@ pre.language-json .pun {
 
 .sidenav > li.is-new a {
   border-left: #e5e5e5 4px solid;
+}
+
+/* ------------------------------------------------------------------------------------------
+ * Side nav search
+ * ------------------------------------------------------------------------------------------ */
+.sidenav-search {
+  width: 228px;
+  left: 0px;
+  position: fixed;
+  padding: 16px 20px 10px 20px;
+  background-color: #F5F5F5;
+  z-index: 11;
+}
+
+.sidenav-search .search {
+  height: 26px;
+}
+
+.search-reset {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  right: 28px;
+  top: 17px;
+  background-color: #fff;
 }
 
 /* ------------------------------------------------------------------------------------------
@@ -465,10 +503,10 @@ tr.del td {
 }
 
 @keyframes bouncedelay {
-  0%, 80%, 100% { 
+  0%, 80%, 100% {
     transform: scale(0.0);
     -webkit-transform: scale(0.0);
-  } 40% { 
+  } 40% {
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
@@ -479,6 +517,12 @@ tr.del td {
  * ------------------------------------------------------------------------------------------ */
 ul.nav-tabs {
   margin: 0;
+}
+
+p.deprecated span{
+  color: #ff0000;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 /* ------------------------------------------------------------------------------------------

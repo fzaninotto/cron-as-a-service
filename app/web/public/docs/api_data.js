@@ -1,541 +1,1 @@
-define({ api: [
-  {
-    "type": "get",
-    "url": "/",
-    "title": "List possible API calls",
-    "version": "0.9.0",
-    "name": "ListCalls",
-    "group": "Api",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "apikey",
-            "optional": false,
-            "description": "<p>Api Key.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "method",
-            "optional": false,
-            "description": "<p>Http method for this api call</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "path",
-            "optional": false,
-            "description": "<p>URL to call this api</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   [{\n     \"method\": \"get\",\n     \"path\": \"/jobs\"\n   }]\n",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "field": "NotAuthenticatedError",
-            "optional": false,
-            "description": "<p>The apikey is incorrect or no apikey is provided</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "app/api/index.js"
-  },
-  {
-    "type": "post",
-    "url": "/jobs",
-    "title": "Create a new job",
-    "version": "0.9.0",
-    "name": "CreateJob",
-    "group": "Jobs",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "apikey",
-            "optional": false,
-            "description": "<p>Api Key.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "expression",
-            "optional": false,
-            "description": "<p>Cron expression (Times are in UTC).</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "url",
-            "optional": false,
-            "description": "<p>URL to request.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "expression",
-            "optional": false,
-            "description": "<p>Cron Expression</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "url",
-            "optional": false,
-            "description": "<p>URL to request</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   {\n     \"expression\": \"* * * * *\",\n     \"url\": \"http://www.example.com\",\n     \"method\": \"get\",\n     \"params\": [{test:1}],\n     \"headers\": [{X-Header:'111'}]\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "field": "NotAuthenticatedError",
-            "optional": false,
-            "description": "<p>The apikey is incorrect or no apikey is provided</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "app/api/index.js"
-  },
-  {
-    "type": "delete",
-    "url": "/jobs/{id}",
-    "title": "Delete a Job by id",
-    "version": "0.9.0",
-    "name": "DeleteJob",
-    "group": "Jobs",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "apikey",
-            "optional": false,
-            "description": "<p>Api Key.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "id",
-            "optional": false,
-            "description": "<p>ID for the job.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "response",
-            "optional": false,
-            "description": "<p>Response message</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   {\n     \"response\": \"deleted\"\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "field": "NotAuthenticatedError",
-            "optional": false,
-            "description": "<p>The apikey is incorrect or no apikey is provided</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "app/api/index.js"
-  },
-  {
-    "type": "put",
-    "url": "/jobs/{id}",
-    "title": "Edit an existing Job",
-    "version": "0.9.0",
-    "name": "EditJob",
-    "group": "Jobs",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "apikey",
-            "optional": false,
-            "description": "<p>Api Key.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "id",
-            "optional": false,
-            "description": "<p>ID for the job.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "expression",
-            "optional": false,
-            "description": "<p>Cron expression.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "url",
-            "optional": false,
-            "description": "<p>URL to request.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "expression",
-            "optional": false,
-            "description": "<p>Cron Expression (Times are in UTC)</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "url",
-            "optional": false,
-            "description": "<p>URL to request</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   {\n     \"expression\": \"* * * * *\",\n     \"url\": \"http://www.example.com\"\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "field": "NotAuthenticatedError",
-            "optional": false,
-            "description": "<p>The apikey is incorrect or no apikey is provided</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "app/api/index.js"
-  },
-  {
-    "type": "post",
-    "url": "/jobs/{id}/alarms",
-    "title": "Add an alarm to an existing job",
-    "version": "0.9.0",
-    "name": "EditJob",
-    "group": "Jobs",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "field": "statusCode",
-            "optional": false,
-            "description": "<p>HTTP status code to check for (alarms if not found)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "jsonPath",
-            "optional": false,
-            "description": "<p>JsonPath to check for in the response</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "jsonPathResult",
-            "optional": false,
-            "description": "<p>The value for the matching jsonPath (alarms if no match)</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "field": "statusCode",
-            "optional": false,
-            "description": ""
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "jsonPath",
-            "optional": false,
-            "description": ""
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "jsonPathResult",
-            "optional": false,
-            "description": ""
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   {\n     \"statusCode\" : 200,\n     \"jsonPath\" : \"/json/path\",\n\t \"jsonPathResult\" : \"OK\"\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "field": "NotAuthenticatedError",
-            "optional": false,
-            "description": "<p>The apikey is incorrect or no apikey is provided</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "app/api/index.js"
-  },
-  {
-    "type": "get",
-    "url": "/jobs/{id}",
-    "title": "Get a Job by id",
-    "version": "0.9.0",
-    "name": "GetJob",
-    "group": "Jobs",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "apikey",
-            "optional": false,
-            "description": "<p>Api Key.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "id",
-            "optional": false,
-            "description": "<p>ID for the job.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "expression",
-            "optional": false,
-            "description": "<p>Cron Expression (Times are in UTC)</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "url",
-            "optional": false,
-            "description": "<p>URL to request</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   {\n     \"expression\": \"* * * * *\",\n     \"lastname\": \"http://www.example.com\"\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "field": "NotAuthenticatedError",
-            "optional": false,
-            "description": "<p>The apikey is incorrect or no apikey is provided</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "app/api/index.js"
-  },
-  {
-    "type": "get",
-    "url": "/jobs",
-    "title": "Get all Jobs for the authenticated user",
-    "version": "0.9.0",
-    "name": "GetJobs",
-    "group": "Jobs",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "apikey",
-            "optional": false,
-            "description": "<p>Api Key.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "expression",
-            "optional": false,
-            "description": "<p>Cron Expression (Times are in UTC)</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "field": "url",
-            "optional": false,
-            "description": "<p>URL to request</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "Success-Response:\n   HTTP/1.1 200 OK\n   [{\n     \"expression\": \"* * * * *\",\n     \"lastname\": \"http://www.example.com\"\n   }]\n",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "field": "NotAuthenticatedError",
-            "optional": false,
-            "description": "<p>The apikey is incorrect or no apikey is provided</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "Error-Response:\n   HTTP/1.1 404 Not Found\n   {\n     \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n   }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "app/api/index.js"
-  }
-] });
+define({ "api": [  {    "type": "get",    "url": "/",    "title": "List possible API calls",    "version": "0.9.0",    "name": "ListCalls",    "group": "Api",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "apikey",            "description": "<p>Api Key.</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "method",            "description": "<p>Http method for this api call</p>"          },          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "path",            "description": "<p>URL to call this api</p>"          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "HTTP/1.1 200 OK\n[{\n  \"method\": \"get\",\n  \"path\": \"/jobs\"\n}]",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Api"  },  {    "type": "post",    "url": "/projects/:id/jobs",    "title": "Create a new job",    "version": "0.9.1",    "name": "CreateJob",    "group": "Jobs",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "apikey",            "description": "<p>Api Key.</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "expression",            "description": "<p>Cron expression (Times are in UTC).</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "url",            "description": "<p>URL to request.</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "expression",            "description": "<p>Cron Expression</p>"          },          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "url",            "description": "<p>URL to request</p>"          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "HTTP/1.1 200 OK\n{\n  \"expression\": \"* * * * *\",\n  \"url\": \"http://www.example.com\",\n  \"method\": \"get\",\n  \"params\": [{test:1}],\n  \"headers\": [{X-Header:'111'}]\n}",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Jobs"  },  {    "type": "post",    "url": "/jobs",    "title": "Create a new job",    "version": "0.9.0",    "name": "CreateJob",    "group": "Jobs",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "apikey",            "description": "<p>Api Key.</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "expression",            "description": "<p>Cron expression (Times are in UTC).</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "url",            "description": "<p>URL to request.</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "expression",            "description": "<p>Cron Expression</p>"          },          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "url",            "description": "<p>URL to request</p>"          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "HTTP/1.1 200 OK\n{\n  \"expression\": \"* * * * *\",\n  \"url\": \"http://www.example.com\",\n  \"method\": \"get\",\n  \"params\": [{test:1}],\n  \"headers\": [{X-Header:'111'}]\n}",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Jobs"  },  {    "type": "delete",    "url": "/jobs/{id}",    "title": "Delete a Job by id",    "version": "0.9.0",    "name": "DeleteJob",    "group": "Jobs",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "apikey",            "description": "<p>Api Key.</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "id",            "description": "<p>ID for the job.</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "response",            "description": "<p>Response message</p>"          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "HTTP/1.1 200 OK\n{\n  \"response\": \"deleted\"\n}",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Jobs"  },  {    "type": "put",    "url": "/jobs/{id}",    "title": "Edit an existing Job",    "version": "0.9.0",    "name": "EditJob",    "group": "Jobs",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "apikey",            "description": "<p>Api Key.</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "id",            "description": "<p>ID for the job.</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "expression",            "description": "<p>Cron expression.</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "url",            "description": "<p>URL to request.</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "expression",            "description": "<p>Cron Expression (Times are in UTC)</p>"          },          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "url",            "description": "<p>URL to request</p>"          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "HTTP/1.1 200 OK\n{\n  \"expression\": \"* * * * *\",\n  \"url\": \"http://www.example.com\"\n}",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Jobs"  },  {    "type": "post",    "url": "/jobs/{id}/alarms",    "title": "Add an alarm to an existing job",    "version": "0.9.0",    "name": "EditJob",    "group": "Jobs",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "Number",            "optional": false,            "field": "statusCode",            "description": "<p>HTTP status code to check for (alarms if not found)</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "jsonPath",            "description": "<p>JsonPath to check for in the response</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "jsonPathResult",            "description": "<p>The value for the matching jsonPath (alarms if no match)</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "Number",            "optional": false,            "field": "statusCode",            "description": ""          },          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "jsonPath",            "description": ""          },          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "jsonPathResult",            "description": ""          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "    HTTP/1.1 200 OK\n    {\n      \"statusCode\" : 200,\n      \"jsonPath\" : \"/json/path\",\n\t\t \"jsonPathResult\" : \"OK\"\n    }",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Jobs"  },  {    "type": "get",    "url": "/jobs/{id}",    "title": "Get a Job by id",    "version": "0.9.0",    "name": "GetJob",    "group": "Jobs",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "apikey",            "description": "<p>Api Key.</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "id",            "description": "<p>ID for the job.</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "expression",            "description": "<p>Cron Expression (Times are in UTC)</p>"          },          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "url",            "description": "<p>URL to request</p>"          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "HTTP/1.1 200 OK\n{\n  \"expression\": \"* * * * *\",\n  \"lastname\": \"http://www.example.com\"\n}",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Jobs"  },  {    "type": "get",    "url": "/jobs",    "title": "Get all Jobs for the authenticated user",    "version": "0.9.0",    "name": "GetJobs",    "group": "Jobs",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "apikey",            "description": "<p>Api Key.</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "expression",            "description": "<p>Cron Expression (Times are in UTC)</p>"          },          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "url",            "description": "<p>URL to request</p>"          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "HTTP/1.1 200 OK\n[{\n  \"expression\": \"* * * * *\",\n  \"lastname\": \"http://www.example.com\"\n}]",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Jobs"  },  {    "type": "get",    "url": "/projects/:id/jobs",    "title": "Get all Jobs for a project (you must be an authorized user of the project)",    "version": "0.9.0",    "name": "GetProjectJobs",    "group": "Jobs",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "apikey",            "description": "<p>Api Key.</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "id",            "description": "<p>ID of the project.</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "expression",            "description": "<p>Cron Expression (Times are in UTC)</p>"          },          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "url",            "description": "<p>URL to request</p>"          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "HTTP/1.1 200 OK\n[{\n  \"expression\": \"* * * * *\",\n  \"lastname\": \"http://www.example.com\"\n}]",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Jobs"  },  {    "type": "post",    "url": "/projects",    "title": "Create a new project",    "version": "0.9.1",    "name": "CreateProject",    "group": "Projects",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "apikey",            "description": "<p>Api Key.</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "name",            "description": "<p>Name of the project</p>"          },          {            "group": "Parameter",            "type": "Array",            "optional": false,            "field": "users",            "description": "<p>User emails of users who can access this project (current user email is added automatically)</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "name",            "description": "<p>Name of the project</p>"          },          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "users",            "description": "<p>Users (email) who are allowed to access this project (and related Jobs)</p>"          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "HTTP/1.1 200 OK\n{\n  \"name\": \"MyProject\",\n  \"users\": [\"matt@test.com\",\"john@test.com\"]\n}",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Projects"  },  {    "type": "delete",    "url": "/projects/{id}",    "title": "Delete a Project by id",    "version": "0.9.0",    "name": "DeleteProject",    "group": "Projects",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "apikey",            "description": "<p>Api Key.</p>"          },          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "id",            "description": "<p>ID for the project.</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "response",            "description": "<p>Response message</p>"          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "HTTP/1.1 200 OK\n{\n  \"response\": \"deleted\"\n}",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Projects"  },  {    "type": "get",    "url": "/projects",    "title": "Get all Projects for the authenticated user",    "version": "0.9.1",    "name": "GetProjects",    "group": "Projects",    "parameter": {      "fields": {        "Parameter": [          {            "group": "Parameter",            "type": "String",            "optional": false,            "field": "apikey",            "description": "<p>Api Key.</p>"          }        ]      }    },    "success": {      "fields": {        "Success 200": [          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "name",            "description": "<p>Name of the project</p>"          },          {            "group": "Success 200",            "type": "String",            "optional": false,            "field": "users",            "description": "<p>Users (email) who are allowed to access this project (and related Jobs)</p>"          }        ]      },      "examples": [        {          "title": "Success-Response:",          "content": "HTTP/1.1 200 OK\n[{\n  \"name\": \"MyProject\",\n  \"users\": [\"matt@test.com\",\"john@test.com\"]\n}]",          "type": "json"        }      ]    },    "error": {      "fields": {        "Error 4xx": [          {            "group": "Error 4xx",            "optional": false,            "field": "NotAuthenticatedError",            "description": "<p>The apikey is incorrect or no apikey is provided</p>"          }        ]      },      "examples": [        {          "title": "Error-Response:",          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"You must provide a valid api key. Visit cronasaservice.com to register.\"\n}",          "type": "json"        }      ]    },    "filename": "app/api/index.js",    "groupTitle": "Projects"  }] });

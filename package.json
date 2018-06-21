@@ -5,7 +5,7 @@
   "author": "Matthew Reid",
   "scripts": {
     "build-blog": "harp compile blog_source app/web/public/blog"
-  },  
+  },
   "apidoc": {
     "title": "Cron As A Service API",
     "url": "https://www.cronasaservice.com/api"
@@ -30,7 +30,7 @@
     "express-session": "~1.8.1",
     "express-validator": "~2.7.0",
     "json-path": "~0.1.3",
-    "mongoose": "latest",
+    "mongoose": "^4.13.8",
     "morgan": "~1.2.3",
     "mustache": "^1.0.0",
     "node-customer.io": "0.0.2",

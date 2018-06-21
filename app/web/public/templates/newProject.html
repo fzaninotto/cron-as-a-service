@@ -1,0 +1,57 @@
+<div class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject font-green-sharp bold uppercase">Create a new project</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <form class="form form-vertical" ng-submit="newProject()">
+                <div ng-repeat="alert in newProjectAlerts" class="alert alert-danger" role="alert">
+                    <i class="icon-exclamation"></i>
+                    <span class="sr-only">Error:</span>
+                    {{alert.msg}}
+                </div>
+    
+                <div class="form-group">
+                    <label class="control-label">Name
+                        <span class="required">*</span>
+                    </label>
+                    <div class="controls">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input ng-model="projectForm.name" type="text" class="form-control" placeholder="Project Name" required>
+                                </div>
+                            </div>
+                    </div>
+                    <span class="help-block">Enter a name for your project
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Authorised Users</label>
+                    <div class="controls" ng-repeat="email in projectForm.users track by $index">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input ng-model="projectForm.users[$index]" type="email" class="form-control" placeholder="Email address">
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block">You always have access to your project. Enter the email addresses of colleagues who can also administer this project.</span>
+    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-circle btn-sm green-haze" ng-click="addAuthorizedUser()">
+                                Add {{projectForm.users.length > 0 ? 'Another' : ''}} Email
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-actions right todo-form-actions">
+                    <a ng-href="#/jobs" class="btn btn-circle btn-sm btn-default">Cancel</a>
+                    <button class="btn btn-circle btn-sm green-haze" type="submit">Save Changes</button>
+                </div>
+    
+            </form>
+        </div>
+    </div>

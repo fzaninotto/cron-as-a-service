@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li class="start">
-                        <a href="/docs" target="_blank">
+                        <a href="#/docs">
                         <i class="icon-file-text-alt"></i>
                         <span class="title">Documentation</span>
                         </a>
@@ -96,8 +96,13 @@
 	<!-- END SIDEBAR -->
         <div class="page-content-wrapper">
             <div class="page-content">
-                <div class="alert alert-info" role="alert" ng-show="plan === 'free' && location.path()!='/plan'">
-                  <strong>Heads up!</strong> Your free trial expires soon. <a href="#/plan">Click here to upgrade</a> to a paid plan.
+                <div ng-switch="getHeaderAlert()">
+                    <div class="alert alert-info" role="alert" ng-switch-when="upgrade">
+                        <strong>Heads up!</strong> Your free trial expires soon. <a href="#/plan">Click here to upgrade</a> to a paid plan.
+                    </div>
+                    <div class="alert alert-info" role="alert" ng-switch-when="password">
+                        <strong>Set a password</strong> so you can log in again later <a href="#/settings">set your password here</a>.
+                    </div>
                 </div>
                 
                 <%if (locals.errors) { %>

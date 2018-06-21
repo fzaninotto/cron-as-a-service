@@ -4,13 +4,18 @@
             <span class="caption-subject font-green-sharp bold uppercase">Jobs</span>
         </div>
         <div class="actions">
-            <a href="#/newJob" class="btn btn-circle btn-default">
+            <a ng-href="#/newProject" class="btn btn-circle btn-default">
                 <i class="icon-plus"></i>
                 <span class="hidden-480">
-                    New Job </span>
+                    New Project </span>
             </a>
         </div>
     </div>
+    <div class="col-md-3 pull-right" ng-if="project.id">
+            <select class="form-control" ng-model="project.id" ng-change="refreshList();">
+                <option ng-repeat="p in projects" value="{{ p._id }}" ng-selected="project.id == p._id">{{ p.name }}</option>
+            </select>
+        </div>
     <div class="portlet-body">
         <div ng-repeat="alert in jobAlerts" class="note note-danger note-shadow" role="alert">
             <p>
@@ -23,7 +28,21 @@
             <div id="datatable_orders_wrapper" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
                 <div class="table-scrollable">
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" aria-describedby="datatable_orders_info"
-                        role="grid">
+                        role="grid" ng-if="!project.id">
+                        <tr>
+                                <td colspan="6" class="text-center">
+                                        <h4>Create a Project for your cron jobs</h4>
+                                    </td>
+                        </tr>
+                        <tr>
+                                <td colspan="6" class="text-center">
+                                    <a href="#/newProject" class="btn btn-circle btn-default green-haze">
+                                        Create a new Project</a>
+                                </td>
+                            </tr>
+                    </table>
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer" aria-describedby="datatable_orders_info"
+                        role="grid" ng-if="project.id">
                         <thead>
                             <tr role="row" class="heading">
                                 <th width="2.5%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
@@ -152,9 +171,12 @@
                                 <td></td>
                                 <td colspan="6">
                                     <i class="icon-frown"></i> No jobs here...
-                                    <br/>
-                                    <br/>
-                                    <a href="#/newJob" class="btn btn-circle btn-default">Create a new cron job</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="6">
+                                    <a ng-href="#/newJob?projectId={{project.id}}" class="btn btn-circle btn-default">Create a new cron job</a>
                                 </td>
                             </tr>
                         </tbody>
