@@ -38,12 +38,15 @@ if (app.get('env') === 'development') {
 
 console.log('Mongo URL is ' + mongoURL);
 
-mongoose.connect(mongoURL, function(err) {
-    if (err) {
-        console.log('MongoDB error:' + err);
-        process.exit();
+mongoose.connect(
+    mongoURL,
+    function(err) {
+        if (err) {
+            console.log('MongoDB error:' + err);
+            process.exit();
+        }
     }
-});
+);
 mongoose.connection.on('error', function(err) {
     console.error('MongoDB error: ' + err.message);
     console.error('Make sure a mongoDB server is running and accessible by this application');
@@ -71,7 +74,7 @@ var nbInitializedJobs = 0;
 Job.find({}, function(err, jobs) {
     if (err) return callback(err);
     jobs.forEach(function(job) {
-        if (job) {
+        if (job && job.isActive) {
             CronTab.add(job);
             nbInitializedJobs++;
             console.log('Initialized job %s (target %s on %s)', job._id, job.url, job.expression);

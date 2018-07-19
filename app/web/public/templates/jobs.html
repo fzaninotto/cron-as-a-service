@@ -60,46 +60,55 @@
                                 <th width="35%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
                                     Responses - Http Status Code
                                 </th>
-                                <th width="5%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
+                                <th width="2.5%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
                                     Alarm
                                 </th>
-                                <th width="2.5%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
+                                <th width="5%" class="sorting_asc" tabindex="0" aria-controls="datatable_orders" rowspan="1" colspan="1">
 
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr role="row" ng-repeat-start="job in cronList">
-                                <td>
+                                <td ng-if="job.status=='active'">
                                     <button class="btn btn-sm" title="Edit" ng-if="!job.edit" ng-click="job.edit = !job.edit">
                                         <i class="icon-pencil"></i>
                                     </button>
                                     <button class="btn btn-sm green" ng-if="job.edit" ng-click="saveJob(job)">Save</button>
                                 </td>
-                                <td>
+                                <td ng-if="job.status=='disabled'">
+                                    <button class="btn btn-sm green" ng-if="job.status=='disabled'" ng-click="enable(job)" arial-label="enable job">
+                                        <i class="icon-ok"></i>
+                                        Enable
+                                    </button>
+                                </td>
+                                <td ng-class="{disabled:job.status=='disabled'}">
                                     <span ng-if="!job.edit">{{job.url}}</span>
                                     <input ng-if="job.edit" ng-model="job.url" class="form-control">
                                 </td>
-                                <td>
+                                <td ng-class="{disabled:job.status=='disabled'}">
                                     <span ng-if="!job.edit">{{job.expression}}</span>
                                     <cron-selection ng-if="job.edit" ng-model="job.expression"></cron-selection>
                                 </td>
                                 <td>{{job.nextRun | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
-                                <td ng-class="{nodata:job.responses.length == 0}">
+                                <td ng-class="{nodata:job.responses.length == 0, disabled:job.status=='disabled'}">
                                     <span ng-show="{{job.responses.length == 0}}">No Data Yet...</span>
                                     <div class="response-graph-holder" ng-if="job.responses.length > 0">
                                         <canvas class="chart chart-bar response-chart" data="job.graphData" labels="job.responseDates" colours="job.graphColours"
                                             options="job.options"></canvas>
                                     </div>
                                 </td>
-                                <td>
-                                    <button class="btn btn-sm yellow" ng-click="job.showAlarms = !job.showAlarms">
+                                <td ng-class="{disabled:job.status=='disabled'}">
+                                    <button class="btn btn-sm blue" ng-click="job.showAlarms = !job.showAlarms">
                                         <i class="icon-bell"></i>
                                     </button>
                                 </td>
-                                <td>
-                                    <button class="btn btn-sm red" ng-click="remove(job._id)">
+                                <td>    
+                                    <button class="btn btn-sm red" ng-click="remove(job._id)" ng-if="job.status=='disabled'" arial-label="delete job">
                                         <i class="icon-trash"></i>
+                                    </button>
+                                    <button class="btn btn-sm yellow" ng-click="disable(job)" ng-if="job.status!='disabled'" aria-label="disable">
+                                        <i class="icon-ban-circle"></i>
                                     </button>
                                 </td>
                             </tr>

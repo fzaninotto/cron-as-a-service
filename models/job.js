@@ -23,6 +23,7 @@ var Job = new Schema(
                 jsonPathResult: String,
             },
         ],
+        status: { type: String, enum: ['active', 'disabled'], default: 'active' },
     },
     {
         toObject: {
@@ -62,6 +63,10 @@ Job.virtual('responseDates').get(function() {
         }
     }
     return statuses;
+});
+
+Job.virtual('isActive').get(function() {
+    return this.status == 'active';
 });
 
 Job.path('method').validate(function(value) {

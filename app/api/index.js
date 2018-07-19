@@ -285,9 +285,24 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
         job.requestBody = req.body.requestBody;
         job.headers = req.body.headers;
         job.responseEmail = req.body.responseEmail != null ? req.body.responseEmail : null;
+        if (req.body.status) {
+            job.status = req.body.status;
+        }
+
         job.save(function(err2) {
             if (err2) return next(err2);
-            if (CronTab.update(job)) {
+            if (job.status == 'disabled') {
+                CronTab.remove(job);
+                res.json(job);
+
+                try {
+                    utils.cio.track(req.user._id, 'disableJob', data, function(err, res) {
+                        if (err != null) {
+                            console.log('ERROR', err);
+                        }
+                    });
+                } catch (e) {}
+            } else if (CronTab.update(job)) {
                 res.json(job);
 
                 try {

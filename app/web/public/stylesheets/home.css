@@ -7,6 +7,11 @@ table.dataTable td{
     vertical-align: middle !important;
 }
 
+table.dataTable td.disabled{
+  opacity: 0.7;
+  pointer-events: none;
+}
+
 .response-graph-holder{
     position:relative;
     width:100%;

@@ -86,6 +86,35 @@ angular
                 });
         };
 
+        //disable job
+        $scope.disable = function(job) {
+            $scope.jobAlerts = [];
+            if (confirm('Are you sure you wish to disable this job? It will no longer run.')) {
+                job.status = 'disabled';
+                apiService
+                    .saveJob(job)
+                    .success(function(data) {
+                        $scope.refreshList();
+                    })
+                    .error(function(data, status, headers, config) {
+                        $scope.jobAlerts.push({ type: 'error', msg: data || status });
+                    });
+            }
+        };
+
+        $scope.enable = function(job) {
+            $scope.jobAlerts = [];
+            job.status = 'active';
+            apiService
+                .saveJob(job)
+                .success(function(data) {
+                    $scope.refreshList();
+                })
+                .error(function(data, status, headers, config) {
+                    $scope.jobAlerts.push({ type: 'error', msg: data || status });
+                });
+        };
+
         //delete job
         $scope.remove = function(id) {
             $scope.jobAlerts = [];
