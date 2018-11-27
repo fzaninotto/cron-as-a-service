@@ -5535,12 +5535,10 @@ body {
   /***
   Custimized Bootstrap Wells
   ***/
-  .well {
-    background-color: #eee;
-    border: 0;
-    -webkit-box-shadow: none !important;
-    -moz-box-shadow: none !important;
-    box-shadow: none !important;
+
+
+  .pricing-table .well {
+    border: 1px solid #e3e3e3;
   }
   
   /***
