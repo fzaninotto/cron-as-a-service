@@ -1,0 +1,23 @@
+---
+layout: default
+post_class: post-template page-template
+---
+
+<nav class="main-nav clearfix">
+    <a class="back-button icon-arrow-left" href="{{ site.baseurl }}">Home</a>
+    <a class="subscribe-button icon-feed" href="{{ site.baseurl }}feed.xml">Subscribe</a>
+</nav>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <h1 class="post-title">{{ page.title }}</h1>
+
+        <section class="post-content">
+            {{content}}
+        </section>
+
+    </article>
+
+</main>

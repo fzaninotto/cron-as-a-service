@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description>Online cron jobs for your Web or Mobile App &lt;br/&gt;
+&lt;a href=&quot;https://www.cronasaservice.com&quot;&gt;Schedule HTTP requests to your app for free&lt;/a&gt;
+</description>
+    <link>https://www.cronasaservice.com/blog//blog//</link>
+    <atom:link href="https://www.cronasaservice.com/blog//blog//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 15 Mar 2019 10:22:42 +0100</pubDate>
+    <lastBuildDate>Fri, 15 Mar 2019 10:22:42 +0100</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Introducing Schedule Picker</title>
+        <description>&lt;h1 id=&quot;never-have-to-remember-cron-syntax-again-with-our-new-schedule-picker&quot;&gt;Never have to remember cron syntax again with our new Schedule Picker&lt;/h1&gt;
+
+&lt;p&gt;We recently revamped our schedule picking. After lots of feedback from users, we decided to simplify how you pick a schedule for your cron job. Originally we used the linux cron syntax (and we still do in the backend) but we’ve decided to simplify it from a user perspective. Check it out below.&lt;/p&gt;
+
+&lt;p&gt;![cron as a service schedule picker][https://s3.amazonaws.com/cronasaservice/cron-schedule-picker.gif]&lt;/p&gt;
+
+&lt;p&gt;I’m sure you’ll agree it’s much nicer than having to Google what “every day at 10am” is in cron syntax or even using our handy &lt;a href=&quot;https://www.cronasaservice.com/cron-builder/&quot;&gt;cron builder&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you haven’t signed up for an account yet, now is the time. We’re working really hard on bringing great new features to you as soon as possible.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 Apr 2018 14:53:00 +0200</pubDate>
+        <link>https://www.cronasaservice.com/blog//blog//introducing-schedule-picker.html</link>
+        <guid isPermaLink="true">https://www.cronasaservice.com/blog//blog//introducing-schedule-picker.html</guid>
+        
+        
+        <category>cron</category>
+        
+      </item>
+    
+      <item>
+        <title>How to Launch a Startup - Part 4</title>
+        <description>&lt;h3 id=&quot;fourth-lecture-in-the-series-adora-cheung-guest-lectures-on-building-a-product&quot;&gt;Fourth lecture in the series, Adora Cheung guest lectures on building a product.&lt;/h3&gt;
+
+&lt;p&gt;Adora Cheung (of now defunct HomeJoy) talks about techniques for building and growing a product. Readers of The Lean Startup will be familiar with most of these techniques but there are some valuable lessons listed here.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Talk to your customers. Where ever they hang out, go there.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;iframe src=&quot;https://clip.mn/embed/yt-yP176MBG9Tk&amp;amp;pid=1448189585&quot; height=&quot;450&quot; width=&quot;100%&quot; border=&quot;0&quot; allowfullscreen=&quot;true&quot; style=&quot;max-width: 100%; max-height: 100%; border:1px solid #CCC;&quot;&gt;&lt;/iframe&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;how-to-launch-a-startup-part-3.html&quot;&gt;Part 3: Paul Graham&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 21 Feb 2016 21:32:00 +0100</pubDate>
+        <link>https://www.cronasaservice.com/blog//blog//how-to-launch-a-startup-part-4.html</link>
+        <guid isPermaLink="true">https://www.cronasaservice.com/blog//blog//how-to-launch-a-startup-part-4.html</guid>
+        
+        
+        <category>startups</category>
+        
+      </item>
+    
+      <item>
+        <title>How to Launch a Startup - Part 3</title>
+        <description>&lt;h3 id=&quot;third-lecure-in-the-series-with-guest-host-paul-graham-co-founder-of-ycombinator&quot;&gt;Third lecure in the series with guest host Paul Graham, co-founder of YCombinator&lt;/h3&gt;
+
+&lt;p&gt;Paul Graham gives a brilliant and funny guest lecture. Paul discusses what happens before a startup. How do you come up with ideas? What should you study at college and who should you hire? Paul answers all these questions and gives very important advice to founders you and old.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What you need to succeed in a startup is NOT expertise in startups. You will learn as you go along instead of “playing house”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;iframe src=&quot;https://www.youtube.com/embed/ii1jcLg-eIQ&quot; height=&quot;450&quot; width=&quot;100%&quot; border=&quot;0&quot; allowfullscreen=&quot;true&quot; style=&quot;max-width: 100%; max-height: 100%; border:1px solid #CCC;&quot;&gt;&lt;/iframe&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;how-to-launch-a-startup-part-2.html&quot;&gt;Part 2: Building a Team&lt;/a&gt;
+&lt;a href=&quot;how-to-launch-a-startup-part-4.html&quot;&gt;Part 4: Building the Product&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 07 Feb 2016 16:22:00 +0100</pubDate>
+        <link>https://www.cronasaservice.com/blog//blog//how-to-launch-a-startup-part-3.html</link>
+        <guid isPermaLink="true">https://www.cronasaservice.com/blog//blog//how-to-launch-a-startup-part-3.html</guid>
+        
+        
+        <category>startups</category>
+        
+      </item>
+    
+      <item>
+        <title>How to Launch a Startup - Part 2</title>
+        <description>&lt;h3 id=&quot;second-lecture-by-sam-altman-from-ycombinator-on-launching-a-startup&quot;&gt;Second lecture by Sam Altman from YCombinator on launching a startup&lt;/h3&gt;
+
+&lt;p&gt;This lecture discusses choosing a co-founder, how important it is to choose wisely and why co-founders should be like James Bond. Sam also discusses how &lt;b&gt;not&lt;/b&gt; to hire employees despite how tempting it seems.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The cost of getting an early hire wrong is disastrous
+Sam Altman&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;iframe src=&quot;https://clip.mn/embed/yt-CVfnkM44Urs&amp;amp;pid=1448189585&quot; height=&quot;450&quot; width=&quot;100%&quot; border=&quot;0&quot; allowfullscreen=&quot;true&quot; style=&quot;max-width: 100%; max-height: 100%; border:1px solid #CCC;&quot;&gt;&lt;/iframe&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;how-to-launch-a-startup-part-1.html&quot;&gt;Part 1: Starting a Startup&lt;/a&gt;
+&lt;a href=&quot;how-to-launch-a-startup-part-3.html&quot;&gt;Part 3: Before the Startup - Paul Graham&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 20 Dec 2015 09:15:00 +0100</pubDate>
+        <link>https://www.cronasaservice.com/blog//blog//how-to-launch-a-startup-part-2.html</link>
+        <guid isPermaLink="true">https://www.cronasaservice.com/blog//blog//how-to-launch-a-startup-part-2.html</guid>
+        
+        
+        <category>startups</category>
+        
+      </item>
+    
+      <item>
+        <title>How to Launch a Startup - Part 1</title>
+        <description>&lt;h3 id=&quot;lecture-by-sam-altman-from-ycombinator&quot;&gt;Lecture by Sam Altman from YCombinator&lt;/h3&gt;
+
+&lt;p&gt;Starting your own Startup is a daunting but exciting task. Luckily, there are plenty of people before you who’ve done it all and build &lt;strong&gt;billion dollar&lt;/strong&gt; businesses in the process. Sam Altman is one of those guys, he quit college to start his own company and then launched YCombinator, one of the worlds best known accelerators of the back of it.&lt;/p&gt;
+
+&lt;p&gt;Sam recently taught a course at &lt;em&gt;Stanford University&lt;/em&gt; on launching a Startup. It’s fantastic viewing and we thoroughly recommend it. We’ve learnt so much from Sam and over the next few blog posts we hope you will too.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Move fast. Speed is one of your main advantages over large companies.
+Sam Altman&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Without further ado, let me introduce Sam Altman and Startup Lesson One.&lt;/p&gt;
+
+&lt;iframe src=&quot;https://clip.mn/embed/yt-CBYhVcO4WgI&amp;amp;pid=1448189585&quot; height=&quot;450&quot; width=&quot;100%&quot; border=&quot;0&quot; allowfullscreen=&quot;true&quot; style=&quot;max-width: 100%; max-height: 100%; border:1px solid #CCC;&quot;&gt;&lt;/iframe&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;how-to-launch-a-startup-part-2.html&quot;&gt;Part 2: Building a Team&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 22 Nov 2015 11:31:00 +0100</pubDate>
+        <link>https://www.cronasaservice.com/blog//blog//how-to-launch-a-startup-part-1.html</link>
+        <guid isPermaLink="true">https://www.cronasaservice.com/blog//blog//how-to-launch-a-startup-part-1.html</guid>
+        
+        
+        <category>startups</category>
+        
+      </item>
+    
+      <item>
+        <title>Introducing Alarms</title>
+        <description>&lt;p&gt;#Introducing Cron Alarms&lt;/p&gt;
+
+&lt;p&gt;We just launched a brand new feature, &lt;a href=&quot;https://www.cronasaservice.com/&quot;&gt;cron alarms&lt;/a&gt; and they are pretty freaking awesome.&lt;/p&gt;
+
+&lt;p&gt;##Free cron monitoring, all thanks to you.&lt;/p&gt;
+
+&lt;p&gt;We get some great feedback here at &lt;a href=&quot;https://www.cronasaservice.com/&quot;&gt;cronasaservice.com&lt;/a&gt;, several users have asked us to add an alarm feature to monitor their jobs. Well here it is, we will email you when the http request from your cron job doesn’t return the status code you expect. If you are feeling really awesome, you can set up an alarm to parse a JSON response looking for a value (using jsonPath).&lt;/p&gt;
+
+&lt;p&gt;Alarms are so simple to add to your existing cron jobs, just check out the demo below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://giant.gfycat.com/UnrulyCleverAsianwaterbuffalo.gif&quot; alt=&quot;cron alarms demo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;##Your first alarm is on us.&lt;/p&gt;
+
+&lt;p&gt;You get 1 alarm completely free with your trial plan. If you need more, you can upgrade to a paid plan for as little as £9.99 a month. Trust us, this awesomeness is worth it.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.cronasaservice.com/&quot;&gt;Get started&lt;/a&gt; by setting up your first alarm now and you truly never have to worry about your cron jobs again.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://s3.amazonaws.com/cronasaservice/Screen+Shot+2015-03-31+at+18.45.20.png&quot; alt=&quot;pricing&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 21 Apr 2015 16:10:00 +0200</pubDate>
+        <link>https://www.cronasaservice.com/blog//blog//introducing-alarms.html</link>
+        <guid isPermaLink="true">https://www.cronasaservice.com/blog//blog//introducing-alarms.html</guid>
+        
+        
+        <category>cron</category>
+        
+      </item>
+    
+      <item>
+        <title>Retention is the key</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://c2.staticflickr.com/6/5141/5589129130_103bc7b114_b.jpg&quot; alt=&quot;Retention is the key&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It seems to be the only thing that web millionaire wanna-be’s care about is growth. It’s true that growth matters but it isn’t always obvious how you can grow a business without either sooner or later imploding it by running out of funds or what to do when growth inevitably plateaus.&lt;/p&gt;
+
+&lt;p&gt;When a company is just founded growing is easy. After all, from 1 user to 2 users is 100% growth and you should be able to do that in a day or so, maybe even a couple of hours. But from 2 to 3 is only 50% more, and from 3 to 4 only 33% and so on. With every user that you add there is less growth so that’s one kind of downward pressure on the growth rate. Being larger it is harder to grow at the same %age rate than it is being smaller!&lt;/p&gt;
+
+&lt;p&gt;The next kind of downward pressure on growth is that when you’re still small you can keep a lot of attention focused on the few users that you have. They’ll feel fantastic and they will pass the word to their friends that you guys and girls are the real deal, you understand customer service and you actually care. And then you grow and you reach a level where you have to reduce that attention because there is only so much of you and you can’t afford the personnel to look after all these new users. And so the fountain of new users slowly dries up. Another kind of downward pressure on growth.&lt;/p&gt;
+
+&lt;p&gt;Slowing down growth even further is that all customers go through a life-cycle where they initially become acquainted with the product, they will purchase some and eventually they go away again, either because they’re dis-satisfied for some reason, have found something better, lose interest or simply die. What goes up must go down, but when it’s early days and all customers are still in the first part of their life-cycle it seems as though things can only go further up. As soon as the company matures and the age of the company starts to approach the average length of the life-cycle of a customer this will change (sometimes very rapidly) which will add another factor to the brake on the growth.&lt;/p&gt;
+
+&lt;p&gt;The interesting intersection of these three factors is that even if growth in an absolute sense is harder as you get larger growth in a relative sense is a lot easier if you simply keep your customers happy and retain them for as long as their biological lives. Retention, it turns out is a key element in how big a business will become and how fast it will reach either profitability (if that’s the initial goal and it helps if you can switch to ‘profitable’ mode at the drop of a hat in case the economy turns against you in some way) or how fast it will achieve critical mass (if network effects are important) or market domination.&lt;/p&gt;
+
+&lt;p&gt;Let’s do a numbers example with poor, average and great retention on an otherwise un-remarkable business with fixed costs-of-acquisition, a fixed marketing budget (so the same number of new customers attracted each month) and a fixed gross profit margin of 20% (though in practice, especially for services the profit margin will likely improve as the company gets larger due to economies of scale, in a company shipping physical products that effect will be present too but less strong).&lt;/p&gt;
+
+&lt;p&gt;The example is an online service or a store where people on average buy something worth $30 every month. For the sake of simplicity we’ll keep all the numbers fixed except for retention, but in ‘real life’ the situation would likely be more complex which will have some effect on the outcome.&lt;/p&gt;
+
+&lt;p&gt;If the service has poor retention then the figures will go something like this:&lt;/p&gt;
+
+&lt;p&gt;10,000 customers, 500 new customers found every month, 5% churn, so 500 old customers lost every month. Total turnover $300K every month, steady state starting today, so no growth. Gross monthly profit is at $60K, maybe not enough to meet payroll so effectively this business is losing money month-to-month and they’ll need to up their game if they want to stay in business in the longer term.&lt;/p&gt;
+
+&lt;p&gt;For mediocre retention it would look like this:&lt;/p&gt;
+
+&lt;p&gt;10,000 customers, 500 new customers found every month, 2.5% churn, so when 2.5% = 500 customers we’ll reach steady state. It will take 20 months to get there, so about a year and a half. That’s at 20,000 customers, so eventually total turnover will be at $600K every month. Gross monthly profit is at $120K, probably enough to meet payroll, but not enough surplus to plow back into additional growth. Investment required is minimal, just enough to get through the next couple of months.&lt;/p&gt;
+
+&lt;p&gt;And for good retention it looks like this:&lt;/p&gt;
+
+&lt;p&gt;10,000 customers, 500 new customers found every month, 1% churn, so when 1% = 500 customers we’ll reach steady state. That’s at 50,000 customers, so total turnover $1.5M every month. Gross monthly profit is at $300K, more than enough to meet payroll, and enough to increase the marketing budget month-by-month to offset the first of the downward pressure factors, the fact that it takes more new users month-by-month to maintain the same %age in growth. Investment required is very small compared to the turnover already achieved, likely even a bank would be willing to take the risk.&lt;/p&gt;
+
+&lt;p&gt;The enormous impact of churn is clearly visible here, depending on the rest of the model the first business might not even be profitable, the second will probably stay afloat and the third, while investing the same in marketing/advertising as the first two will make a killing and if they plow a little bit of their turnover back into more marketing can possibly achieve exponential growth.&lt;/p&gt;
+
+&lt;p&gt;That is why retention is key. So if you want to hit one out of the park make sure you keep your customers.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This blog was originally posted on &lt;a href=&quot;http://jacquesmattheij.com/retention-is-the-key&quot;&gt;Jacques Mattheij’s&lt;/a&gt; blog.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Sun, 10 Nov 2013 11:18:00 +0100</pubDate>
+        <link>https://www.cronasaservice.com/blog//blog//retention-is-the-key-to-a-successful-startup.html</link>
+        <guid isPermaLink="true">https://www.cronasaservice.com/blog//blog//retention-is-the-key-to-a-successful-startup.html</guid>
+        
+        
+        <category>Startups</category>
+        
+      </item>
+    
+  </channel>
+</rss>

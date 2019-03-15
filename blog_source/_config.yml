@@ -1,0 +1,21 @@
+name: Cron As A Service
+description: |
+    Online cron jobs for your Web or Mobile App <br/>
+    <a href="https://www.cronasaservice.com">Schedule HTTP requests to your app for free</a>
+meta_description: Schedule regular HTTP requests to your web or mobile app
+
+markdown: kramdown
+highlighter: pygments
+logo: false
+paginate: 15
+baseurl: /blog/
+domain_name: 'https://www.cronasaservice.com'
+google_analytics: 'UA-54545127-1'
+
+# Details for the RSS feed generator
+url: 'https://www.cronasaservice.com/blog/'
+author: 'Matt'
+
+plugins:
+    - jekyll-seo-tag
+    - jekyll-paginate

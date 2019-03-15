@@ -1,116 +1,157 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Document Settings -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="icon" href="/blog//assets/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/blog//assets/favicon.ico" type="image/x-icon"/>
 
-    <!-- Page Meta -->
-    <title>How to Launch a Startup - Part 2</title>
-    <meta name="description" content="Second lecture by Sam Altman from YCombinator on launching a startup" />
+    <title>Cron As A Service - Online cron jobs for your Web or Mobile App <br/>
+<a href="https://www.cronasaservice.com">Schedule HTTP requests to your app for free</a>
+</title>
+    <meta name="description" content="Schedule regular HTTP requests to your web or mobile app" />
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- K: Need assets variable , or something like basepath -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <link rel="shortcut icon" href="favicon.ico">-->
+    <link rel="stylesheet" type="text/css" href="/blog//assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/blog//assets/css/main.css" />
 
-    <!-- Styles'n'Scripts -->
-    <link rel="stylesheet" type="text/css" href="assets/css/screen.css" /><!-- K: Need assets variable , or something like basepath -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>How to Launch a Startup - Part 2 | Cron As A Service</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="How to Launch a Startup - Part 2" />
+<meta name="author" content="Matt" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This lecture discusses choosing a co-founder, how important it is to choose wisely and why co-founders should be like James Bond. Sam also discusses how not to hire employees despite how tempting it seems." />
+<meta property="og:description" content="This lecture discusses choosing a co-founder, how important it is to choose wisely and why co-founders should be like James Bond. Sam also discusses how not to hire employees despite how tempting it seems." />
+<link rel="canonical" href="https://www.cronasaservice.com/blog//blog/how-to-launch-a-startup-part-2.html" />
+<meta property="og:url" content="https://www.cronasaservice.com/blog//blog/how-to-launch-a-startup-part-2.html" />
+<meta property="og:site_name" content="Cron As A Service" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-12-20T09:15:00+01:00" />
+<script type="application/ld+json">
+{"description":"This lecture discusses choosing a co-founder, how important it is to choose wisely and why co-founders should be like James Bond. Sam also discusses how not to hire employees despite how tempting it seems.","author":{"@type":"Person","name":"Matt"},"@type":"BlogPosting","url":"https://www.cronasaservice.com/blog//blog/how-to-launch-a-startup-part-2.html","headline":"How to Launch a Startup - Part 2","dateModified":"2015-12-20T09:15:00+01:00","datePublished":"2015-12-20T09:15:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.cronasaservice.com/blog//blog/how-to-launch-a-startup-part-2.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
 
-    <!-- Ghost outputs important style and meta data with this tag -->
-    <!-- {{ghost_head}} -->
+
 </head>
-<body class="post-template"><!-- K: body_class variable, home page class is home-template, post is like: post-template tag-getting-started -->
+<body class="home-template">
 
-    <!-- Everything else gets inserted here -->
-    
-        <main class="content" role="main">
-
-    <article class="post"><!-- K: {{post_class}}, tags- -->
-        <!-- Each post has the blog logo at the top, with a link back to the home page -->
-        <!-- Each post has the blog logo at the top, with a link back to the home page -->
-<header class="post-header">
-    <a class="blog-logo" href="https://www.cronasaservice.com">
-        
-            <span class="blog-title">Cron As A Service</span>
-        
-    </a>
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/blog/">Home</a>
+        <a class="subscribe-button icon-feed" href="/blog/feed.xml">Subscribe</a>
+    </nav>
 </header>
 
-        <!-- Everything below outputs content of the the post which has been published -->
-        <span class="post-meta"><time datetime="Sun, 20 Dec 2015 09:15:03 GMT">Sun, 20 Dec 2015 09:15:03 GMT</time> on startups<!-- {{tags prefix="on " separator=" | "}} --></span>
+<main class="content" role="main">
 
-        <h1 class="post-title">How to Launch a Startup - Part 2</h1>
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">How to Launch a Startup - Part 2</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-12-20">20 Dec 2015</time>
+                
+                    on startups
+                
+            </section>
+        </header>
 
         <section class="post-content">
-            <h3>Second lecture by Sam Altman from YCombinator on launching a startup</h3><p>This lecture discusses choosing a co-founder, how important it is to choose wisely and why co-founders should be like James Bond. Sam also discusses how <b>not</b> to hire employees despite how tempting it seems.</p>
+            <h3 id="second-lecture-by-sam-altman-from-ycombinator-on-launching-a-startup">Second lecture by Sam Altman from YCombinator on launching a startup</h3>
+
+<p>This lecture discusses choosing a co-founder, how important it is to choose wisely and why co-founders should be like James Bond. Sam also discusses how <b>not</b> to hire employees despite how tempting it seems.</p>
+
 <blockquote>
-<p>The cost of getting an early hire wrong is disastrous
+  <p>The cost of getting an early hire wrong is disastrous
 Sam Altman</p>
 </blockquote>
-<iframe src="https://clip.mn/embed/yt-CVfnkM44Urs&pid=1448189585" height="450" width="100%" border="0" allowfullscreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC"></iframe>
 
-<hr>
+<iframe src="https://clip.mn/embed/yt-CVfnkM44Urs&amp;pid=1448189585" height="450" width="100%" border="0" allowfullscreen="true" style="max-width: 100%; max-height: 100%; border:1px solid #CCC;"></iframe>
+
+<hr />
 
 <p><a href="how-to-launch-a-startup-part-1.html">Part 1: Starting a Startup</a>
 <a href="how-to-launch-a-startup-part-3.html">Part 3: Before the Startup - Paul Graham</a></p>
-        </section>
-        
-        <section class="subscribe">
-    <div class="subscribe-pitch">
-      <h3>Free Trial</h3>
-      <p>Sign up for an unlimited free trial of cronasaservice.com and get started running your online cron jobs straight away!</p><p>
-    </p></div>
-    <form action="https://www.cronasaservice.com/register" method="post" class="subscribe-form">
-      <input type="email" name="email" class="subscribe-input" placeholder="Enter your work email address">
-      <button type="submit" class="subscribe-submit">Subscribe</button>
-    </form>
-  </section>
-
-        <footer class="post-footer">
 
             
+            <section class="signup">
+    <div class="subscribe-pitch">
+            <h3>Free Trial</h3>
+            <p>Sign up for an unlimited free trial of cronasaservice.com and get started running your online cron jobs straight away!</p><p>
+        </p></div>
+        <form action="https://www.cronasaservice.com/register" method="post" class="subscribe-form">
+            <input type="email" name="email" class="subscribe-input" placeholder="Enter your work email address">
+            <button type="submit" class="subscribe-submit">Subscribe</button>
+        </form>
+</section>
+        </section>
+
+        
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            
+                <figure class="author-image">
+                    <a class="img" href="/blog/" style="background-image: url('/blog//assets/images/profile.jpg')">
+                    <span class="hidden">Matt's Picture</span></a>
+                </figure>
                 <section class="author">
-                    <h4>Matt</h4>
-                    <p>Founder, cronasaservice.com</p>
+                    <!-- Author Name -->
+                    <h4> Matt </h4>
+                    <!-- Author Bio -->
+                    <p>
+                        Creator of <a href="https://www.cronasaservice.com">cron as a service</a>. Loves scheduling, food and good coffee.
+                    </p>
                 </section>
             
 
+            <!-- Share links section -->
             <section class="share">
-                <h4>Share this post</h4>
-                <a class="icon-twitter" href="http://twitter.com/share?text=How to Launch a Startup - Part 2&url=https://www.cronasaservice.comhow-to-launch-a-startup-part-2"
-                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <span class="hidden">Twitter</span>
-                </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.cronasaservice.comhow-to-launch-a-startup-part-2"
-                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                    <span class="hidden">Google+</span>
-                </a>
-            </section>
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=How to Launch a Startup - Part 2&amp;url=https://www.cronasaservice.com/how-to-launch-a-startup-part-2.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+</section>
+
+            <!-- Disqus comments -->
+            
 
         </footer>
 
     </article>
 
 </main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/blog/">Cron As A Service</a> &copy; 
+              2019 &bull; All rights reserved.
+      </section>
+    </footer>
     
+    <script type="text/javascript" src="/blog//assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/blog//assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/blog//assets/js/index.js"></script>
 
-    <footer class="site-footer">
-    <a class="subscribe icon-feed" href="/rss/index.xml"><span class="tooltip">Subscribe!</span></a>
-    <div class="inner">
-         <section class="copyright">All content copyright <a href="/">Cron As A Service</a> &copy; 2018 &bull; All rights reserved.</section>
-         <section class="poweredby">Proudly published with <a class="" href="http://harpjs.com">Harp</a></section>
-    </div>
-</footer>
+    <!-- Google Analytics Tracking code -->
+    <script type="text/javascript">
 
-    <!-- Ghost outputs important scripts and data with this tag -->
-    <!-- {{ghost_foot}} -->
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-54545127-1']);
+      _gaq.push(['_trackPageview']);
 
-    <!-- The main JavaScript file for Casper -->
-    <script type="text/javascript" src="asset/js/jquery.fitvids.js"></script><!-- K: Change back to relative links -->
-    <script type="text/javascript" src="asset/js/index.js"></script>
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
+    </script>   
 </body>
 </html>

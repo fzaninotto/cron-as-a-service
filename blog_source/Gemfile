@@ -1,0 +1,12 @@
+# frozen_string_literal: true
+source "https://rubygems.org"
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+# gem "rails"
+
+# Added at 2019-03-12 09:44:05 +0100 by matthewreid:
+gem "jekyll", "~> 3.8"
+gem 'jekyll-seo-tag'
+gem 'jekyll-paginate'
+gem 'pygments.rb'
