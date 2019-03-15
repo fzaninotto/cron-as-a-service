@@ -50,50 +50,49 @@
     
     <!-- BEGIN CONTAINER -->
 <div class="page-container" ng-controller="JobController">
-	<!-- BEGIN SIDEBAR -->
-	<div class="page-sidebar-wrapper">
-		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-        <tour step="currentStep" post-tour="postTour()">
-            <div class="page-sidebar navbar-collapse collapse">
-                <!-- BEGIN SIDEBAR MENU -->
-                <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                    <li class="start" ng-class="{active:location.path()==='/jobs'}" tourtip="Welcome to your cron home screen, your jobs appear here for easy management.<%if (user.features.indexOf('keepalive') > -1 ) { %> You'll see we've added your first job, woohoo! <% } %>" tourtip-placement="right" tourtip-offset="30" tourtip-next-label="Got it!" tourtip-step="0">
-                        <a href="#/jobs">
-                        <i class="icon-home"></i>
-                        <span class="title">Jobs</span>
-                        </a>
-                    </li>
-                    <li class="start">
-                        <a href="#/docs">
-                        <i class="icon-file-text-alt"></i>
-                        <span class="title">Documentation</span>
-                        </a>
-                    </li>
-                    <li class="start" ng-class="{active:location.path()==='/contact'}">
-                        <a href="#/contact">
-                        <i class="icon-envelope-alt"></i>
-                        <span class="title">Contact</span>
-                        </a>
-                    </li>
-                    <li class="start" ng-class="{active:location.path()==='/settings'}" tourtip="You can find your API key here." tourtip-placement="right" tourtip-offset="30" tourtip-next-label="Enough of the pleasantries" tourtip-step="1">
-                        <a href="#/settings">
-                        <i class="icon-cog"></i>
-                        <span class="title">Settings</span>
-                        </a>
-                    </li>
-                    <li class="start" ng-show="plan === 'free'" ng-class="{active:location.path()==='/plan'}" >
-                        <a href="#/plan">
-                        <i class="icon-credit-card"></i>
-                        <span class="title">Manage Plan</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- END SIDEBAR MENU -->
-            </div>
-        </tour>
-	</div>
-	<!-- END SIDEBAR -->
+    <tour step="currentStep" post-tour="postTour()">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar-wrapper">
+            <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+            <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                <div class="page-sidebar navbar-collapse collapse">
+                    <!-- BEGIN SIDEBAR MENU -->
+                    <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                        <li class="start" ng-class="{active:location.path()==='/jobs'}" tourtip="Welcome to your cron home screen, your jobs appear here for easy management.<%if (user.features.indexOf('keepalive') > -1 ) { %> You'll see we've added your first job, woohoo! <% } %>" tourtip-placement="right" tourtip-offset="30" tourtip-next-label="Got it" tourtip-step="0">
+                            <a href="#/jobs">
+                            <i class="icon-home"></i>
+                            <span class="title">Jobs</span>
+                            </a>
+                        </li>
+                        <li class="start">
+                            <a href="#/docs">
+                            <i class="icon-file-text-alt"></i>
+                            <span class="title">Documentation</span>
+                            </a>
+                        </li>
+                        <li class="start" ng-class="{active:location.path()==='/contact'}">
+                            <a href="#/contact">
+                            <i class="icon-envelope-alt"></i>
+                            <span class="title">Contact</span>
+                            </a>
+                        </li>
+                        <li class="start" ng-class="{active:location.path()==='/settings'}" tourtip="You can find your API key here." tourtip-placement="right" tourtip-offset="30" tourtip-next-label="Got it" tourtip-step="1">
+                            <a href="#/settings">
+                            <i class="icon-cog"></i>
+                            <span class="title">Settings</span>
+                            </a>
+                        </li>
+                        <li class="start" ng-show="plan === 'free'" ng-class="{active:location.path()==='/plan'}" >
+                            <a href="#/plan">
+                            <i class="icon-credit-card"></i>
+                            <span class="title">Manage Plan</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- END SIDEBAR MENU -->
+                </div>
+        </div>
+	    <!-- END SIDEBAR -->
         <div class="page-content-wrapper">
             <div class="page-content">
                 <div ng-switch="getHeaderAlert()">
@@ -128,6 +127,7 @@
                 <%- body %> 
             </div>
         </div>
+    </tour>
     
     </div>
     
