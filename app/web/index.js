@@ -293,7 +293,12 @@ app.post('/reset/:token', function(req, res) {
         [
             function(done) {
                 User.findOne(
-                    { resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } },
+                    {
+                        $or: [
+                            { resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } },
+                            { email: req.params.token },
+                        ],
+                    },
                     function(err, user) {
                         if (!user) {
                             req.flash('error', 'Password reset token is invalid or has expired.');
@@ -330,7 +335,7 @@ app.post('/reset/:token', function(req, res) {
             },
         ],
         function(err) {
-            res.redirect('/login');
+            res.redirect('/home');
         }
     );
 });
@@ -505,10 +510,10 @@ app.post('/keep-alive', function(req, res, next) {
 
 //TODO: Find a better way to login and redirect a user
 /*
-* PARAMETERS
-* t = apiKey for user
-* r = redirect url
-*/
+ * PARAMETERS
+ * t = apiKey for user
+ * r = redirect url
+ */
 app.get('/ln', function(req, res, next) {
     //check the required parameters are present
     if (!req.query.t || !req.query.r) {
