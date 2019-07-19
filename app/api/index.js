@@ -50,10 +50,21 @@ app.all('*', function(req, res, next) {
 });
 
 /**
+ * @apiDefine NotAuthenticatedError
+ * @apiError {Object} error Error object
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
+ *     }
+ */
+
+/**
  * @api {get} /jobs Get all Jobs for the authenticated user
  * @apiVersion 0.9.0
  * @apiName GetJobs
  * @apiGroup Jobs
+ * @apiDescription Get all Jobs for the authenticated user
  *
  * @apiParam {String} apikey Api Key.
  *
@@ -67,13 +78,8 @@ app.all('*', function(req, res, next) {
  *       "lastname": "http://www.example.com"
  *     }]
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
+ * @apiUse NotAuthenticatedError
  *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
  */
 app.get('/jobs', ensureAuthenticated, function(req, res, next) {
     Job.find({ user: req.user._id }, function(err, jobs) {
@@ -156,6 +162,7 @@ var createJob = function(req, res, next) {
  * @apiVersion 0.9.0
  * @apiName CreateJob
  * @apiGroup Jobs
+ * @apiDescription Creates a new job
  *
  * @apiParam {String} apikey Api Key.
  * @apiParam {String} expression Cron expression (Times are in UTC).
@@ -174,13 +181,7 @@ var createJob = function(req, res, next) {
  *       "headers": [{X-Header:'111'}]
  *     }
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
+ * @apiUse NotAuthenticatedError
  */
 app.post('/jobs', ensureAuthenticated, createJob);
 
@@ -188,7 +189,8 @@ app.post('/jobs', ensureAuthenticated, createJob);
  * @api {get} /jobs/{id} Get a Job by id
  * @apiVersion 0.9.0
  * @apiName GetJob
- * @apiGroup Jobs
+ * @apiGroup Jobs\
+ * @apiDescription Get a single job
  *
  * @apiParam {String} apikey Api Key.
  * @apiParam {String} id ID for the job.
@@ -203,13 +205,7 @@ app.post('/jobs', ensureAuthenticated, createJob);
  *       "lastname": "http://www.example.com"
  *     }
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
+ * @apiUse NotAuthenticatedError
  */
 app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
     Job.findOne({ _id: req.params.id, user: req.user._id }, function(err, job) {
@@ -235,6 +231,7 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  * @apiVersion 0.9.0
  * @apiName EditJob
  * @apiGroup Jobs
+ * @apiDescription Update a job
  *
  * @apiParam {String} apikey Api Key.
  * @apiParam {String} id ID for the job.
@@ -251,13 +248,7 @@ app.get('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  *       "url": "http://www.example.com"
  *     }
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
+ * @apiUse NotAuthenticatedError
  */
 app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
     Job.findOne({ _id: req.params.id, user: req.user._id }, function(err, job) {
@@ -324,6 +315,7 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  * @apiVersion 0.9.0
  * @apiName EditJob
  * @apiGroup Jobs
+ * @apiDescription Add an alarm to a job
  *
  * @apiParam {Number} statusCode HTTP status code to check for (alarms if not found)
  * @apiParam {String} jsonPath JsonPath to check for in the response
@@ -341,13 +333,7 @@ app.put('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  *		 "jsonPathResult" : "OK"
  *     }
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
+ * @apiUse NotAuthenticatedError
  */
 app.post('/jobs/:id/alarms', ensureAuthenticated, function(req, res, next) {
     Job.findOne({ _id: req.params.id, user: req.user._id }, function(err, job) {
@@ -399,6 +385,7 @@ app.post('/jobs/:id/alarms', ensureAuthenticated, function(req, res, next) {
  * @apiVersion 0.9.0
  * @apiName DeleteJob
  * @apiGroup Jobs
+ * @apiDescription Delete a job
  *
  * @apiParam {String} apikey Api Key.
  * @apiParam {String} id ID for the job.
@@ -411,13 +398,7 @@ app.post('/jobs/:id/alarms', ensureAuthenticated, function(req, res, next) {
  *       "response": "deleted"
  *     }
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
+ * @apiUse NotAuthenticatedError
  */
 app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
     Job.findOne({ _id: req.params.id, user: req.user._id }, function(err, job) {
@@ -451,6 +432,7 @@ app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  * @apiVersion 0.9.1
  * @apiName GetProjects
  * @apiGroup Projects
+ * @apiDescription Get all projects for the current user
  *
  * @apiParam {String} apikey Api Key.
  *
@@ -464,13 +446,7 @@ app.delete('/jobs/:id', ensureAuthenticated, function(req, res, next) {
  *       "users": ["matt@test.com","john@test.com"]
  *     }]
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
+ * @apiUse NotAuthenticatedError
  */
 app.get('/projects', ensureAuthenticated, function(req, res, next) {
     Project.find({ users: req.user._id }, function(err, projects) {
@@ -508,6 +484,7 @@ var getUserIds = function(emails) {
  * @apiVersion 0.9.1
  * @apiName CreateProject
  * @apiGroup Projects
+ * @apiDescription Create a new project
  *
  * @apiParam {String} apikey Api Key.
  * @apiParam {String} name Name of the project
@@ -523,13 +500,7 @@ var getUserIds = function(emails) {
  *       "users": ["matt@test.com","john@test.com"]
  *     }
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
+ * @apiUse NotAuthenticatedError
  */
 app.post('/projects', ensureAuthenticated, function(req, res, next) {
     if (!req.body.name) {
@@ -569,6 +540,7 @@ app.post('/projects', ensureAuthenticated, function(req, res, next) {
  * @apiVersion 0.9.0
  * @apiName GetProjectJobs
  * @apiGroup Jobs
+ * @apiDescription Get all jobs for a project
  *
  * @apiParam {String} apikey Api Key.
  * @apiParam {String} id ID of the project.
@@ -583,13 +555,7 @@ app.post('/projects', ensureAuthenticated, function(req, res, next) {
  *       "lastname": "http://www.example.com"
  *     }]
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
+ * @apiUse NotAuthenticatedError
  */
 app.get('/projects/:id/jobs', ensureAuthenticated, function(req, res, next) {
     Project.findOne({ _id: req.params.id, users: req.user._id }, function(err, project) {
@@ -621,6 +587,7 @@ app.get('/projects/:id/jobs', ensureAuthenticated, function(req, res, next) {
  * @apiVersion 0.9.1
  * @apiName CreateJob
  * @apiGroup Jobs
+ * @apiDescription Create a new job in a project
  *
  * @apiParam {String} apikey Api Key.
  * @apiParam {String} expression Cron expression (Times are in UTC).
@@ -639,13 +606,7 @@ app.get('/projects/:id/jobs', ensureAuthenticated, function(req, res, next) {
  *       "headers": [{X-Header:'111'}]
  *     }
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
+ * @apiUse NotAuthenticatedError
  */
 app.post('/projects/:id/jobs', ensureAuthenticated, function(req, res, next) {
     if (!req.body.expression || !req.body.url)
@@ -669,6 +630,7 @@ app.post('/projects/:id/jobs', ensureAuthenticated, function(req, res, next) {
  * @apiVersion 0.9.0
  * @apiName DeleteProject
  * @apiGroup Projects
+ * @apiDescription Delete a project
  *
  * @apiParam {String} apikey Api Key.
  * @apiParam {String} id ID for the project.
@@ -681,13 +643,7 @@ app.post('/projects/:id/jobs', ensureAuthenticated, function(req, res, next) {
  *       "response": "deleted"
  *     }
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
+ * @apiUse NotAuthenticatedError
  */
 app.delete('/projects/:id', ensureAuthenticated, function(req, res, next) {
     Project.findOne({ _id: req.params.id, created_by: req.user._id }, function(err, project) {
@@ -714,6 +670,7 @@ app.delete('/projects/:id', ensureAuthenticated, function(req, res, next) {
  * @apiVersion 0.9.0
  * @apiName ListCalls
  * @apiGroup Api
+ * @apiDescription List api calls
  *
  * @apiParam {String} apikey Api Key.
  *
@@ -727,13 +684,7 @@ app.delete('/projects/:id', ensureAuthenticated, function(req, res, next) {
  *       "path": "/jobs"
  *     }]
  *
- * @apiError NotAuthenticatedError The apikey is incorrect or no apikey is provided
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "You must provide a valid api key. Visit cronasaservice.com to register."
- *     }
+ * @apiUse NotAuthenticatedError
  */
 app.get('/', ensureAuthenticated, function(req, res) {
     var routes = [];
