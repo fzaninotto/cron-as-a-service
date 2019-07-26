@@ -62,7 +62,7 @@
     delighted.survey({
       email: "<%=user.email%>",
       name: "<%=user.name%>", 
-      createdAt: "<%=user.created_at.toISOString()%>",
+      createdAt: "<%=user.created_at%>",
       properties: {
         plan: "<%= user.stripe.plan ? user.stripe.plan : 'free' %>",
       }
