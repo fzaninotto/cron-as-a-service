@@ -21,6 +21,7 @@
       app.constant('apiKey', '<%=apikey%>');
       app.constant('email', '<%=user.email%>');
       app.constant('name', '<%=user.name%>');
+      app.constant('user_created_at', '<%=user.created_at%>');
       app.constant('has_password', <%=user.password!=null%>);
       app.constant('invoice_email', '<%=user.info ? user.info.invoice_email : ''%>');
       app.constant('plan', '<%= user.stripe.plan ? user.stripe.plan : 'free' %>');
@@ -58,16 +59,7 @@
 
     <script type="text/javascript">
     !function(e,t,r,n,a){if(!e[a]){for(var i=e[a]=[],s=0;s<r.length;s++){var c=r[s];i[c]=i[c]||function(e){return function(){var t=Array.prototype.slice.call(arguments);i.push([e,t])}}(c)}i.SNIPPET_VERSION="1.0.1";var o=t.createElement("script");o.type="text/javascript",o.async=!0,o.src="https://d2yyd1h5u9mauk.cloudfront.net/integrations/web/v1/library/"+n+"/"+a+".js";var p=t.getElementsByTagName("script")[0];p.parentNode.insertBefore(o,p)}}(window,document,["survey","reset","config","init","set","get","event","identify","track","page","screen","group","alias"],"PtybD9GR3WP4awfX","delighted");
-
-    delighted.survey({
-      email: "<%=user.email%>",
-      name: "<%=user.name%>", 
-      createdAt: "<%=user.created_at%>",
-      properties: {
-        plan: "<%= user.stripe.plan ? user.stripe.plan : 'free' %>",
-      }
-    });
-  </script>
+    </script>
 
     <!-- Templates -->
     <div style="display:none;">

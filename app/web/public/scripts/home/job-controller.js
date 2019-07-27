@@ -1,6 +1,6 @@
 angular
     .module('CronAsAService.controllers')
-    .controller('JobController', function($scope, $location, $routeParams, apiService, utils, plan, email) {
+    .controller('JobController', function($scope, $location, $routeParams, apiService, plan, email, user_created_at) {
         var defaultAlarmForm = {
             statusCode: null,
             jsonPath: null,
@@ -54,6 +54,19 @@ angular
                     //reload the cron list
                     $scope.refreshList();
                     $location.path('/jobs').search({ projectId: $scope.project.id });
+
+                    try {
+                        window.delighted.survey({
+                            email: email,
+                            name: '',
+                            createdAt: user_created_at,
+                            properties: {
+                                plan: plan,
+                            },
+                        });
+                    } catch (err) {
+                        //ignore
+                    }
                 })
                 .error(function(data, status, headers, config) {
                     $scope.newJobAlerts.push({
