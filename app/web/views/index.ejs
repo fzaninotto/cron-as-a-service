@@ -58,44 +58,51 @@
 	<div class="row">
 
 		<div class="col-lg-12 text-center v-center example">
-			<img src="/images/laptop_cron.png" class="img-responsive center-block" alt="Cron As A Service">
-		</div>
+			<h2>
+				<div id="typed-strings">
+					<p>Cron jobs for your WordPress application</p>
+					<p>Cron jobs for your startup prototype</p>
+					<p>Cron jobs for your client work</p>
+				</div>
+				<span id="typed"></span>
+			</h2>	
+</div>
 
 	</div>
 
 	<div class="row">
+			<div class="col-md-4 col-md-offset-4 text-center v-center panel panel-default semi-transparent">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-4">
+							<img src="/images/bigdog-agency-logo.jpg" class="img-responsive">
+						</div>
+					</div>
+					<blockquote>
+						<p>Loving the service!</p>
+						<footer>Ben Sturgess - Creative Technology Director, BigDog</footer>
+					</blockquote>
+				</div>
+			</div>
+		</div>
+
+	<div class="row">
 		<div class="col-md-4 text-center">
-			<img src="/images/dashboard.png" class="img-responsive center-block" width="100" alt="Online cron dashboard">
-			<h2>Simple Dashboard</h2>
+				<object type="image/svg+xml" data="/images/smiley-smile.svg" width="100" height="100" class="clock"></object>
+				<h2>Simple Dashboard</h2>
 			<p>Our easy to use web console makes it simple to set up and monitor your cron jobs where ever you are. On your phone or
 				on your laptop, you are in control.</p>
 		</div>
 		<div class="col-md-4 text-center">
-			<img src="/images/cloud.png" class="img-responsive center-block" width="100" alt="Easy cron REST API">
+			<object type="image/svg+xml" data="/images/programming-typing.svg" width="100" height="100"></object>
 			<h2>Build cron into your app</h2>
 			<p>Our REST api makes it so easy to build scheduled tasks into your application. Want to schedule Stripe billing for a new
 				customer? Call the API to set up a new monthly job.</p>
 		</div>
 		<div class="col-md-4 text-center">
-			<img src="/images/alarm.png" class="img-responsive center-block" width="100" alt="Online cron job alarms">
+			<object type="image/svg+xml" data="/images/megaphone.svg" width="100" height="100"></object>			
 			<h2>Cron Alarms</h2>
 			<p>We'll alert you when one of your cron jobs doesn't return the response you expect. It's all part of the service!</p>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4 text-center v-center panel panel-default semi-transparent">
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-sm-4 col-sm-offset-4">
-						<img src="/images/bigdog-agency-logo.jpg" class="img-responsive">
-					</div>
-				</div>
-				<blockquote>
-					<p>Loving the service!</p>
-					<footer>Ben Sturgess - Creative Technology Director, BigDog</footer>
-				</blockquote>
-			</div>
 		</div>
 	</div>
 
@@ -126,6 +133,18 @@
 </div>
 <!-- /container full -->
 <script src="/scripts/jquery.min.js"></script>
+<script src="/scripts/typed.min.js"></script>
+<script>
+	var typed = new Typed('#typed', {
+		stringsElement: '#typed-strings',
+		smartBackspace: true,
+		typeSpeed: 50,
+		backSpeed: 70,
+		backDelay: 2000,
+		loop: true,
+		loopCount: 3
+	});
+</script>
 <script>
 	$(document).ready(function () {
 		$('.counter').each(function () {

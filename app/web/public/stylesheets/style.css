@@ -12816,7 +12816,7 @@ form .input-group {
 }
 
 .semi-transparent {
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
 footer {
@@ -12975,4 +12975,8 @@ footer a {
     .container-full {
         background-image: url('/images/background.jpg');
     }
+}
+
+.clock-icon {
+  
 }

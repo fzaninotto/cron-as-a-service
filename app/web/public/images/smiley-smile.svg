@@ -1,0 +1,22 @@
+<svg version="1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#CCE7FF;}
+	.st2{fill:none;stroke:#1078FF;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#1078FF;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{fill:#1078FF;}
+	.st5{fill:none;}
+</style>
+<g id="Duotone">
+	<polygon class="st0" points="23,18 12,24 2,18 2,6 12,1 23,6 	"/>
+	<polygon class="st1" points="20,17 12,21 4,17 2,18 12,24 23,18 	"/>
+	<polyline class="st2" points="8,15 10,17 15,17 17,15 	"/>
+	<polyline class="st2" points="6,10 8,8 10,10 	"/>
+	<polyline class="st2" points="14,10 16,8 18,10 	"/>
+	<polygon class="st3" points="23,18 12,24 2,18 2,6 12,1 23,6 	"/>
+</g>
+<g id="Frames-24px">
+	<rect class="st5" width="24" height="24"/>
+</g>
+</svg>
