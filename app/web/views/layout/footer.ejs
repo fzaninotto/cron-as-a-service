@@ -19,13 +19,16 @@
 <% if(!locals.hideNav) { %>
     <ul class="nav nav-bottom navbar-nav navbar-right visible-xs">
         <li>
+            <a href="javascript:window.Metomic('ConsentManager:show')">manage cookies</a>
+        </li>
+        <li>
             <a class="page-scrol" href="/customers">Customers</a>
         </li>
         <li>
             <a class="page-scrol" href="/contact">Contact</a>
         </li>
         <li>
-            <a class="page-scrol" href="https://cronasaservice.supstatus.com">Status</a>
+            <a href="https://cronasaservice.supstatus.com">Status</a>
         </li>
         <li>
             <a class="page-scroll" href="/docs">Docs</a>
@@ -53,12 +56,20 @@
 
         </script>
 
-                <script src="//cdn.ravenjs.com/1.1.19/jquery,native/raven.min.js"></script>
-                <script>
-                    Raven.config('https://3c0011112cdf488cbcaaea6a9fbbb92d@app.getsentry.com/43811', {
-                        whitelistUrls: ['cronasaservice.com']
-                    }).install();
-                </script>
-                </body>
+        <script>
+            !(function(p,r,i,v,a,c,y){p['MetomicObject']=a;p[a]=p[a]||function(){
+            (p[a].q=p[a].q||[]).push(arguments)},p[a].l=1*new Date();c=r.createElement(i),
+            y=r.getElementsByTagName(i)[0];c.async=1;c.src=v+'?d='+r.location.host;y.parentNode.insertBefore(c,y)
+            })(window, document, 'script', 'https://consent-manager.metomic.io/embed.js', 'Metomic');
+            Metomic('load', { projectId: 'prj:684936a3-08d5-427f-8278-159136ea7fb5' });
+        </script>
 
-                </html>
+        <script src="//cdn.ravenjs.com/1.1.19/jquery,native/raven.min.js"></script>
+        <script>
+            Raven.config('https://3c0011112cdf488cbcaaea6a9fbbb92d@app.getsentry.com/43811', {
+                whitelistUrls: ['cronasaservice.com']
+            }).install();
+        </script>
+    </body>
+
+</html>
