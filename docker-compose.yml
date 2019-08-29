@@ -12,7 +12,7 @@ services:
       - cohorton
   mongo:
     container_name: mongo
-    image: mongo
+    image: mongo:3.6
     volumes:
       - ./data:/data/db
     ports:
@@ -20,6 +20,7 @@ services:
   cohorton:
     container_name: cohorton
     image: drei01/cohorton:latest
+    env_file: ${ENVFILE}
     ports:
       - "7878:7878"
     links:
