@@ -4,11 +4,12 @@ services:
     container_name: app
     restart: always
     build: .
-    env_file: prod.env
+    env_file: ${ENVFILE}
     ports:
       - "80:3000"
     links:
       - mongo
+      - cohorton
   mongo:
     container_name: mongo
     image: mongo
@@ -16,3 +17,10 @@ services:
       - ./data:/data/db
     ports:
       - "27017:27017"
+  cohorton:
+    container_name: cohorton
+    image: drei01/cohorton:latest
+    ports:
+      - "7878:7878"
+    links:
+      - mongo
