@@ -4,7 +4,9 @@
     "version": "0.9.0",
     "author": "Matthew Reid",
     "scripts": {
-        "build-blog": "cd blog_source && bundle exec jekyll build --destination ../app/web/public/blog"
+        "build-blog": "cd blog_source && bundle exec jekyll build --destination ../app/web/public/blog",
+        "start": "node server",
+        "test": "./node_modules/cypress/bin/cypress run"
     },
     "apidoc": {
         "title": "Cron As A Service API",
@@ -47,6 +49,9 @@
         "stripe": "3.0.2",
         "unirest": "latest",
         "yaml": "0.2.3"
+    },
+    "devDependencies": {
+        "cypress": "^3.4.1"
     },
     "keywords": [
         "cron",
