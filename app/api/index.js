@@ -1,18 +1,17 @@
 /**
  * Module dependencies.
  */
-var express    = require('express');
-var app = module.exports = express.createServer();
+var errorHandler = require('errorhandler');
+var express      = require('express');
+var http         = require('http');
 
 var Job = require('../../models/job');
 var CronTab = require('../../lib/cronTab');
 
-// middleware
+var app = express();
 
-app.configure(function(){
-  app.use(app.router);
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
+// middleware
+app.use(errorHandler({ dumpExceptions: true, showStack: true }));
 
 app.get('/jobs', function(req, res, next) {
   Job.find(function(err, jobs) {
@@ -78,13 +77,25 @@ app.delete('/jobs/:id', function(req, res, next) {
 // route list
 app.get('/', function(req, res) {
   var routes = [];
-  app.routes.all().forEach(function(route) {
-    routes.push({ method: route.method.toUpperCase() , path: app.route + route.path });
+  var url = req.protocol + '://' + req.get('host') + req.originalUrl;
+  app._router.stack.forEach(layer => {
+    if (typeof layer.route !== 'undefined') {
+      var route = {
+        method: Object.keys(layer.route.methods)[0].toUpperCase(),
+        path: url + layer.route.path
+      }
+      routes.push(route);
+    }
   });
+
   res.json(routes);
 });
 
 if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
+  var server = http.createServer(app)
+  server.listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'))
+  })
 }
+
+module.exports = app;
