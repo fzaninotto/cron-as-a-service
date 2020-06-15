@@ -1,21 +1,31 @@
 {
-  "name":    "cron-as-a-service",
+  "name": "cron-as-a-service",
   "description": "Remote cron service",
   "version": "0.0.1",
   "author": "Francois Zaninotto",
   "dependencies": {
+    "async": "latest",
+    "body-parser": "^1.19.0",
+    "config": "latest",
+    "cron": "latest",
+    "ejs": "latest",
+    "errorhandler": "^1.5.1",
+    "express": "latest",
+    "js-yaml": "latest",
+    "method-override": "^3.0.0",
     "mongoose": "latest",
-    "ejs":      "latest",
-    "request":  "latest",
-    "express":  "latest",
-    "config":   "latest",
-    "async":    "latest",
-    "cron":     "latest"
+    "request": "latest"
   },
-  "keywords": ["cron", "service"],
+  "keywords": [
+    "cron",
+    "service"
+  ],
   "repository": "https://github.com/fzaninotto/cron-as-a-service",
   "license": "MIT",
   "engine": {
     "node": ">=0.6"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development node ./app"
   }
 }
